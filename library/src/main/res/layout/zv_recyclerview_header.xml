@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/recyclerView_header_arrow"
+        android:layout_width="30dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_recyclerview_head_refresh" />
+
+    <ProgressBar
+        android:id="@+id/recyclerView_header_progressbar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/recyclerView_header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center|left"
+        android:minWidth="70dip"
+        android:text="下拉刷新" />
+
+</LinearLayout>

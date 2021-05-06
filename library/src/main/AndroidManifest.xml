@@ -1,0 +1,31 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zee.libs">
+    <!--悬浮窗权限   -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!--访问网络连接-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--读外部存储的权限-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!--允许程序写入外部存储,如SD卡上写文件-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+
+        <activity
+            android:name="com.zee.activity.CrashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+
+        <!--<receiver-->
+        <!--android:name=".receiver.GeTuiNotificationClickReceiver"-->
+        <!--android:enabled="true"-->
+        <!--android:exported="false" />-->
+    </application>
+
+
+</manifest>

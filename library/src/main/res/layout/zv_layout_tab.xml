@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <TextView
+        android:id="@+id/tv_tab_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:singleLine="true" />
+
+    <com.zee.view.ZxTextView xmlns:mv="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rtv_msg_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FD481F"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="8sp"
+        android:visibility="gone"
+
+        mv:zv_borderColor="#ffffff"
+        mv:zv_borderWidth="1dp"
+        mv:zv_radiusHalfHeight="true" />
+
+</RelativeLayout>

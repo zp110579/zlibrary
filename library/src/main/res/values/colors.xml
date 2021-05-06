@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="pass_view_rect_input">#3DA3FF</color>
+    <color name="no_input_line_color">#c8c8c8</color>
+
+</resources>
