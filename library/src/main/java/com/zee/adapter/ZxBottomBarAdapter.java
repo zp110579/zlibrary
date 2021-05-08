@@ -1,6 +1,7 @@
 package com.zee.adapter;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -18,18 +19,18 @@ public abstract class ZxBottomBarAdapter {
      * @param defaultViewID   默认选中的ViewID
      * @param containerViewId Fragment 容器ID
      */
-    public ZxBottomBarAdapter(FragmentManager fragmentManager, int defaultViewID, int containerViewId) {
+    public ZxBottomBarAdapter(FragmentManager fragmentManager,@IdRes int defaultViewID,@IdRes int containerViewId) {
         loSupportFragmentManager = fragmentManager;
         defaultSelectViewID = defaultViewID;
         mContainerViewID = containerViewId;
         selectIndex(defaultSelectViewID);
     }
 
-    public ZxBottomBarAdapter(AppCompatActivity paActivity, int defaultViewID, int containerViewId) {
+    public ZxBottomBarAdapter(AppCompatActivity paActivity, @IdRes int defaultViewID, @IdRes int containerViewId) {
         this(paActivity.getSupportFragmentManager(), defaultViewID, containerViewId);
     }
 
-    public ZxBottomBarAdapter(Fragment fragment, int defaultViewTag, int containerViewId) {
+    public ZxBottomBarAdapter(Fragment fragment,@IdRes int defaultViewTag,@IdRes int containerViewId) {
         this(fragment.getChildFragmentManager(), defaultViewTag, containerViewId);
     }
 

@@ -362,7 +362,7 @@ public class WrapAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         RecyclerView.Adapter originalAdapter = getOriginalAdapter();
         if (originalAdapter != null) {
-            if (originalAdapter.getItemCount() > 0) {
+            if (getItemCount() > 0) {
                 showCenterView(null);
             } else {
                 View loView = mCenterViewHashMap.get(XRecyclerView.CENTERVIEW_TYPE_NO_DATA);//获得空View
