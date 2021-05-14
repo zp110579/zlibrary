@@ -444,6 +444,8 @@
         <attr name="zv_limitNumber" format="integer" />
 
         <attr name="zv_no_date_layout" format="reference" />
+        <!-- 默认没有数据的时候显示没数据-->
+        <attr name="zv_is_show_no_date" format="boolean" />
 
         <!--下面是预先设置LinearLayoutManger的方向-->
         <attr name="zv_linearLayoutManager" format="dimension">

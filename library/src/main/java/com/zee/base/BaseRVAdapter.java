@@ -151,8 +151,7 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
         TextView textView = findViewById(id);
 
         if (textView != null) {
-            String text = textView.getContext().getString(resId);
-            textView.setText(text);
+            textView.setText(resId);
         }
         return textView;
     }

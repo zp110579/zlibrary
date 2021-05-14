@@ -20,7 +20,7 @@ import java.util.List;
  * @author Administrator
  */
 public class XRecyclerView extends RecyclerView implements IRecyclerView {
-     protected WrapAdapter mWrapAdapter;
+    protected WrapAdapter mWrapAdapter;
     public static final int CENTERVIEW_TYPE_NO_DATA = 10000000;//没有数据
     public static final int CENTERVIEW_TYPE_NO_NET = 10000001;//没有网络
     private RefreshAndLoadMoreManager mRefreshAndLoadMoreManager;
@@ -48,10 +48,13 @@ public class XRecyclerView extends RecyclerView implements IRecyclerView {
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ZxRecyclerView);
         int noDateResID = ta.getResourceId(R.styleable.ZxRecyclerView_zv_no_date_layout, R.layout.zv_recyclerview_nodata);
+        boolean isShowNoData = ta.getBoolean(R.styleable.ZxRecyclerView_zv_is_show_no_date, true);
         mXRecyclerViewParamManager = new XRecyclerViewParamManager(ta, this);
         mRefreshAndLoadMoreManager = new RefreshAndLoadMoreManager(this, mXRecyclerViewParamManager.getLinearLayoutManagerOrientation());
         mWrapAdapter = new WrapAdapter(this);
-        mWrapAdapter.setNoDateResID(noDateResID);
+        if (isShowNoData) {
+            mWrapAdapter.setNoDateResID(noDateResID);
+        }
         setItemViewCacheSize(5);//设置5缓存,默认2个
     }
 

@@ -15,3 +15,7 @@ fun Date.dateToString(newDateStyle: DateStyle): String {
 fun String.toString(newDateStyle: DateStyle): String {
     return ZDateUtil.StringToString(this, newDateStyle)
 }
+
+fun Long.toDateString(newDateStyle: DateStyle): String {
+    return Date(this).dateToString(newDateStyle)
+}
