@@ -9,6 +9,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:minWidth="90dip"
-        android:text="暂无数据" />
+        android:text="@string/zx_lib_no_data" />
 
 </LinearLayout>

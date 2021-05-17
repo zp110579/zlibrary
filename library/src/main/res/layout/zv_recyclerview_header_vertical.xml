@@ -22,6 +22,6 @@
         android:layout_height="50dp"
         android:gravity="center|left"
         android:minWidth="70dip"
-        android:text="下拉刷新" />
+        android:text="@string/zx_lib_refreshing" />
 
 </LinearLayout>

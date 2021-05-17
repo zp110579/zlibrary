@@ -1,4 +1,4 @@
-package com.zee.zxing.example;
+package com.zee.libs.example;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

@@ -152,6 +152,7 @@ public class WrapAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public void addFooterView(View view) {
         mRecyclerViewAddViewManager.addFooterView(view);
+        showCenterView(null);
         notifyDataSetChanged();
     }
 
@@ -164,6 +165,7 @@ public class WrapAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     public void addHeaderView(View view) {
+        showCenterView(null);
         mRecyclerViewAddViewManager.addHeaderView(view);
         notifyDataSetChanged();
     }
