@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
+import android.support.annotation.StringRes
 import android.widget.TextView
 import com.zee.utils.UIUtils
 
@@ -13,6 +14,16 @@ fun TextView.setTextExA(isRight: Boolean, text1: String, text2: String): TextVie
     } else {
         text2
     }
+    return this
+}
+
+fun TextView.setTextExA(isRight: Boolean, @StringRes text1: Int, @StringRes text2: Int): TextView {
+    setText(if (isRight) {
+        text1
+    } else {
+        text2
+    }
+    )
     return this
 }
 
@@ -43,7 +54,7 @@ fun TextView.setTextColorExB(isRight: Boolean, color1: String, color2: String): 
     return this
 }
 
-fun TextView.setTextColorExB(index: Int, vararg colors: String):TextView {
+fun TextView.setTextColorExB(index: Int, vararg colors: String): TextView {
     if (index < colors.size && index > -1) {
         setTextColorEx(colors[index])
     } else {

@@ -3,6 +3,7 @@ package com.zee.extendobject
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
+import android.support.annotation.StringRes
 import com.zee.listener.OnActivityResultListener
 import com.zee.route.ZRouter
 import com.zee.utils.UIUtils
@@ -11,6 +12,10 @@ import com.zee.utils.ZStatusBarUtils
 import java.lang.Exception
 import java.math.BigDecimal
 
+
+fun getString(@StringRes resid: Int): String {
+    return UIUtils.getString(resid)
+}
 
 fun setLightMode() {
     ZStatusBarUtils.setLightMode(curActivityEx())
