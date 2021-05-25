@@ -4,23 +4,26 @@ import com.zee.bean.EventBusSubscriber
 import com.zee.utils.ZEventBusUtils
 import com.zee.utils.ZEventBusUtils.postTagNoParam
 
-/**
- * EventBus
- */
 
-fun Any.eventBus_RegisterThis(subscriberTag: String = "") {
-    eventBusRegister(this, subscriberTag)
+fun Any.registerEBus() {
+    ZEventBusUtils.register(this)
 }
 
-fun Any.eventBus_UnRegisterThis() {
-    eventBusUnRegister(this)
+fun Any.registerEBus(subscriberTag: Any) {
+    ZEventBusUtils.register(this, subscriberTag)
 }
+
 
 /**
  * 生命周期自动跟当前的Activity生命周期绑定在一起，自动注销
  */
-fun Any.eventBus_RegisterBindCurActivity(subscriberTag: String = "") {
-    ZEventBusUtils.registerBindCurActivity(this, subscriberTag)
+fun Any.registerEBusBindCurActivity(subscriberTag: String = "") {
+    eventBusRegister(this, subscriberTag)
+}
+
+
+fun Any.unRegisterEBus() {
+    eventBusUnRegister(this)
 }
 
 fun eventBusPostTagNoParam(vararg value: String) {
@@ -28,7 +31,7 @@ fun eventBusPostTagNoParam(vararg value: String) {
 }
 
 fun eventBusRegister(any: Any) {
-    ZEventBusUtils.register(any)
+    any.registerEBus()
 }
 
 fun eventBusRegister(any: Any, subscriberTag: Int) {

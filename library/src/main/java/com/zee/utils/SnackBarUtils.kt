@@ -15,7 +15,6 @@ import com.zee.utils.UIUtils
  */
 object SnackBarUtils {
 
-
     fun showMessage(message: String, btnTile: String? = null) {
         val activity = UIUtils.getCurActivity()
         val rootView = findSuitableParent(activity.window.decorView)

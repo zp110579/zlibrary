@@ -13,8 +13,8 @@ import java.lang.Exception
 import java.math.BigDecimal
 
 
-fun getString(@StringRes resid: Int): String {
-    return UIUtils.getString(resid)
+fun getString(@StringRes resId: Int): String {
+    return UIUtils.getString(resId)
 }
 
 fun setLightMode() {

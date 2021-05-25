@@ -4,7 +4,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.listener.EventBusPostListener;
 
 /**
- * @author Administrator
+ * @author Zee
  */
 public class EventBusSubscriber {
     private String mClassTag;
