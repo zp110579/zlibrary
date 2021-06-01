@@ -5,24 +5,30 @@ import com.zee.utils.ZEventBusUtils
 import com.zee.utils.ZEventBusUtils.postTagNoParam
 
 
-fun Any.registerEBus() {
-    ZEventBusUtils.register(this)
+fun Any.eventBusRegisterThis() {
+    ZEventBusUtils.register(this, "")
 }
 
-fun Any.registerEBus(subscriberTag: Any) {
+fun Any.eventBusRegisterThis(subscriberTag: String = "") {
     ZEventBusUtils.register(this, subscriberTag)
 }
 
+fun Any.eventBusRegisterThis(subscriberTag: Int = 0) {
+    ZEventBusUtils.register(this, subscriberTag)
+}
+
+fun Any.eventBusUnRegisterThis() {
+    com.zee.extendobject.eventBusUnRegister(this)
+}
 
 /**
  * 生命周期自动跟当前的Activity生命周期绑定在一起，自动注销
  */
-fun Any.registerEBusBindCurActivity(subscriberTag: String = "") {
-    eventBusRegister(this, subscriberTag)
+fun Any.eventBusRegisterThisAndBindCurActivity(subscriberTag: String = "") {
+    ZEventBusUtils.getEventBusSubscriber(subscriberTag)
 }
 
-
-fun Any.unRegisterEBus() {
+fun Any.unRegisterEventBus() {
     eventBusUnRegister(this)
 }
 
@@ -30,14 +36,17 @@ fun eventBusPostTagNoParam(vararg value: String) {
     postTagNoParam(*value)
 }
 
+@Deprecated("", ReplaceWith("any.eventBusRegister()"))
 fun eventBusRegister(any: Any) {
-    any.registerEBus()
+    any.eventBusRegisterThis("")
 }
 
+@Deprecated("", ReplaceWith("any.eventBusRegister(subscriberTag)"))
 fun eventBusRegister(any: Any, subscriberTag: Int) {
-    ZEventBusUtils.register(any, subscriberTag)
+    any.eventBusRegisterThis(subscriberTag)
 }
 
+@Deprecated("", ReplaceWith("any.eventBusRegister(subscriberTag)"))
 fun eventBusRegister(any: Any, subscriberTag: String) {
     ZEventBusUtils.register(any, subscriberTag)
 }
@@ -54,19 +63,19 @@ fun eventBusUnRegister(any: Any) {
     ZEventBusUtils.unregister(any)
 }
 
-fun eventBusPost(any: Any) {
+fun eventBusPost(any: Any?) {
     ZEventBusUtils.post(any)
 }
 
-fun eventBusPost(any: Any, methodTag: String) {
+fun eventBusPost(any: Any?, methodTag: String) {
     ZEventBusUtils.post(any, methodTag)
 }
 
-fun eventBusPost(any: Any, methodTag: String, subscriberTag: String) {
+fun eventBusPost(any: Any?, methodTag: String, subscriberTag: String) {
     getEventBusSubscriber(subscriberTag).post(any, methodTag)
 }
 
-fun eventBusPost(any: Any, methodTag: String, subscriberTag: Int) {
+fun eventBusPost(any: Any?, methodTag: String, subscriberTag: Int) {
     getEventBusSubscriber(subscriberTag).post(any, methodTag)
 }
 

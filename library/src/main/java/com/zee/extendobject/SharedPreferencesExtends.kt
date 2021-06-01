@@ -12,11 +12,11 @@ fun spGetValue(key: String, defValue: String = ""): String {
 }
 
 
-fun spGetValue(key: String, defValue: Int = 0): Int {
+fun spGetIntValue(key: String, defValue: Int = 0): Int {
     return Z1PrefsUtil.getValue(key, defValue)
 }
 
-fun spGetValue(key: String, defValue: Float = 0f): Float {
+fun spGetFloatValue(key: String, defValue: Float = 0f): Float {
     return Z1PrefsUtil.getValue(key, defValue)
 }
 
