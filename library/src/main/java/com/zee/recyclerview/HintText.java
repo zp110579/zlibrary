@@ -1,5 +1,6 @@
 package com.zee.recyclerview;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 
 public class HintText {
@@ -62,12 +63,25 @@ public class HintText {
     /**
      * 刷新的背景颜色
      */
-    public int refreshBackgroundColor=Color.TRANSPARENT;
+    public int refreshBackgroundColor = Color.TRANSPARENT;
     /**
      * 还剩下几个数据的时候自动加载
      */
     private int limitNumber;
 
+    /**
+     * 进度条的颜色
+     */
+    private ColorStateList progressViewColor = null;
+
+
+    public void setProgressViewColor(ColorStateList progressViewColor) {
+        this.progressViewColor = progressViewColor;
+    }
+
+    public ColorStateList getProgressViewColor() {
+        return progressViewColor;
+    }
 
     public void setTextColor(int textColor) {
         this.textColor = textColor;
@@ -101,6 +115,7 @@ public class HintText {
 
         return tempSize;
     }
+
 
     public void setRefresh_textSize(float refresh_textSize) {
         this.refresh_textSize = refresh_textSize;

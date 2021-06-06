@@ -14,6 +14,7 @@
         android:id="@+id/recyclerView_header_progressbar"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:indeterminateTintMode="src_over"
         android:visibility="gone" />
 
     <TextView
@@ -22,6 +23,6 @@
         android:layout_height="50dp"
         android:gravity="center|left"
         android:minWidth="70dip"
-        android:text="@string/zx_lib_refreshing" />
+        android:text="@string/zv_recyclerview_refreshing_hint_pull_down" />
 
 </LinearLayout>

@@ -12,6 +12,7 @@ import com.zee.recyclerview.RefreshAndLoadMoreAdapter;
 import com.zee.recyclerview.RefreshAndLoadMoreManager;
 import com.zee.recyclerview.XRecyclerView;
 import com.zee.utils.UIUtils;
+import com.zee.utils.ZListUtils;
 
 import java.util.List;
 
@@ -125,12 +126,25 @@ public class ZxRecyclerView extends XRecyclerView {
      * 和刷新和加载绑定的List
      */
     public void setListRefreshAndLoadMore(List list) {
+        setRefreshAndLoadMoreList(list, -1);
+    }
+
+    /**
+     * @param list
+     * @param pageSize 每页加载的最多的数据
+     */
+    public void setRefreshAndLoadMoreList(List list, int pageSize) {
         RefreshAndLoadMoreAdapter refreshAndLoadMoreAdapter = getRefreshAndLoadMoreManager().getRefreshAndLoadMoreAdapter();
         if (refreshAndLoadMoreAdapter != null) {
             if (refreshAndLoadMoreAdapter.isRefreshState()) {
                 setList(list);
             } else {
                 addAll(list);
+            }
+            if (pageSize > 0 && ZListUtils.isNoEmpty(list)) {
+                if (list.size() < pageSize) {
+                    setNoMore(true);
+                }
             }
         } else {
             setList(list);

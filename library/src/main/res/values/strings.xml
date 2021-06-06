@@ -1,15 +1,15 @@
 <resources>
     <string name="ZBannerView_viewPage">zv_viewPage</string>
     <string name="ZBannerView_indicator">zv_indicators</string>
-    <string name="zx_lib_refreshing">pull to refresh</string>
-    <string name="listview_header_hint_release">release to start refresh</string>
-    <string name="zx_lib_in_loading">loading...</string>
+    <string name="zv_recyclerview_refreshing_hint_pull_down">pull to refresh</string>
+    <string name="zv_recyclerview_hint_release_hand">release to start refresh</string>
+    <string name="zv_recycelrview_loading_more">loading...</string>
     <string name="nomore_loading">no more to be loaded</string>
-    <string name="refreshing">refreshing...</string>
-    <string name="refresh_done">refresh done</string>
-    <string name="loading_done">loading done</string>
+    <string name="zv_recyclerview_refreshing_start">refreshing...</string>
+    <string name="zv_recycelrview_refresh_end">refresh done</string>
+    <string name="zv_recyclerview_loading_end">loading done</string>
     <string name="listview_header_last_time">last update：</string>
-    <string name="zx_lib_loading">loading...</string>
+    <string name="zx_recyclerview_loading">loading...</string>
 
 
     <string name="permission_name_calendar">Calendar</string>
@@ -22,5 +22,6 @@
     <string name="permission_name_sensors">Body Sensors</string>
     <string name="permission_name_sms">SMS</string>
     <string name="permission_name_storage">Storage</string>
-    <string name="zx_lib_no_data">no data</string>
+    <string name="zx_recyclerview_no_data">no data</string>
+    <string name="zx_recyclerView_no_more">no data</string>
 </resources>

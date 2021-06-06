@@ -53,6 +53,7 @@ public class MyDialog extends DialogFragment implements IDismissListener {
     private boolean outCancel = true;//是否点击外部取消
     @StyleRes
     protected int theme = R.style.myDialogStyle; // dialog主题
+    private boolean isFullScreen = false;
     //只有显示在上，下2面才会有效果
     @StyleRes
     private int animStyle;
@@ -219,24 +220,29 @@ public class MyDialog extends DialogFragment implements IDismissListener {
             }
 
             //设置dialog宽度
-            int tempW = UIUtils.dpToPx(width);
-            if (tempW == 0) {
-                lp.width = ZScreenUtils.getScreenWidth() - 2 * UIUtils.dpToPx(mLeftAndRightMargin);
-            } else if (tempW == -1) {
-                lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+            if (isFullScreen) {
+                lp.width = ZScreenUtils.getScreenWidth();
+                lp.height = ZScreenUtils.getScreenHeight();
+                lp.y = 0;
             } else {
-                lp.width = tempW;
-            }
-
-            //设置dialog高度
-            int tempH = UIUtils.dpToPx(height);
-            if (tempH == 0) {
-                lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-            } else {
-                lp.height = tempH;
-            }
-            if (gravity == Gravity.BOTTOM || gravity == Gravity.TOP) {
-                lp.y = UIUtils.dpToPx(mTopOrBottomMargin);
+                int tempW = UIUtils.dpToPx(width);
+                if (tempW == 0) {
+                    lp.width = ZScreenUtils.getScreenWidth() - 2 * UIUtils.dpToPx(mLeftAndRightMargin);
+                } else if (tempW == -1) {
+                    lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
+                } else {
+                    lp.width = tempW;
+                }
+                //设置dialog高度
+                int tempH = UIUtils.dpToPx(height);
+                if (tempH == 0) {
+                    lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                } else {
+                    lp.height = tempH;
+                }
+                if (gravity == Gravity.BOTTOM || gravity == Gravity.TOP) {
+                    lp.y = UIUtils.dpToPx(mTopOrBottomMargin);
+                }
             }
 
             //设置dialog进入、退出的动画
@@ -259,6 +265,11 @@ public class MyDialog extends DialogFragment implements IDismissListener {
     public MyDialog setSize(int width, int height) {
         this.width = width;
         this.height = height;
+        return this;
+    }
+
+    public MyDialog setFullScreen() {
+        isFullScreen = true;
         return this;
     }
 
@@ -319,7 +330,7 @@ public class MyDialog extends DialogFragment implements IDismissListener {
         try {
             super.dismiss();
         } catch (Exception e) {
-            
+
         }
     }
 

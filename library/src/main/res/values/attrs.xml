@@ -432,6 +432,7 @@
         <attr name="zv_refresh_txt_refreshEnd" format="string" />
         <!--正在加载-->
         <attr name="zv_loadMore_txt_loadStart" format="string" />
+        <attr name="zv_progress_color" format="color|reference" />
         <!--加载完成-->
         <attr name="zv_loadMore_txt_loadEnd" format="string" />
         <!--没有数据可以加载了-->

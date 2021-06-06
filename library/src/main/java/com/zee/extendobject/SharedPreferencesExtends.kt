@@ -11,12 +11,15 @@ fun spGetValue(key: String, defValue: String = ""): String {
     return Z1PrefsUtil.getValue(key, defValue)
 }
 
-
 fun spGetIntValue(key: String, defValue: Int = 0): Int {
     return Z1PrefsUtil.getValue(key, defValue)
 }
 
 fun spGetFloatValue(key: String, defValue: Float = 0f): Float {
+    return Z1PrefsUtil.getValue(key, defValue)
+}
+
+fun spGetBooleanValue(key: String, defValue: Boolean = false): Boolean {
     return Z1PrefsUtil.getValue(key, defValue)
 }
 
@@ -38,6 +41,13 @@ fun spSaveValue(key: String, defValue: Int) {
  * SharedPreferences 保存Float
  */
 fun spSaveValue(key: String, defValue: Float) {
+    Z1PrefsUtil.setValue(key, defValue)
+}
+
+/**
+ * SharedPreferences 保存Boolean
+ */
+fun spSaveValue(key: String, defValue: Boolean) {
     Z1PrefsUtil.setValue(key, defValue)
 }
 

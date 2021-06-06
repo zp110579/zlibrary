@@ -11,7 +11,7 @@
         android:layout_margin="5dp"
         android:ems="1"
         android:gravity="center|left"
-        android:text="@string/zx_lib_in_loading" />
+        android:text="@string/zv_recycelrview_loading_more" />
 
     <ProgressBar
         android:id="@+id/recyclerView_footer_progressbar"

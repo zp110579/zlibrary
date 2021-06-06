@@ -90,7 +90,6 @@ public class XRecyclerView extends RecyclerView implements IRecyclerView {
         baseRVAdapter.addAll(paList);
     }
 
-
     public void addCenterView(RecyclerViewViewAdapter paRecyclerViewViewAdapter) {
         if (mWrapAdapter != null) {
             mWrapAdapter.addCenterView(paRecyclerViewViewAdapter);

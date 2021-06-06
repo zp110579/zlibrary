@@ -9,6 +9,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:minWidth="90dip"
-        android:text="@string/zx_lib_no_data" />
+        android:text="@string/zx_recyclerview_no_data" />
 
 </LinearLayout>

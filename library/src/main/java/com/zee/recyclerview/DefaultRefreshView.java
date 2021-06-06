@@ -1,6 +1,8 @@
 package com.zee.recyclerview;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.os.Build;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
@@ -35,6 +37,12 @@ class DefaultRefreshView implements IRecyclerViewRefreshView {
     public void initViews(LinearLayout view) {
         mArrowImageView = view.findViewById(R.id.recyclerView_header_arrow);
         mProgressBar = view.findViewById(R.id.recyclerView_header_progressbar);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ColorStateList colorStateList = mHintText.getProgressViewColor();
+            if (colorStateList != null) {
+                mProgressBar.setIndeterminateTintList(colorStateList);
+            }
+        }
         mStatusTextView = view.findViewById(R.id.recyclerView_header_title);
 
         mRotateUpAnim = new RotateAnimation(0.0f, -180.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
