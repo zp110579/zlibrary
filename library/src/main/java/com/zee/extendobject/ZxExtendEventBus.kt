@@ -18,14 +18,14 @@ fun Any.eventBusRegisterThis(subscriberTag: Int = 0) {
 }
 
 fun Any.eventBusUnRegisterThis() {
-    com.zee.extendobject.eventBusUnRegister(this)
+    eventBusUnRegister(this)
 }
 
 /**
  * 生命周期自动跟当前的Activity生命周期绑定在一起，自动注销
  */
 fun Any.eventBusRegisterThisAndBindCurActivity(subscriberTag: String = "") {
-    ZEventBusUtils.getEventBusSubscriber(subscriberTag)
+    ZEventBusUtils.registerBindCurActivity(this,subscriberTag)
 }
 
 fun Any.unRegisterEventBus() {

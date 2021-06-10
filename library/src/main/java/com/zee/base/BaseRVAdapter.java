@@ -142,7 +142,7 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
     }
 
     public final ImageView setImageResource(@IdRes int viewId, @DrawableRes int imageResId) {
-        ImageView view = findImageViewById(viewId);
+        ImageView view = imageViewById(viewId);
         view.setImageResource(imageResId);
         return view;
     }
@@ -220,8 +220,12 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
 
     @NonNull
     @Override
-    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
-        return new RecyclerViewHolder(LayoutInflater.from(parent.getContext()).inflate(layoutResID, parent, false), null);
+    public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new RecyclerViewHolder(LayoutInflater.from(parent.getContext()).inflate(getItemLayoutId(viewType), parent, false), null);
+    }
+
+    protected int getItemLayoutId(int viewType) {
+        return layoutResID;
     }
 
     @Override
@@ -230,17 +234,10 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
         mViewHolder = viewHolder;
     }
 
+
     @Override
     public int getItemCount() {
         return mList == null ? 0 : mList.size();
-    }
-
-    /**
-     * * 每一个位置的item都作为单独一项来设置 * viewType 设置为position * @param position * @return
-     */
-    @Override
-    public int getItemViewType(int position) {
-        return position;
     }
 
 }

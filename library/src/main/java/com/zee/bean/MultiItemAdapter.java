@@ -19,8 +19,8 @@ import com.zee.utils.UIUtils;
 import com.zee.view.ZxRecyclerView;
 
 @SuppressWarnings(value = {"unchecked", "deprecation"})
-public abstract class MultiItemAdapter {
-    private Object mObject;
+public abstract class MultiItemAdapter<T> {
+    private T mObject;
     private RecyclerViewHolder mViewHolder;
     private BaseMultiZAdapter mBaseMultiZAdapter;
     private int curIndex;
@@ -32,12 +32,12 @@ public abstract class MultiItemAdapter {
     public abstract @LayoutRes
     int getLayoutResID();
 
-    public final void bindObject(BaseMultiZAdapter adapter, RecyclerViewHolder viewHolder, int location, Object object) {
+    public final void bindObject(BaseMultiZAdapter adapter, RecyclerViewHolder viewHolder, int location, T object) {
         this.mBaseMultiZAdapter = adapter;
         mObject = object;
         curIndex = location;
         mViewHolder = viewHolder;
-        initViews(viewHolder.getConvertView(), location);
+        initViews(viewHolder.getConvertView(), location, object);
         checkItemClickListener(object, location);
     }
 
@@ -50,7 +50,7 @@ public abstract class MultiItemAdapter {
         return curIndex;
     }
 
-    public abstract void initViews(View parentView, int location);
+    public abstract void initViews(View parentView, int location, T bean);
 
     protected boolean isFirstItem() {
         return curIndex == 0;
@@ -64,19 +64,19 @@ public abstract class MultiItemAdapter {
         return mViewHolder.findViewById(id);
     }
 
-    protected final ImageView findImageViewById(@IdRes int id) {
+    protected final ImageView imageViewById(@IdRes int id) {
         return mViewHolder.findViewById(id);
     }
 
-    protected final TextView findTextViewById(@IdRes int id) {
+    protected final TextView textViewById(@IdRes int id) {
         return mViewHolder.findViewById(id);
     }
 
-    protected final ZxRecyclerView findZxRecyclerViewById(@IdRes int id) {
+    protected final ZxRecyclerView zxRecyclerViewById(@IdRes int id) {
         return mViewHolder.findViewById(id);
     }
 
-    protected final View findViewByIdK(@IdRes int id) {
+    protected final View viewById(@IdRes int id) {
         return mViewHolder.findViewById(id);
     }
 
@@ -102,7 +102,7 @@ public abstract class MultiItemAdapter {
     }
 
     public void setOnClickListener(@IdRes int id, View.OnClickListener onClickListener) {
-        findViewByIdK(id).setOnClickListener(onClickListener);
+        viewById(id).setOnClickListener(onClickListener);
     }
 
     public final void setGone(@IdRes int id) {

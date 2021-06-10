@@ -10,15 +10,16 @@
     <TextView
         android:id="@+id/tv_dialog"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="hello word"
-        android:visibility="gone" />
+        android:padding="20dp"
+        android:text="hello word" />
 
     <com.zee.view.ZxRecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="gone"
         app:zv_progress_color="#00ffff" />
 
 </LinearLayout>

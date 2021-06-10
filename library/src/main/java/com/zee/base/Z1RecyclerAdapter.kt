@@ -59,6 +59,6 @@ abstract class Z1RecyclerAdapter<E>(@LayoutRes layoutID: Int) : BaseRVAdapter<E>
         }
     }
 
-    protected abstract fun initViews(parentView: View, location: Int, bean: E)
+     abstract fun initViews(parentView: View, location: Int, bean: E)
 
 }

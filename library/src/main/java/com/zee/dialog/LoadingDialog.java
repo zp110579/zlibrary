@@ -55,7 +55,7 @@ public class LoadingDialog {
 
     public void updateText(String loadingTxt) {
         if (mBindViewAdapter != null) {
-            TextView loadingTextView = mBindViewAdapter.findTextViewById(R.id.tv_loading_txt);
+            TextView loadingTextView = mBindViewAdapter.textViewById(R.id.tv_loading_txt);
             if (loadingTextView != null) {
                 loadingTextView.setText(loadingTxt);
             }

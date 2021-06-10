@@ -8,6 +8,10 @@ import android.support.annotation.StringRes
 import android.widget.TextView
 import com.zee.utils.UIUtils
 
+fun TextView.setTextEx(any: Any?) {
+    text = any.toString()
+}
+
 fun TextView.setTextExA(isRight: Boolean, text1: String, text2: String): TextView {
     text = if (isRight) {
         text1

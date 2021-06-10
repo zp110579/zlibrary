@@ -16,6 +16,19 @@ import org.jetbrains.annotations.Nullable
 /**
  * 将View保存成本地图片，并刷新图库
  */
+
+/**
+ * 防止快速点击运行2次
+ */
+fun View.setOnNoDoubleClickListener(unit: () -> Unit): View {
+    setOnClickListener(object : OnNoDoubleClickListener(2000) {
+        override fun onNoDoubleClick(v: View) {
+            unit.invoke()
+        }
+    })
+    return this
+}
+
 fun View.saveImage(fileName: String, result: (code: Int) -> Unit = {}): View {
     ViewSaveImageUtils.saveImg(this, fileName, result)
     return this
@@ -65,14 +78,14 @@ fun View.removeFromParentView(): View {
     return this
 }
 
-fun View.isGoneRun(run: () -> Unit = {}): View {
+fun View.isGoneRun(run: () -> Unit): View {
     if (isGone()) {
         run.invoke()
     }
     return this
 }
 
-fun View.isVisibleRun(run: () -> Unit = {}): View {
+fun View.isVisibleRun(run: () -> Unit): View {
     if (isVisible()) {
         run.invoke()
     }

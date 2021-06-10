@@ -81,7 +81,7 @@ public abstract class BaseMultiZAdapter extends RecyclerView.Adapter<RecyclerVie
         if (ZListUtils.isNoEmpty(mList)) {
             return mList.get(position).getItemViewType();
         }
-        return position;
+        return 0;
     }
 
     @Override

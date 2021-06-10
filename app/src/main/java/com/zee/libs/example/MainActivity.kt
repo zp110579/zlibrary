@@ -7,8 +7,10 @@ import android.widget.TextView
 import com.zee.base.Z1RecyclerAdapter
 import com.zee.dialog.MyDialogK
 import com.zee.extendobject.*
+import com.zee.popupWindow.MyPopupWindowK
 import com.zee.recyclerview.RefreshAndLoadMoreAdapter
 import com.zee.utils.ZLibrary
+import com.zee.view.Zx1RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -16,27 +18,33 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<TextView>(R.id.tv_dialog).setOnClickListener {
-            MyDialogK.init(R.layout.dialog_main) {
+        tv_dialog.setTextEx(1)
+        findViewById<TextView>(R.id.tv_dialog).setOnNoDoubleClickListener {
+            MyPopupWindowK.init(R.layout.dialog_main) {
                 setOnClickListenerAndDismiss(R.id.tv_cancel) {
                     showToastShort("----->>>")
                 }
                 setOnClickListener(R.id.tv_sure) {
                     showToastShort("确定成功")
                 }
-            }.show()
+            }.showAsDropDown(tv_dialog)
         }
-        recyclerView.adapter=object :Z1RecyclerAdapter<String>(R.layout.dialog_main){
-            override fun initViews(parentView: View, location: Int, bean: String) {
+        val recycler = Zx1RecyclerView(this)
 
-            }
-        }
-       val list= arrayListOf("R.string.ZBannerView_indicator","R.string.ZBannerView_viewPage")
-        recyclerView.setRefreshAndLoadMordListener(object : RefreshAndLoadMoreAdapter() {
-            override fun onStartLoad(curPage: Int) {
 
-            }
-        })
+
+
+        val list = arrayListOf("R.string.ZBannerView_indicator", "R.string.ZBannerView_viewPage")
+        recyclerView.setRefreshAndLoadMordListener(
+                object : RefreshAndLoadMoreAdapter() {
+                    override fun onStartLoad(curPage: Int) {
+
+                    }
+                })
+
+//        tv_dialog.setOnNoDoubleClickListener {
+//
+//        }
         recyclerView.setList(list)
 
     }
