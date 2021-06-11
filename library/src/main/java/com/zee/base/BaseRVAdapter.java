@@ -69,7 +69,7 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
     public void addAll(List<BT> paList) {
         if (ZListUtils.isEmpty(paList)) {
             if (mXRecyclerView != null) {
-                mXRecyclerView.setNoMore(true);
+                mXRecyclerView.setLoadMoreEnabled(true);
                 mXRecyclerView.loadFinish();
             }
             return;

@@ -129,6 +129,10 @@ public class ZxRecyclerView extends XRecyclerView {
         setRefreshAndLoadMoreList(list, -1);
     }
 
+    public void setRefreshAndLoadMoreList(List list) {
+        setRefreshAndLoadMoreList(list, -1);
+    }
+
     /**
      * @param list
      * @param pageSize 每页加载的最多的数据
@@ -143,7 +147,7 @@ public class ZxRecyclerView extends XRecyclerView {
             }
             if (pageSize > 0 && ZListUtils.isNoEmpty(list)) {
                 if (list.size() < pageSize) {
-                    setNoMore(true);
+                    setLoadMoreEnabled(false);
                 }
             }
         } else {

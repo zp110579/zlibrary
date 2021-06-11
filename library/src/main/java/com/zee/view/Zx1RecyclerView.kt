@@ -117,7 +117,7 @@ class Zx1RecyclerView : XRecyclerView {
             }
             if (pageSize > 0 && ZListUtils.isNoEmpty(list)) {
                 if (list.size < pageSize) {
-                    setNoMore(true)
+                    setLoadMoreEnabled(true)
                 }
             }
         } else {
