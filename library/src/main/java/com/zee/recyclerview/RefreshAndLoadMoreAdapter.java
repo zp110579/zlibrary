@@ -1,8 +1,8 @@
 package com.zee.recyclerview;
 
 public abstract class RefreshAndLoadMoreAdapter implements RefreshListener, LoadMoreListener {
-    private int defaultStart = 0;//默认从0开始
-    private int curPage = 0;
+    private int defaultStart = 1;//默认从1开始
+    private int curPage = defaultStart;
 
     public RefreshAndLoadMoreAdapter() {
     }

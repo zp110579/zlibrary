@@ -106,7 +106,7 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
 
     public void setList(List<BT> list) {
         mList.clear();
-        if (ZListUtils.isNoEmpty(list)) {
+        if (list!=null) {
             mList = null;
             mList = list;
         }

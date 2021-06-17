@@ -36,17 +36,14 @@ fun eventBusPostTagNoParam(vararg value: String) {
     postTagNoParam(*value)
 }
 
-@Deprecated("", ReplaceWith("any.eventBusRegister()"))
 fun eventBusRegister(any: Any) {
     any.eventBusRegisterThis("")
 }
 
-@Deprecated("", ReplaceWith("any.eventBusRegister(subscriberTag)"))
 fun eventBusRegister(any: Any, subscriberTag: Int) {
     any.eventBusRegisterThis(subscriberTag)
 }
 
-@Deprecated("", ReplaceWith("any.eventBusRegister(subscriberTag)"))
 fun eventBusRegister(any: Any, subscriberTag: String) {
     ZEventBusUtils.register(any, subscriberTag)
 }

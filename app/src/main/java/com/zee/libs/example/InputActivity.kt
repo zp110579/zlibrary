@@ -13,13 +13,12 @@ import com.zee.utils.ZLibrary
 import com.zee.view.Zx1RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 
-
-class MainActivity : AppCompatActivity() {
+/**
+ * 键盘
+ */
+class InputActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        tv_key.setOnClickListener {
-            startActivityEx(InputActivity::class.java)
-        }
+        setContentView(R.layout.activity_input)
     }
 }

@@ -137,6 +137,10 @@
         <attr name="zv_startColor" format="color" />
         <attr name="zv_endColor" format="color" />
         <attr name="zv_backgroundColor" />
+        <attr name="zv_leftTopRadius" />
+        <attr name="zv_rightTopRadius" />
+        <attr name="zv_rightBottomRadius" />
+        <attr name="zv_leftBottomRadius" />
         <attr name="zv_radius" />
     </declare-styleable>
 
