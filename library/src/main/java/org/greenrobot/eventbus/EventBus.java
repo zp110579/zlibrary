@@ -257,7 +257,7 @@ public class EventBus {
     }
 
     private void checkPostStickyEventToSubscription(Subscription newSubscription, SubscribeType stickyEvent) {
-        if (stickyEvent != null && newSubscription.subscriberTag == stickyEvent.getSubscriberTag() && newSubscription.subscriberMethod.tag == stickyEvent.getMethodTag()) {
+        if (stickyEvent != null && newSubscription.subscriberTag == stickyEvent.getSubscriberTag() && newSubscription.subscriberMethod.equalTag(stickyEvent.getMethodTag())) {
             postToSubscription(newSubscription, stickyEvent, Looper.getMainLooper() == Looper.myLooper());
         }
     }
@@ -570,7 +570,7 @@ public class EventBus {
             loSubScribeAdapter.onPostNoFound();
 
             if (logNoSubscriberMessages) {
-                String info = "No subscribers registered for event " + event;
+                String info = "Post Error for event " + event;
                 Log.e(TAG, info);
             }
             if (sendNoSubscriberEvent && eventClass != NoSubscriberEvent.class && eventClass != SubscriberExceptionEvent.class) {
@@ -580,7 +580,7 @@ public class EventBus {
     }
 
     private boolean postSingleEventForEventType(SubscribeType event, PostingThreadState postingState, Class<?> eventClass) {
-        String methodTag = event.getMethodTag();
+        String eventPostTag = event.getMethodTag();
         CopyOnWriteArrayList<Subscription> subscriptions;
         CopyOnWriteArrayList<Subscription> list = new CopyOnWriteArrayList<>();
         synchronized (this) {
@@ -593,7 +593,7 @@ public class EventBus {
                 //比较ClassTag是否一样
                 SubscriberMethod subscriberMethod = subscription.getSubscriberMethod();
                 boolean isTrue = subscription.subscriberTag.equals(event.getSubscriberTag()) || subscriberMethod.ignoredSubscriberTag;
-                if (isTrue && methodTag.equals(subscriberMethod.tag)) {
+                if (isTrue && subscriberMethod.equalTag(eventPostTag)) {
                     list.add(subscription);
                     if (subscriberMethod.isFinish) {
                         break;

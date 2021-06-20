@@ -31,12 +31,30 @@ public class SubscriberMethod {
     final Class<?> eventType;//参数类型，只有一个参数，事件类
     final int priority;//优先级，越大越先执行
     final boolean sticky;//是否粘性
+
     final String tag;//标记
     final boolean isFinish;//是否终止，不在继续往下，和priority配合使用
     final boolean mlifo;
+    final boolean ignoredSubscriberTag;//是否忽略SubscriberTag
+    final String[] tags;
 
-    //是否忽略ClassTag
-    final boolean ignoredSubscriberTag;
+
+    /**
+     * 比较tag
+     *
+     * @param postMethodTag
+     * @return
+     */
+    public boolean equalTag(String postMethodTag) {
+        if (tags.length > 1) {
+            for (String s : tags) {
+                if (s.equals(postMethodTag)) {
+                    return true;
+                }
+            }
+        }
+        return tag.equals(postMethodTag);
+    }
 
     /**
      * Used for efficient comparison
@@ -56,6 +74,7 @@ public class SubscriberMethod {
         this.isFinish = false;
         this.mlifo = false;
         this.ignoredSubscriberTag = false;
+        this.tags = tag.split(",");
     }
 
     /**
@@ -75,6 +94,7 @@ public class SubscriberMethod {
         this.isFinish = false;
         this.mlifo = false;
         this.ignoredSubscriberTag = false;
+        this.tags = tag.split(",");
     }
 
     /**
@@ -94,6 +114,7 @@ public class SubscriberMethod {
         this.isFinish = mainThread.finish();
         this.mlifo = mainThread.lifo();
         this.ignoredSubscriberTag = mainThread.ignoredSubscriberTag();
+        this.tags = tag.split(",");
     }
 
     /**
@@ -113,6 +134,7 @@ public class SubscriberMethod {
         this.isFinish = true;
         this.mlifo = true;
         this.ignoredSubscriberTag = false;
+        this.tags = tag.split(",");
     }
 
     public SubscriberMethod(Method method, SubscriberMethodInfo methodInfo) {//注解处理器使用
@@ -126,6 +148,7 @@ public class SubscriberMethod {
         this.isFinish = methodInfo.isFinish();
         this.mlifo = methodInfo.getMlifo();
         this.ignoredSubscriberTag = methodInfo.isIgnoredClassTag();
+        this.tags = tag.split(",");
     }
 
     @Override

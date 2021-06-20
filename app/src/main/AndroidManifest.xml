@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
-        <activity android:name="com.zee.libs.example.MainActivity">
+        <activity android:name="com.zee.libs.example.ui.activitys.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,8 +17,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InputActivity"
+            android:name=".ui.activitys.InputActivity"
             android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".ui.activitys.EventBusActivity" />
     </application>
 
 </manifest>

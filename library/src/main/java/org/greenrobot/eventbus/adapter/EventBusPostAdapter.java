@@ -28,7 +28,7 @@ public abstract class EventBusPostAdapter implements EventBusPostListener {
 
     @Override
     public void onPostError(Exception paE) {
-        ZLog.i("EventBus【Post】 onPostError(" + paE.getMessage() + ")");
+        ZLog.e("EventBus【Post】 onPostError(" + paE.getMessage() + ")");
     }
 
     @Override

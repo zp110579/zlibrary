@@ -1,16 +1,9 @@
-package com.zee.libs.example
+package com.zee.libs.example.ui.activitys
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
-import android.widget.TextView
-import com.zee.base.Z1RecyclerAdapter
-import com.zee.dialog.MyDialogK
 import com.zee.extendobject.*
-import com.zee.popupWindow.MyPopupWindowK
-import com.zee.recyclerview.RefreshAndLoadMoreAdapter
-import com.zee.utils.ZLibrary
-import com.zee.view.Zx1RecyclerView
+import com.zee.libs.example.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -20,6 +13,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         tv_key.setOnClickListener {
             startActivityEx(InputActivity::class.java)
+        }
+        tv_eventBus.setOnClickListener {
+            startActivityEx(EventBusActivity::class.java)
         }
     }
 }

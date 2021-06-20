@@ -1,8 +1,10 @@
 package com.zee.extendobject
 
 import com.zee.bean.EventBusSubscriber
+import com.zee.bean.IDismissListener
 import com.zee.utils.ZEventBusUtils
 import com.zee.utils.ZEventBusUtils.postTagNoParam
+import org.greenrobot.eventbus.listener.EventBusPostListener
 
 
 fun Any.eventBusRegisterThis() {
@@ -66,6 +68,10 @@ fun eventBusPost(any: Any?) {
 
 fun eventBusPost(any: Any?, methodTag: String) {
     ZEventBusUtils.post(any, methodTag)
+}
+
+fun eventBusPost(any: Any?, methodTag: String,listener: EventBusPostListener) {
+    ZEventBusUtils.post(any, methodTag,listener)
 }
 
 fun eventBusPost(any: Any?, methodTag: String, subscriberTag: String) {

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.zee.libs.example.MainActivity">
+    tools:context="com.zee.libs.example.ui.activitys.MainActivity">
 
     <TextView
         android:id="@+id/tv_dialog"

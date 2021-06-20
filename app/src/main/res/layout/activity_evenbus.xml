@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_eventBus_a"
+        style="@style/base_btn_style_visibility"
+        android:layout_width="match_parent"
+        android:text="发送消息A" />
+
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_eventBus_b"
+        style="@style/base_btn_style_visibility"
+        android:text="发送消息B" />
+
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_eventBus_c"
+        style="@style/base_btn_style_visibility"
+        android:text="发送消息C" />
+</LinearLayout>

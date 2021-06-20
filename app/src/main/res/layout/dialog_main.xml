@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="#f0f"
     android:orientation="vertical"
-    tools:context="com.zee.libs.example.MainActivity">
+    tools:context="com.zee.libs.example.ui.activitys.MainActivity">
 
     <TextView
         android:id="@+id/tv_sure"
