@@ -105,16 +105,27 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
     }
 
     public void setList(List<BT> list) {
+        setList(list, true);
+    }
+
+    /**
+     * 仅仅设置List，单不检测是否有数据，显示没有数据界面
+     *
+     * @param list
+     * @param isCheckNoData
+     */
+    public void setList(List<BT> list, boolean isCheckNoData) {
         mList.clear();
-        if (list!=null) {
+        if (list != null) {
             mList = null;
             mList = list;
         }
-
-        if (mXRecyclerView != null) {
-            mXRecyclerView.loadFinish();
+        if (isCheckNoData) {
+            if (mXRecyclerView != null) {
+                mXRecyclerView.loadFinish();
+            }
+            notifyDataSetChanged();
         }
-        notifyDataSetChanged();
     }
 
     protected View setVisibleOrInVisible(boolean isVisible, @IdRes int... ids) {
@@ -233,7 +244,6 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
         curIndex = position;
         mViewHolder = viewHolder;
     }
-
 
     @Override
     public int getItemCount() {
