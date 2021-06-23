@@ -214,7 +214,6 @@ public class ZxBannerView extends RelativeLayout {
     private void setViewPager() {
         BannerViewPagerAdapter adapter = new BannerViewPagerAdapter();
         mViewPager.setAdapter(adapter);
-        mViewPager.setCurrentItem(currentPosition);
         setScrollSpeed();
         setPageChangeListener();
 
@@ -224,6 +223,7 @@ public class ZxBannerView extends RelativeLayout {
         } else {
             mIndicatorsLayout.setVisibility(GONE);
         }
+        mViewPager.setCurrentItem(currentPosition);
     }
 
     @SuppressWarnings("unchecked")
