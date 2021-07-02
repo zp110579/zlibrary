@@ -251,9 +251,7 @@ class MyDialogK : DialogFragment(), IDismissListener {
     override fun onDestroy() {
         ZEventBusUtils.unregister(this)
         super.onDestroy()
-        if (mBindViewAdapter != null) {
-            mBindViewAdapter!!.onDestroy()
-        }
+        mBindViewAdapter?.onDestroy()
     }
 
     companion object {

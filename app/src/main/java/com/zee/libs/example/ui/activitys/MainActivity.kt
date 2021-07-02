@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.zee.extendobject.*
 import com.zee.libs.example.R
+import com.zee.utils.ZEventBusUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -16,6 +17,12 @@ class MainActivity : AppCompatActivity() {
         }
         tv_eventBus.setOnClickListener {
             startActivityEx(EventBusActivity::class.java)
+        }
+        tv_life.setOnClickListener {
+            startActivityEx(LifecycleActivity::class.java)
+        }
+        tv_eventBus_lifecycle.setOnClickListener {
+            ZEventBusUtils.printCurAllSubscribers()
         }
     }
 }

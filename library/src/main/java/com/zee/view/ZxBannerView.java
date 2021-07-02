@@ -45,6 +45,7 @@ public class ZxBannerView extends RelativeLayout {
     private boolean isLooping;
     private boolean isCanLoop;
     private int currentItem;
+
     public static final int CENTER = 0;
     public static final int LEFT = 1;
     public static final int RIGHT = 2;
@@ -184,6 +185,11 @@ public class ZxBannerView extends RelativeLayout {
         });
     }
 
+    public void setCurrentPosition(int position){
+        this.currentItem=position;
+        mViewPager.setCurrentItem(currentItem);
+
+    }
     private void startLoop() {
         if (!isLooping && mViewPager != null) {
             removeCallbacks(mRunnable);

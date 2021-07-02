@@ -1,8 +1,11 @@
 package com.zee.utils;
 
+import android.support.v4.app.Fragment;
+
 import com.zee.adapter.EventBusBindCurActivityAdapter;
 import com.zee.bean.DelayTag;
 import com.zee.bean.EventBusSubscriber;
+import com.zee.manager.FragmentLifecycleManager;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.listener.EventBusPostListener;
@@ -11,13 +14,13 @@ import org.greenrobot.eventbus.listener.EventBusPostListener;
 public class ZEventBusUtils {
 
     /**
-     * 随着Activity的生命周注销而注销
+     * 将当前对象和Fragment的绑定在一起，随着Fragment销毁而注销
      *
-     * @param subscriber
+     * @param fragment
+     * @param object
      */
-    public static void registerBindCurActivity(Object subscriber) {
-        EventBusBindCurActivityAdapter adapter = ZLibrary.getInstance().getEventBusBindCurActivityAdapter();
-        adapter.onRegister(subscriber,"");
+    public static void registerBindFragment(Fragment fragment, Object object) {
+        FragmentLifecycleManager.INSTANCE.registerBindFragment(fragment, object);
     }
 
     /**
@@ -25,9 +28,19 @@ public class ZEventBusUtils {
      *
      * @param subscriber
      */
-    public static void registerBindCurActivity(Object subscriber,Object subscriberTag) {
+    public static void registerBindCurActivity(Object subscriber) {
         EventBusBindCurActivityAdapter adapter = ZLibrary.getInstance().getEventBusBindCurActivityAdapter();
-        adapter.onRegister(subscriber,subscriberTag);
+        adapter.onRegister(subscriber, "");
+    }
+
+    /**
+     * 随着Activity的生命周注销而注销
+     *
+     * @param subscriber
+     */
+    public static void registerBindCurActivity(Object subscriber, Object subscriberTag) {
+        EventBusBindCurActivityAdapter adapter = ZLibrary.getInstance().getEventBusBindCurActivityAdapter();
+        adapter.onRegister(subscriber, subscriberTag);
     }
 
     public static void register(Object subscriber) {

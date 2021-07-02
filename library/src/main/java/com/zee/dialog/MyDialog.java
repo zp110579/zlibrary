@@ -139,18 +139,6 @@ public class MyDialog extends DialogFragment implements IDismissListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         check();
-
-//        View tempView = inflater.inflate(R.layout.zv_dg_base, container, false);
-//        ViewStub viewStub = tempView.findViewById(R.id.view_stub);
-//        viewStub.setLayoutResource(layoutId);
-//        viewStub.setVisibility(View.VISIBLE);
-//
-////        View view = inflater.inflate(layoutId, container, false);
-//        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewStub.getLayoutParams();
-//        int topMargin = params.leftMargin;
-//        return tempView;
-
-
         return inflater.inflate(layoutId, container, false);
     }
 

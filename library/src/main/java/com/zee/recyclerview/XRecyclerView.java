@@ -11,6 +11,7 @@ import com.zee.adapter.RecyclerViewViewAdapter;
 import com.zee.base.BaseRVAdapter;
 import com.zee.libs.R;
 import com.zee.listener.ScrollAlphaChangeListener;
+import com.zee.log.ZLog;
 
 import java.util.HashMap;
 import java.util.List;
@@ -208,13 +209,14 @@ public class XRecyclerView extends RecyclerView implements IRecyclerView {
     public BaseRVAdapter getBaseRVAdapter() {
         Adapter adapter = getAdapter();
         if (adapter == null) {
-            throw new NullPointerException("adapter is Null");
+            ZLog.e("adapter is Null");
         }
         if (adapter instanceof BaseRVAdapter) {
             return (BaseRVAdapter) adapter;
         } else {
-            throw new IllegalArgumentException("adapter is not BaseRVAdapter");
+            ZLog.e("adapter is not BaseRVAdapter");
         }
+        return null;
     }
 
     @Override

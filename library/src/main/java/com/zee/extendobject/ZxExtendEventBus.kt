@@ -1,11 +1,15 @@
 package com.zee.extendobject
 
+import android.support.v4.app.Fragment
 import com.zee.bean.EventBusSubscriber
 import com.zee.bean.IDismissListener
 import com.zee.utils.ZEventBusUtils
 import com.zee.utils.ZEventBusUtils.postTagNoParam
 import org.greenrobot.eventbus.listener.EventBusPostListener
 
+fun Any.eventBusRegisterBindFragment(fragment: Fragment) {
+    ZEventBusUtils.registerBindFragment(fragment, this)
+}
 
 fun Any.eventBusRegisterThis() {
     ZEventBusUtils.register(this, "")
@@ -27,7 +31,7 @@ fun Any.eventBusUnRegisterThis() {
  * 生命周期自动跟当前的Activity生命周期绑定在一起，自动注销
  */
 fun Any.eventBusRegisterThisAndBindCurActivity(subscriberTag: String = "") {
-    ZEventBusUtils.registerBindCurActivity(this,subscriberTag)
+    ZEventBusUtils.registerBindCurActivity(this, subscriberTag)
 }
 
 fun Any.unRegisterEventBus() {
@@ -70,8 +74,8 @@ fun eventBusPost(any: Any?, methodTag: String) {
     ZEventBusUtils.post(any, methodTag)
 }
 
-fun eventBusPost(any: Any?, methodTag: String,listener: EventBusPostListener) {
-    ZEventBusUtils.post(any, methodTag,listener)
+fun eventBusPost(any: Any?, methodTag: String, listener: EventBusPostListener) {
+    ZEventBusUtils.post(any, methodTag, listener)
 }
 
 fun eventBusPost(any: Any?, methodTag: String, subscriberTag: String) {

@@ -9,6 +9,12 @@
     tools:context="com.zee.libs.example.ui.activitys.MainActivity">
 
     <com.zee.view.ZxTextView
+        android:id="@+id/tv_life"
+        style="@style/base_btn_style_gone"
+        android:text="Activity及Fragment生命周期监控"
+        android:visibility="visible" />
+
+    <com.zee.view.ZxTextView
         android:id="@+id/tv_key"
         style="@style/base_btn_style_gone"
         android:text="键盘问题" />
@@ -16,7 +22,13 @@
     <com.zee.view.ZxTextView
         android:id="@+id/tv_eventBus"
         style="@style/base_btn_style_gone"
-        android:text="EventBus"
+        android:text="EventBus" />
+
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_eventBus_lifecycle"
+        style="@style/base_btn_style_gone"
+
+        android:text="EventBus内存信息打印"
         android:visibility="visible" />
 
 

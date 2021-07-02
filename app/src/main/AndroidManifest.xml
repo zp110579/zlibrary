@@ -20,6 +20,7 @@
             android:name=".ui.activitys.InputActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.activitys.EventBusActivity" />
+        <activity android:name=".ui.activitys.LifecycleActivity" />
     </application>
 
 </manifest>

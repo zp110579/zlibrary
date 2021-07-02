@@ -19,7 +19,6 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.zee.log.ZLog;
 import com.zee.utils.ZListUtils;
 import com.zee.manager.RegisterManager;
 
@@ -27,6 +26,7 @@ import org.greenrobot.eventbus.listener.EventBusPostListener;
 import org.greenrobot.eventbus.listener.EventBusUnregisterListener;
 import org.greenrobot.eventbus.meta.EmptyEventBusType;
 import org.greenrobot.eventbus.meta.SubscriberMessage;
+import org.greenrobot.eventbus.util.EvenBusLifeAutomationManager;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -179,6 +179,8 @@ public class EventBus {
 
     public void register(Object subscriber, Object subscriberTag) {
         Class<?> subscriberClass = subscriber.getClass();
+
+        EvenBusLifeAutomationManager.isAutomationManager(subscriber);
 
         SubscriberMessage subscriberMessage = subscriberMethodFinder.findSubscriberMethods(subscriberClass);
         if (subscriberMessage == null) {//如果没有发现注解方法，那就放弃
