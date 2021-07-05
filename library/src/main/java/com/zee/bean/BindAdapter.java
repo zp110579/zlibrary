@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.support.annotation.ColorRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -53,6 +54,10 @@ public abstract class BindAdapter {
         return mView.findViewById(id);
     }
 
+    public final ViewPager viewPagerById(@IdRes int id) {
+        return mView.findViewById(id);
+    }
+
     public final EditText editTextById(@IdRes int id) {
         return mView.findViewById(id);
     }
@@ -82,6 +87,13 @@ public abstract class BindAdapter {
         TextView textView = findViewById(resID);
         if (textView != null) {
             textView.setText(character);
+        }
+    }
+
+    public void setText(@IdRes int resID, Object character) {
+        TextView textView = findViewById(resID);
+        if (textView != null) {
+            textView.setText(character.toString());
         }
     }
 

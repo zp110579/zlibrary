@@ -115,10 +115,10 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
      * @param isCheckNoData
      */
     public void setList(List<BT> list, boolean isCheckNoData) {
-        mList.clear();
         if (list != null) {
-            mList = null;
             mList = list;
+        }else {
+            mList.clear();
         }
         if (isCheckNoData) {
             if (mXRecyclerView != null) {
@@ -170,6 +170,12 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
     protected TextView setText(@IdRes int id, CharSequence character) {
         TextView textView = findViewById(id);
         textView.setText(character);
+        return textView;
+    }
+
+    protected TextView setText(@IdRes int id, double character) {
+        TextView textView = findViewById(id);
+        textView.setText("" + character);
         return textView;
     }
 

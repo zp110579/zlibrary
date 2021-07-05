@@ -76,7 +76,7 @@ object ViewSaveImageUtils {
                 }
                 //通知图库即使更新,否则不能看到图片
                 UIUtils.getApplication().sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + file.getAbsolutePath())))
-                result.invoke(0)
+                result.invoke(0) //成功
             }
         })
     }
