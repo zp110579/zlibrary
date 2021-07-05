@@ -6,6 +6,7 @@ import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleOwner
 import android.support.v4.app.Fragment
 import com.zee.extendobject.eventBusRegisterThis
+import com.zee.extendobject.eventBusUnRegisterThis
 import com.zee.utils.ZEventBusUtils
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
@@ -21,21 +22,23 @@ object FragmentLifecycleManager : GenericLifecycleObserver {
     override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event?) {
         if (event == Lifecycle.Event.ON_DESTROY) {
             ZEventBusUtils.unregister(source)//将自己取消注册
-            val list = mLifecycleOwnerHashMap[source]!!
-            list.forEach {//注销所有跟source绑定的对象
-                ZEventBusUtils.unregister(it)
+            if (mLifecycleOwnerHashMap.containsKey(source)) {
+                val list = mLifecycleOwnerHashMap[source]!!
+                list.forEach {//注销所有跟source绑定的对象
+                    it.eventBusUnRegisterThis()
+                }
+                source.lifecycle.removeObserver(this)
+                mLifecycleOwnerHashMap.remove(source)
             }
-            source.lifecycle.removeObserver(this)
-            mLifecycleOwnerHashMap.remove(source)
         }
     }
 
     fun registerBindFragment(fragment: Fragment, any: Any) {
-        val list = mLifecycleOwnerHashMap[fragment]
-        if (list.isNullOrEmpty()) {
+        if (!mLifecycleOwnerHashMap.containsKey(fragment)) {
             fragment.lifecycle.addObserver(this)
             mLifecycleOwnerHashMap[fragment] = ArrayList()
         }
+
         val tempList = mLifecycleOwnerHashMap[fragment]!!
         if (!tempList.contains(any)) {//如果没有，才会注册
             any.eventBusRegisterThis()
