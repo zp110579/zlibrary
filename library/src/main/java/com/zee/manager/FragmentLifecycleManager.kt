@@ -7,6 +7,7 @@ import android.arch.lifecycle.LifecycleOwner
 import android.support.v4.app.Fragment
 import com.zee.extendobject.eventBusRegisterThis
 import com.zee.extendobject.eventBusUnRegisterThis
+import com.zee.log.ZLog
 import com.zee.utils.ZEventBusUtils
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
@@ -20,6 +21,13 @@ object FragmentLifecycleManager : GenericLifecycleObserver {
     var mLifecycleOwnerHashMap = HashMap<LifecycleOwner, ArrayList<Any>>()
 
     override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event?) {
+//        if (source is Fragment) {
+//            when (event) {
+//                Lifecycle.Event.ON_RESUME -> source.onResume()
+//                Lifecycle.Event.ON_PAUSE -> source.onPause()
+//                Lifecycle.Event.ON_STOP -> source.onStop()
+//            }
+//        }
         if (event == Lifecycle.Event.ON_DESTROY) {
             ZEventBusUtils.unregister(source)//将自己取消注册
             if (mLifecycleOwnerHashMap.containsKey(source)) {

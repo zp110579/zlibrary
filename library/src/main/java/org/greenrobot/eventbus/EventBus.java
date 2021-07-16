@@ -147,8 +147,8 @@ public class EventBus {
         mEventBusBuilder = builder;
         subscriptionsByEventType = new HashMap<>();
         typesBySubscriber = new HashMap<>();
-        typesBySubscriberTag = new HashMap<>();
-        subscriberMeTag = new HashMap<>();
+        typesBySubscriberTag = new ConcurrentHashMap<>();
+        subscriberMeTag = new ConcurrentHashMap<>();
         stickyEvents = new ConcurrentHashMap<>();
         stickykeyClassType = new ConcurrentHashMap<>();
         mainThreadPoster = new HandlerPoster(this, Looper.getMainLooper(), 10);

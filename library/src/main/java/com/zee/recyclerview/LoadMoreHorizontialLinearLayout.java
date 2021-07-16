@@ -101,9 +101,11 @@ class LoadMoreHorizontialLinearLayout extends LinearLayout implements ILoadMoreL
      * 开始加载更多
      */
     public void startLoadMore() {
-        setState(STATE_LOAD_START);
-        if (mLoadMoreListener != null) {
-            mLoadMoreListener.onLoadMore();
+        if (mState != STATE_LOAD_START) {
+            setState(STATE_LOAD_START);
+            if (mLoadMoreListener != null) {
+                mLoadMoreListener.onLoadMore();
+            }
         }
     }
 

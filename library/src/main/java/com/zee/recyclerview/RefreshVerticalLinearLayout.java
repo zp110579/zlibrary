@@ -181,7 +181,7 @@ class RefreshVerticalLinearLayout extends LinearLayout implements IRefreshLinear
      * 开始刷新
      */
     public void startRefresh() {
-        if (pullRefreshEnabled) {
+        if (pullRefreshEnabled && mState != STATE_REFRESH_START) {
             setState(STATE_REFRESH_START);
             if (mRefreshListener != null) {
                 mRefreshListener.onRefresh();

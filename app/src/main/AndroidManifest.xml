@@ -21,6 +21,8 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.activitys.EventBusActivity" />
         <activity android:name=".ui.activitys.LifecycleActivity" />
+        <activity android:name=".ui.activitys.SeekBarActivity" />
+        <activity android:name=".ui.activitys.BubbleSeekBarActivity" />
     </application>
 
 </manifest>

@@ -23,4 +23,12 @@
         android:id="@+id/tv_eventBus_c"
         style="@style/base_btn_style_visibility"
         android:text="发送消息A" />
+    <TextView
+        android:id="@+id/tv_curPage"
+        android:layout_width="match_parent"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="1"
+        android:gravity="center"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

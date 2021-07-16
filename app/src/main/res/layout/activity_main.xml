@@ -18,6 +18,11 @@
         android:id="@+id/tv_key"
         style="@style/base_btn_style_gone"
         android:text="键盘问题" />
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_seekbar"
+        android:visibility="visible"
+        style="@style/base_btn_style_gone"
+        android:text="seekBar" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_eventBus"
@@ -27,8 +32,12 @@
     <com.zee.view.ZxTextView
         android:id="@+id/tv_eventBus_lifecycle"
         style="@style/base_btn_style_gone"
-
         android:text="EventBus内存信息打印"
+        android:visibility="visible" />
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_bubble"
+        style="@style/base_btn_style_gone"
+        android:text="BubbleSeekBar组件"
         android:visibility="visible" />
 
 

@@ -58,3 +58,9 @@ fun spContains(key: String): Boolean {
 fun spRemove(key: String) {
     Z1PrefsUtil.removeValue(key)
 }
+
+fun spRemove(vararg keys: String) {
+    keys.forEach {
+        Z1PrefsUtil.removeValue(it)
+    }
+}

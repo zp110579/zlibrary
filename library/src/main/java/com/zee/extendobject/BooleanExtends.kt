@@ -2,6 +2,11 @@
  *created by zee on 2020/12/15.
  *Boolean方法扩展
  */
+
+inline fun Boolean.isOverTurn(): Boolean {
+    return !this
+}
+
 inline infix fun Boolean.isTrueRun(trueBlock: Boolean.() -> Unit): Else {
     if (this) {
         trueBlock()

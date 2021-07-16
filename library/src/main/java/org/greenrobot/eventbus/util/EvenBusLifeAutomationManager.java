@@ -12,11 +12,13 @@ import com.zee.manager.FragmentLifecycleManager;
 public class EvenBusLifeAutomationManager {
 
     public static Boolean isAutomationManager(Object object) {
-        if (object instanceof FragmentActivity) {
-            FragmentActivity fragmentActivity = (FragmentActivity) object;
-            fragmentActivity.getLifecycle().addObserver(FragmentLifecycleManager.INSTANCE);
-            return true;
-        } else if (object instanceof Fragment) {
+//        if (object instanceof FragmentActivity) {
+//            FragmentActivity fragmentActivity = (FragmentActivity) object;
+//            fragmentActivity.getLifecycle().addObserver(FragmentLifecycleManager.INSTANCE);
+//            return true;
+//        }
+
+         if (object instanceof Fragment) {
             Fragment fragment = (Fragment) object;
             fragment.getLifecycle().addObserver(FragmentLifecycleManager.INSTANCE);
             return true;

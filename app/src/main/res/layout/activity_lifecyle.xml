@@ -7,6 +7,35 @@
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
+    <com.zee.view.ZxBottomBarLayout
+        android:id="@+id/barLayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <com.zee.view.ZxTextView
+            android:id="@+id/tv_a"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="FragmengA"
+            android:textColor="#f00"
+            app:zv_textSelectColor="#00f" />
+
+        <com.zee.view.ZxTextView
+            android:id="@+id/tv_b"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:text="FragmengA"
+            android:textColor="#f00"
+            app:zv_textSelectColor="#00f" />
+    </com.zee.view.ZxBottomBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_relative"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_eventBus_a"
@@ -23,8 +52,9 @@
         android:id="@+id/tv_eventBus_c"
         style="@style/base_btn_style_visibility"
         android:text="发送消息C" />
+
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 </LinearLayout>

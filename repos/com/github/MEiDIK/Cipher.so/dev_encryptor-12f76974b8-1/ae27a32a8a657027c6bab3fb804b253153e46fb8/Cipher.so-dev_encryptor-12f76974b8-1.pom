@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.MEiDIK</groupId>
+  <artifactId>Cipher.so</artifactId>
+  <version>dev_encryptor-SNAPSHOT</version>
+  <name>linisme/Cipher.so</name>
+  <description>A simple way to encrypt your secure data like passwords into a native .so library.</description>
+  <url>https://github.com/linisme/Cipher.so</url>
+  <inceptionYear>2017</inceptionYear>
+  <licenses>
+    <license>
+      <name>Apache License 2.0</name>
+      <url>https://api.github.com/licenses/apache-2.0</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>linisme</id>
+      <name>lin</name>
+      <email>me@idik.net</email>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git://github.com/linisme/Cipher.so.git</connection>
+    <developerConnection>scm:git://github.com/linisme/Cipher.so.git</developerConnection>
+    <url>git://github.com/linisme/Cipher.so.git</url>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>com.squareup</groupId>
+      <artifactId>javapoet</artifactId>
+      <version>1.9.0</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.android.tools.build</groupId>
+      <artifactId>gradle</artifactId>
+      <version>3.0.1</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+</project>
