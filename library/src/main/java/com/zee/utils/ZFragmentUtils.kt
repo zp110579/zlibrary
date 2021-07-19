@@ -10,8 +10,11 @@ import android.view.View
  *
  */
 class ZFragmentUtils {
+    private var mRecordProFragment: Fragment? = null
+    private var mRecordProView: View? = null
     private var mFragmentManager: FragmentManager
     private var mLayoutID = 0
+
 
     constructor(activity: FragmentActivity, paLayout: Int) {
         mFragmentManager = activity.supportFragmentManager
@@ -23,31 +26,35 @@ class ZFragmentUtils {
         mLayoutID = paLayout
     }
 
-    var sFragment: Fragment? = null
 
-    fun show(fragment: (viewID: Int) -> Fragment, vararg textView: View) {
-        textView.forEach { it2 ->
+    fun show(fragment: (viewID: Int) -> Fragment, vararg views: View) {
+        views.forEach { it2 ->
             it2.setOnClickListener {
+                mRecordProView?.apply {
+                    isSelected = false
+                }
+                it2.isSelected = true
                 val tempFragmentManager = mFragmentManager
                 val loFragmentByTag: Fragment? = tempFragmentManager.findFragmentByTag(it.id.toString())
                 val fragmentTransaction = mFragmentManager.beginTransaction()
 
                 if (loFragmentByTag != null) {
-                    if (sFragment != null) {
-                        fragmentTransaction.hide(sFragment!!);
+                    if (mRecordProFragment != null) {
+                        fragmentTransaction.hide(mRecordProFragment!!);
                     }
                     fragmentTransaction.show(loFragmentByTag)
-                    sFragment = loFragmentByTag
+                    mRecordProFragment = loFragmentByTag
                 } else {
                     val fragment = fragment.invoke(it2.id)
                     fragmentTransaction.add(mLayoutID, fragment, it2.id.toString())
-                    sFragment = fragment
+                    mRecordProFragment = fragment
                 }
 
                 fragmentTransaction.commitAllowingStateLoss()
+                mRecordProView = it2
             }
         }
         //默认选择第一个
-        textView[0].performClick()
+        views[0].performClick()
     }
 }
