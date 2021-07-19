@@ -31,7 +31,7 @@ import com.zee.libs.R;
 import com.zee.listener.OnTabSelectListener;
 import com.zee.log.ZException;
 import com.zee.log.ZLog;
-import com.zee.utils.FragmentChangeManager;
+import com.zee.manager.FragmentChangeManager;
 import com.zee.utils.UnreadMsgUtils;
 
 import java.util.ArrayList;

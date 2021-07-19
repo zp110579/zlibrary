@@ -5,7 +5,9 @@ import android.support.v4.app.FragmentStatePagerAdapter
 import com.zee.activity.BaseZActivity
 import com.zee.adapter.ZxBottomBarAdapter
 import com.zee.libs.example.R
+import com.zee.libs.example.ui.fragments.LifecycleFragment
 import com.zee.utils.ZEventBusUtils
+import com.zee.utils.ZFragmentUtils
 import kotlinx.android.synthetic.main.activity_lifecyle.*
 
 /**
@@ -18,16 +20,23 @@ class LifecycleActivity : BaseZActivity() {
     }
 
     override fun initViews() {
-        viewPage.adapter = object : FragmentStatePagerAdapter(supportFragmentManager) {
-            override fun getCount(): Int {
-                return 5
-            }
-
-            override fun getItem(p0: Int): Fragment {
-                return LifecycleFragment.newInstance(p0)
-            }
-        }
+//        viewPage.adapter = object : FragmentStatePagerAdapter(supportFragmentManager) {
+//            override fun getCount(): Int {
+//                return 5
+//            }
+//
+//            override fun getItem(p0: Int): Fragment {
+//                return LifecycleFragment.newInstance(p0)
+//            }
+//        }
 //        initBottom()
+        initBottom2()
+    }
+
+    fun initBottom2() {
+        ZFragmentUtils(this, R.id.layout_relative).show({ viewID ->
+            LifecycleFragment.newInstance(viewID)
+        }, tv_a, tv_b)
     }
 
     fun initBottom() {

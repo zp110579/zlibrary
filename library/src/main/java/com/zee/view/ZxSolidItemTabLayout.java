@@ -27,12 +27,11 @@ import android.widget.TextView;
 
 import com.zee.libs.R;
 import com.zee.listener.OnTabSelectListener;
-import com.zee.utils.FragmentChangeManager;
+import com.zee.manager.FragmentChangeManager;
 import com.zee.utils.UnreadMsgUtils;
 import com.zee.utils.ZListUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * @author Administrator
