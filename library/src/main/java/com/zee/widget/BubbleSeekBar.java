@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -134,6 +135,7 @@ public class BubbleSeekBar extends View {
         this(context, attrs, 0);
     }
 
+    @SuppressLint("ResourceType")
     public BubbleSeekBar(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
@@ -150,10 +152,8 @@ public class BubbleSeekBar extends View {
         mThumbRadiusOnDragging = a.getDimensionPixelSize(R.styleable.BubbleSeekBar_bsb_thumb_radius_on_dragging,
                 mSecondTrackSize * 2);
         mSectionCount = a.getInteger(R.styleable.BubbleSeekBar_bsb_section_count, 10);
-        mTrackColor = a.getColor(R.styleable.BubbleSeekBar_bsb_track_color,
-                ContextCompat.getColor(context, R.color.colorPrimary));
-        mSecondTrackColor = a.getColor(R.styleable.BubbleSeekBar_bsb_second_track_color,
-                ContextCompat.getColor(context, R.color.colorAccent));
+        mTrackColor = a.getColor(R.styleable.BubbleSeekBar_bsb_track_color, R.attr.colorPrimary);
+        mSecondTrackColor = a.getColor(R.styleable.BubbleSeekBar_bsb_second_track_color,R.attr.colorAccent);
         mThumbColor = a.getColor(R.styleable.BubbleSeekBar_bsb_thumb_color, mSecondTrackColor);
         isShowSectionText = a.getBoolean(R.styleable.BubbleSeekBar_bsb_show_section_text, false);
         mSectionTextSize = a.getDimensionPixelSize(R.styleable.BubbleSeekBar_bsb_section_text_size, sp2px(14));
