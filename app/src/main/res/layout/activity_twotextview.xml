@@ -7,17 +7,25 @@
     android:layout_height="match_parent"
     tools:ignore="MissingDefaultResource">
 
+    <TextView
+        android:id="@+id/tv_systom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="正好"
+        android:textSize="15dp" />
+
     <com.zee.view.TwoTextView
+        android:id="@+id/tv_custom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        app:zv_gap="20dp"
+
+        app:zv_gap="12dp"
         app:zv_rightText="右边"
         app:zv_rightTextColor="@color/color_blue"
-        app:zv_rightTextSize="20dp"
         app:zv_text="左边"
         app:zv_textColor="@color/color_60"
-        app:zv_textSize="10dp">
+        app:zv_textSize="15dp">
 
 
     </com.zee.view.TwoTextView>

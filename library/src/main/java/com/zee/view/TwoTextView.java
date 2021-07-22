@@ -7,6 +7,7 @@ import android.content.res.TypedArray;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -48,15 +49,18 @@ public class TwoTextView extends LinearLayout {
         float textSize = ta.getDimension(R.styleable.TwoTextView_zv_textSize, 15);
         mTextView.setText(text);
         mTextView.setTextColor(textColor);
-        mTextView.setTextSize(textSize);
+        mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
 
 
         String rightText = ta.getString(R.styleable.TwoTextView_zv_rightText);
         float rightTextSize = ta.getDimension(R.styleable.TwoTextView_zv_rightTextSize, textSize);
+        if (rightTextSize == 0) {
+            rightTextSize = textSize;
+        }
         int rightTextColor = ta.getColor(R.styleable.TwoTextView_zv_rightTextColor, textColor);
         mRightTextView.setText(rightText);
 
-        mRightTextView.setTextSize(rightTextSize);
+        mRightTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightTextSize);
         mRightTextView.setTextColor(rightTextColor);
         if (getOrientation() == VERTICAL) {
             rightTextParams.setMargins(0, gap, 0, 0);
@@ -79,8 +83,16 @@ public class TwoTextView extends LinearLayout {
         mTextView.setText(resid);
     }
 
-    public void setRight(String rightText) {
+    public float getTextSize() {
+        return mTextView.getTextSize();
+    }
+
+    public void setRightText(String rightText) {
         mRightTextView.setText(rightText);
+    }
+
+    public void setRightText(@StringRes int resid) {
+        mRightTextView.setText(resid);
     }
 
 }
