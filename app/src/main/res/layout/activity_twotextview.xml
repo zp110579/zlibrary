@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="MissingDefaultResource">
+
+    <com.zee.view.TwoTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:zv_gap="20dp"
+        app:zv_rightText="右边"
+        app:zv_rightTextColor="@color/color_blue"
+        app:zv_rightTextSize="20dp"
+        app:zv_text="左边"
+        app:zv_textColor="@color/color_60"
+        app:zv_textSize="10dp">
+
+
+    </com.zee.view.TwoTextView>
+
+</LinearLayout>

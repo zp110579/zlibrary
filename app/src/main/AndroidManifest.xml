@@ -23,6 +23,8 @@
         <activity android:name=".ui.activitys.LifecycleActivity" />
         <activity android:name=".ui.activitys.SeekBarActivity" />
         <activity android:name=".ui.activitys.BubbleSeekBarActivity" />
+        <activity android:name=".ui.activitys.WebViewActivity" />
+        <activity android:name=".ui.activitys.TwoTextViewActivity" />
     </application>
 
 </manifest>

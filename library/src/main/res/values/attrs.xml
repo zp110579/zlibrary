@@ -133,7 +133,18 @@
     <!--标题显示，以“|”分割-->
     <attr name="zv_title_text" format="string" />
 
-    <declare-styleable name="ZxButton">
+    <declare-styleable name="TwoTextView">
+        <attr name="zv_textColor"/>
+        <attr name="zv_text" format="string" />
+        <attr name="zv_textSize" />
+        <attr name="zv_gap"/>
+        <attr name="zv_rightText" format="string" />
+        <attr name="zv_rightTextSize" format="dimension" />
+        <attr name="zv_rightTextColor" format="color" />
+
+    </declare-styleable>
+
+    <declare-styleable name="ZxButton">T
         <attr name="zv_startColor" format="color" />
         <attr name="zv_endColor" format="color" />
         <attr name="zv_backgroundColor" />

@@ -13,6 +13,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        tv_two_textView.setOnClickListener {
+            startActivityEx(TwoTextViewActivity::class.java)
+        }
+        tv_webView.setOnClickListener {
+            startActivityEx(WebViewActivity::class.java)
+        }
         tv_seekbar.setOnClickListener {
             startActivityEx(SeekBarActivity::class.java)
         }
@@ -31,5 +38,6 @@ class MainActivity : AppCompatActivity() {
         tv_bubble.setOnClickListener {
             startActivityEx(BubbleSeekBarActivity::class.java)
         }
+
     }
 }
