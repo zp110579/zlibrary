@@ -40,19 +40,18 @@ public class SubscribeType {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("SubscribeType{");
-        builder.append("EventObject=" + mEventObject);
         if (!TextUtils.isEmpty(mMethodTag)) {
             builder.append(", MethodTag='");
             builder.append(mMethodTag);
             builder.append('\'');
         }
+        builder.append("EventObject=" + mEventObject);
         if (!TextUtils.isEmpty(mSubscriberTag)) {
             builder.append(", SubscriberTag='");
             builder.append(mSubscriberTag + '\'');
             builder.append('\'');
         }
         builder.append('}');
-
         return builder.toString();
     }
 }

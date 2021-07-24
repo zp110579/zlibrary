@@ -15,7 +15,9 @@ import android.widget.TextView;
 import com.zee.bean.RecyclerViewHolder;
 import com.zee.recyclerview.XRecyclerView;
 import com.zee.utils.ZListUtils;
+import com.zee.view.TwoTextView;
 import com.zee.view.ZxRecyclerView;
+import com.zee.widget.BubbleSeekBar;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -192,6 +194,14 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
     @Deprecated
     protected final ImageView findImageViewById(@IdRes int id) {
         return mViewHolder.findViewById(id);
+    }
+
+    public final TwoTextView twoTextViewById(@IdRes int id) {
+        return findViewById(id);
+    }
+
+    public final BubbleSeekBar bubbleSeekBarById(@IdRes int id) {
+        return findViewById(id);
     }
 
     @Deprecated

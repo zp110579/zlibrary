@@ -126,6 +126,7 @@ public class BubbleSeekBar extends View {
     private boolean isTouchToSeekAnimEnd = true;
     private float mPreSecValue; // previous SectionValue
     private BubbleConfigBuilder mConfigBuilder; // config attributes
+    private boolean isHaveScrollView = false;
 
     public BubbleSeekBar(Context context) {
         this(context, null);
@@ -153,7 +154,7 @@ public class BubbleSeekBar extends View {
                 mSecondTrackSize * 2);
         mSectionCount = a.getInteger(R.styleable.BubbleSeekBar_bsb_section_count, 10);
         mTrackColor = a.getColor(R.styleable.BubbleSeekBar_bsb_track_color, R.attr.colorPrimary);
-        mSecondTrackColor = a.getColor(R.styleable.BubbleSeekBar_bsb_second_track_color,R.attr.colorAccent);
+        mSecondTrackColor = a.getColor(R.styleable.BubbleSeekBar_bsb_second_track_color, R.attr.colorAccent);
         mThumbColor = a.getColor(R.styleable.BubbleSeekBar_bsb_thumb_color, mSecondTrackColor);
         isShowSectionText = a.getBoolean(R.styleable.BubbleSeekBar_bsb_show_section_text, false);
         mSectionTextSize = a.getDimensionPixelSize(R.styleable.BubbleSeekBar_bsb_section_text_size, sp2px(14));
@@ -188,6 +189,7 @@ public class BubbleSeekBar extends View {
         mAlwaysShowBubbleDelay = duration < 0 ? 0 : duration;
         isHideBubble = a.getBoolean(R.styleable.BubbleSeekBar_bsb_hide_bubble, false);
         isRtl = a.getBoolean(R.styleable.BubbleSeekBar_bsb_rtl, false);
+        isHaveScrollView = a.getBoolean(R.styleable.BubbleSeekBar_bsb_onScrollview, true);
         setEnabled(a.getBoolean(R.styleable.BubbleSeekBar_android_enabled, isEnabled()));
         a.recycle();
 
@@ -227,7 +229,7 @@ public class BubbleSeekBar extends View {
         }
 
         calculateRadiusOfBubble();
-        mBubbleView.setValue(mBubbleRadius,mBubbleColor,mBubbleTextSize,mBubbleTextColor);
+        mBubbleView.setValue(mBubbleRadius, mBubbleColor, mBubbleTextSize, mBubbleTextColor);
 
     }
 
@@ -682,7 +684,9 @@ public class BubbleSeekBar extends View {
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
                 performClick();
-                correctOffsetWhenContainerOnScrolling();
+                if (isHaveScrollView) {
+                    correctOffsetWhenContainerOnScrolling();
+                }
 
                 getParent().requestDisallowInterceptTouchEvent(true);
 
@@ -1270,7 +1274,7 @@ public class BubbleSeekBar extends View {
         }
 
         mConfigBuilder = null;
-        mBubbleView.setValue(mBubbleRadius,mBubbleColor,mBubbleTextSize,mBubbleTextColor);
+        mBubbleView.setValue(mBubbleRadius, mBubbleColor, mBubbleTextSize, mBubbleTextColor);
 
         requestLayout();
     }

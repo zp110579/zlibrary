@@ -11,7 +11,7 @@
     <com.zee.view.ZxTextView
         android:id="@+id/tv_two_textView"
         style="@style/base_btn_style_gone"
-        android:text="WebView"
+        android:text="twoTextView"
         android:visibility="visible" />
 
     <com.zee.view.ZxTextView
@@ -43,8 +43,7 @@
     <com.zee.view.ZxTextView
         android:id="@+id/tv_eventBus_lifecycle"
         style="@style/base_btn_style_gone"
-        android:text="EventBus内存信息打印"
-        android:visibility="visible" />
+        android:text="EventBus内存信息打印" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_bubble"

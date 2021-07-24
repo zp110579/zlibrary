@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="BubbleSeekBar">
+        <attr name="bsb_onScrollview" format="boolean"/> <!--min < max, default: 0.0f-->
         <attr name="bsb_min" format="float|reference"/> <!--min < max, default: 0.0f-->
         <attr name="bsb_max" format="float|reference"/> <!--min < max, default: 100.0f-->
         <attr name="bsb_progress" format="float|reference"/> <!--real time progress value, default: min-->

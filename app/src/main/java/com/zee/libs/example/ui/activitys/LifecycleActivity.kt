@@ -30,7 +30,7 @@ class LifecycleActivity : BaseZActivity() {
 //            }
 //        }
 //        initBottom()
-        initBottom2()
+//        initBottom2()
     }
 
     fun initBottom2() {

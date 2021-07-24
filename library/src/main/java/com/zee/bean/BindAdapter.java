@@ -14,7 +14,9 @@ import android.widget.TextView;
 
 import com.zee.base.OnNoDoubleClickListener;
 import com.zee.utils.UIUtils;
+import com.zee.view.TwoTextView;
 import com.zee.view.ZxRecyclerView;
+import com.zee.widget.BubbleSeekBar;
 
 public abstract class BindAdapter {
     private transient View mView;
@@ -70,9 +72,18 @@ public abstract class BindAdapter {
         return mView.findViewById(id);
     }
 
+    public final TwoTextView twoTextViewById(@IdRes int id) {
+        return mView.findViewById(id);
+    }
+
+    public final BubbleSeekBar bubbleSeekBarById(@IdRes int id) {
+        return mView.findViewById(id);
+    }
+
     public final View viewById(@IdRes int id) {
         return mView.findViewById(id);
     }
+
 
     public void setText(@IdRes int resID, @StringRes int resId) {
         TextView textView = findViewById(resID);

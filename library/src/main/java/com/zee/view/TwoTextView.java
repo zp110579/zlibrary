@@ -3,6 +3,7 @@ package com.zee.view;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
@@ -14,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zee.libs.R;
+import com.zee.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,22 +48,29 @@ public class TwoTextView extends LinearLayout {
         int gap = ta.getDimensionPixelSize(R.styleable.TwoTextView_zv_gap, 0);
         String text = ta.getString(R.styleable.TwoTextView_zv_text);
         int textColor = ta.getColor(R.styleable.TwoTextView_zv_textColor, 0);
-        float textSize = ta.getDimension(R.styleable.TwoTextView_zv_textSize, 15);
+        float textSize = ta.getDimension(R.styleable.TwoTextView_zv_textSize, 0);
         mTextView.setText(text);
-        mTextView.setTextColor(textColor);
-        mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-
+        if (textColor != 0) {
+            mTextView.setTextColor(textColor);
+        }
+        if (textSize > 0) {
+            mTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
+        }
 
         String rightText = ta.getString(R.styleable.TwoTextView_zv_rightText);
-        float rightTextSize = ta.getDimension(R.styleable.TwoTextView_zv_rightTextSize, textSize);
+        float rightTextSize = ta.getDimension(R.styleable.TwoTextView_zv_rightTextSize, 0);
         if (rightTextSize == 0) {
             rightTextSize = textSize;
         }
         int rightTextColor = ta.getColor(R.styleable.TwoTextView_zv_rightTextColor, textColor);
         mRightTextView.setText(rightText);
 
-        mRightTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightTextSize);
-        mRightTextView.setTextColor(rightTextColor);
+        if (rightTextSize > 0) {
+            mRightTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightTextSize);
+        }
+        if (rightTextColor != 0) {
+            mRightTextView.setTextColor(rightTextColor);
+        }
         if (getOrientation() == VERTICAL) {
             rightTextParams.setMargins(0, gap, 0, 0);
         } else {
@@ -75,24 +84,30 @@ public class TwoTextView extends LinearLayout {
         addView(mRightTextView);
     }
 
-    public void setText(String text) {
+    public TextView setText(String text) {
         mTextView.setText(text);
+        return mTextView;
     }
 
-    public void setText(@StringRes int resid) {
+    public TextView setText(@StringRes int resid) {
         mTextView.setText(resid);
+        return mTextView;
     }
+
 
     public float getTextSize() {
         return mTextView.getTextSize();
     }
 
-    public void setRightText(String rightText) {
+    public TextView setRightText(String rightText) {
         mRightTextView.setText(rightText);
+        return mRightTextView;
     }
 
-    public void setRightText(@StringRes int resid) {
+    public TextView setRightText(@StringRes int resid) {
         mRightTextView.setText(resid);
+        return mRightTextView;
     }
 
 }
+

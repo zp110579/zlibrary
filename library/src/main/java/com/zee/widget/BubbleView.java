@@ -14,7 +14,7 @@ import static com.zee.widget.BubbleUtils.dp2px;
 /**
  * created by zee on 2021/7/16.
  */
-public class BubbleView extends View implements BubbViewInterFace {
+ class BubbleView extends View implements BubbViewInterFace {
 
     private Paint mBubblePaint;
     private Path mBubblePath;
