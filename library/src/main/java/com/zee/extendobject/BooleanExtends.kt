@@ -3,7 +3,7 @@
  *Boolean方法扩展
  */
 
-inline fun Boolean.isOverTurn(): Boolean {
+inline fun Boolean.overTurn(): Boolean {
     return !this
 }
 

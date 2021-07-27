@@ -228,8 +228,8 @@ class RefreshHorizontalLinearLayout extends LinearLayout implements IRefreshLine
      * 刷新结束
      */
     public void refreshFinish() {
-//        if (mState != STATE_HINT_PULL_DOWN) {
-            setState(STATE_REFRESH_FINISH);
+        if (mState != STATE_HINT_PULL_DOWN) {
+//            setState(STATE_REFRESH_FINISH);
             mDefaultRefreshView.onRefreshEnd();
             reset();
 //            smoothScrollTo(0);
@@ -238,7 +238,7 @@ class RefreshHorizontalLinearLayout extends LinearLayout implements IRefreshLine
 //                public void run() {
 //                }
 //            }, 200);
-//        }
+        }
     }
 
     public void setVisibleHeight(int height) {
