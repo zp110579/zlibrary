@@ -3,10 +3,6 @@
  *Boolean方法扩展
  */
 
-inline fun Boolean.overTurn(): Boolean {
-    return !this
-}
-
 inline infix fun Boolean.isTrueRun(trueBlock: Boolean.() -> Unit): Else {
     if (this) {
         trueBlock()

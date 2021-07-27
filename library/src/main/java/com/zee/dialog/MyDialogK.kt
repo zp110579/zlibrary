@@ -288,7 +288,7 @@ class MyDialogK : DialogFragment(), IDismissListener {
                 override fun initViews(paView: View) {
                     binView.invoke(this)
                 }
-            }).show()
+            })
         }
 
         fun init(bindViewAdapter: BindViewAdapter): MyDialogK {
