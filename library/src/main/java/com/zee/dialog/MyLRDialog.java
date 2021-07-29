@@ -1,3 +1,7 @@
+/*
+ * 只处理左右弹出的Dialog
+ */
+
 package com.zee.dialog;
 
 import android.os.Bundle;
@@ -24,7 +28,7 @@ import com.zee.utils.ZScreenUtils;
 
 import org.jetbrains.annotations.NotNull;
 
-public class MyDialog extends DialogFragment implements IDismissListener {
+public class MyLRDialog extends DialogFragment implements IDismissListener {
     private static final String LEFTRIGHTMARGIN = "leftRightMargin";
     private static final String TOPBOTTOMMARGIN = "topBottomMargin";
     private static final String WIDTH = "width";
@@ -48,6 +52,7 @@ public class MyDialog extends DialogFragment implements IDismissListener {
     @StyleRes
     protected int theme = R.style.myDialogStyle; // dialog主题
     private boolean isFullScreen = false;
+    private boolean mIsHaveMargin = false;//全屏的情况下有设置左右间隔无效
     //只有显示在上，下2面才会有效果
     @StyleRes
     private int animStyle;
@@ -57,50 +62,35 @@ public class MyDialog extends DialogFragment implements IDismissListener {
     private BindViewAdapter mBindViewAdapter;
 
 
-    public static MyDialog init(BindViewAdapter bindViewAdapter) {
-        return init(bindViewAdapter.getLayoutID(), bindViewAdapter);
-    }
-
-    public static MyDialog initTop(BindViewAdapter bindViewAdapter) {
-        MyDialog myDialog = newInstance(Gravity.TOP, bindViewAdapter.getLayoutID());
+    public static MyLRDialog initFromLeft(BindViewAdapter bindViewAdapter) {
+        MyLRDialog myDialog = newInstance(Gravity.LEFT, bindViewAdapter.getLayoutID());
         myDialog.setAdapter(bindViewAdapter);
+        bindViewAdapter.setBindView(myDialog);
         return myDialog;
     }
 
-    public static MyDialog initBottom(BindViewAdapter bindViewAdapter) {
-        MyDialog myDialog = newInstance(Gravity.BOTTOM, bindViewAdapter.getLayoutID());
+    public static MyLRDialog initFromRight(BindViewAdapter bindViewAdapter) {
+        MyLRDialog myDialog = newInstance(Gravity.RIGHT, bindViewAdapter.getLayoutID());
         myDialog.setAdapter(bindViewAdapter);
+        bindViewAdapter.setBindView(myDialog);
         return myDialog;
     }
 
-    private static MyDialog init(@LayoutRes int layoutID, BindViewAdapter dialogAdapter) {
-        MyDialog myDialog = newInstance(0, layoutID);
-        myDialog.setAdapter(dialogAdapter);
-        dialogAdapter.setBindView(myDialog);
-        return myDialog;
-    }
-
-    private MyDialog setAdapter(BindViewAdapter adapter) {
+    private MyLRDialog setAdapter(BindViewAdapter adapter) {
         mBindViewAdapter = adapter;
         mBindViewAdapter.setBindView(this);
         return this;
     }
 
-    private static MyDialog newInstance(int type, int layoutID) {
+    private static MyLRDialog newInstance(int type, int layoutID) {
         Bundle args = new Bundle();
         args.putInt("type", type);
         args.putInt("layout", layoutID);
-        MyDialog fragment = new MyDialog();
+        MyLRDialog fragment = new MyLRDialog();
         fragment.setArguments(args);
         return fragment;
     }
 
-    @Deprecated
-    public MyDialog setBindViewAdapter(BindViewAdapter paBindViewAdapter) {
-        mBindViewAdapter = paBindViewAdapter;
-        mBindViewAdapter.setBindView(this);
-        return this;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -185,15 +175,15 @@ public class MyDialog extends DialogFragment implements IDismissListener {
                 lp.gravity = gravity;
             }
             switch (gravity) {
-                case Gravity.TOP:
+                case Gravity.LEFT:
                     if (animStyle == 0) {
-                        animStyle = R.style.zxDialogStyle_TopAnimation;
+                        animStyle = R.style.zxDialogStyle_leftAnimation;
                     }
                     break;
 
-                case Gravity.BOTTOM:
+                case Gravity.RIGHT:
                     if (animStyle == 0) {
-                        animStyle = R.style.zxDialogStyle_BottomAnimation;
+                        animStyle = R.style.zxDialogStyle_rightAnimation;
                     }
                     break;
                 default:
@@ -204,6 +194,9 @@ public class MyDialog extends DialogFragment implements IDismissListener {
             //设置dialog宽度
             if (isFullScreen) {
                 lp.width = ZScreenUtils.getScreenWidth();
+                if (mIsHaveMargin) {
+                    lp.width = ZScreenUtils.getScreenWidth() - UIUtils.dpToPx(mLeftAndRightMargin);
+                }
                 lp.height = ZScreenUtils.getScreenHeight();
                 lp.y = 0;
             } else {
@@ -222,9 +215,9 @@ public class MyDialog extends DialogFragment implements IDismissListener {
                 } else {
                     lp.height = tempH;
                 }
-                if (gravity == Gravity.BOTTOM || gravity == Gravity.TOP) {
-                    lp.y = UIUtils.dpToPx(mTopOrBottomMargin);
-                }
+//                if (gravity == Gravity.BOTTOM || gravity == Gravity.TOP) {
+//                    lp.y = UIUtils.dpToPx(mTopOrBottomMargin);
+//                }
             }
 
             //设置dialog进入、退出的动画
@@ -234,38 +227,39 @@ public class MyDialog extends DialogFragment implements IDismissListener {
         setCancelable(outCancel);
     }
 
-    public MyDialog setMarginLeftAndRight(int margin) {
+    public MyLRDialog setMargin(int margin) {
         this.mLeftAndRightMargin = margin;
         return this;
     }
 
-    public MyDialog setMarginTopOrBottom(int margin) {
-        this.mTopOrBottomMargin = margin;
-        return this;
-    }
-
-    public MyDialog setSize(int width, int height) {
+    public MyLRDialog setSize(int width, int height) {
         this.width = width;
         this.height = height;
         return this;
     }
 
-    public MyDialog setFullScreen() {
+    public MyLRDialog setFullScreen(boolean isNoHaveMargin) {
+        isFullScreen = true;
+        mIsHaveMargin = !isNoHaveMargin;
+        return this;
+    }
+
+    public MyLRDialog setFullScreen() {
         isFullScreen = true;
         return this;
     }
 
-    public MyDialog setDimAmount(float dimAmount) {
+    public MyLRDialog setDimAmount(float dimAmount) {
         this.dimAmount = dimAmount;
         return this;
     }
 
-    public MyDialog setAnimStyle(int animStyle) {
+    public MyLRDialog setAnimStyle(int animStyle) {
         this.animStyle = animStyle;
         return this;
     }
 
-    public MyDialog setOutCancel(boolean outCancel) {
+    public MyLRDialog setOutCancel(boolean outCancel) {
         this.outCancel = outCancel;
         return this;
     }
@@ -279,23 +273,13 @@ public class MyDialog extends DialogFragment implements IDismissListener {
         ft.commitAllowingStateLoss();
     }
 
-    /**
-     * 自动获得当前的Acitivity并显示出来
-     *
-     * @return
-     */
-    @Deprecated
-    public MyDialog showCurActivity() {
-        UIUtils.showDialog(this);
-        return this;
-    }
 
     /**
      * 自动获得当前的Acitivity并显示出来
      *
      * @return
      */
-    public MyDialog show() {
+    public MyLRDialog show() {
         UIUtils.showDialog(this);
         return this;
     }
@@ -312,7 +296,6 @@ public class MyDialog extends DialogFragment implements IDismissListener {
         try {
             super.dismiss();
         } catch (Exception e) {
-
         }
     }
 
@@ -323,6 +306,5 @@ public class MyDialog extends DialogFragment implements IDismissListener {
         if (mBindViewAdapter != null) {
             mBindViewAdapter.onDestroy();
         }
-
     }
 }

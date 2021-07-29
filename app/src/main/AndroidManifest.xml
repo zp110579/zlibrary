@@ -25,6 +25,7 @@
         <activity android:name=".ui.activitys.BubbleSeekBarActivity" />
         <activity android:name=".ui.activitys.WebViewActivity" />
         <activity android:name=".ui.activitys.TwoTextViewActivity" />
+        <activity android:name=".ui.activitys.DialogManagerActivity" />
     </application>
 
 </manifest>

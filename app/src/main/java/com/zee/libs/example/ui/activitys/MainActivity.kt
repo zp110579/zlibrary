@@ -14,6 +14,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        tv_dialog.setOnClickListener {
+            startActivityEx(DialogManagerActivity::class.java)
+        }
         tv_two_textView.setOnClickListener {
             startActivityEx(TwoTextViewActivity::class.java)
         }

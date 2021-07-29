@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_left_dialog"
+        style="@style/base_btn_style_gone"
+        android:text="LiftFrom"
+        android:visibility="visible" />
+
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_right_dialog"
+        style="@style/base_btn_style_gone"
+        android:text="RightFrom"
+        android:visibility="visible" />
+
+</LinearLayout>

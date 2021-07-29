@@ -1,87 +1,98 @@
-<resources  xmlns:tools="http://schemas.android.com/tools">
-	<style name="button_no_shadow_style" parent="@style/Widget.AppCompat.Button.Borderless"></style>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-	<declare-styleable name="decorate_view" tools:ignore="ResourceName">
-		<attr name="layout_radius" format="reference|dimension" />
-		<attr name="layout_src_radius" format="reference|dimension" />
+    <style name="button_no_shadow_style" parent="@style/Widget.AppCompat.Button.Borderless"></style>
 
-		<attr name="layout_background_enableTrue" format="reference|color" />
-		<attr name="layout_background_enableFalse" format="reference|color" />
+    <declare-styleable name="decorate_view" tools:ignore="ResourceName">
+        <attr name="layout_radius" format="reference|dimension" />
+        <attr name="layout_src_radius" format="reference|dimension" />
 
-		<attr name="layout_background_pressedTrue" format="reference|color" />
-		<attr name="layout_background_pressedFalse" format="reference|color" />
+        <attr name="layout_background_enableTrue" format="reference|color" />
+        <attr name="layout_background_enableFalse" format="reference|color" />
 
-		<attr name="layout_background_selectedTrue" format="reference|color" />
-		<attr name="layout_background_selectedFalse" format="reference|color" />
+        <attr name="layout_background_pressedTrue" format="reference|color" />
+        <attr name="layout_background_pressedFalse" format="reference|color" />
 
-
-		<attr name="layout_textColor_enableTrue" format="reference|color" />
-		<attr name="layout_textColor_enableFalse" format="reference|color" />
-
-		<attr name="layout_textColor_pressedTrue" format="reference|color" />
-		<attr name="layout_textColor_pressedFalse" format="reference|color" />
-
-		<attr name="layout_textColor_selectedTrue" format="reference|color" />
-		<attr name="layout_textColor_selectedFalse" format="reference|color" />
-
-		<attr name="layout_canScroll" format="reference|boolean" />
+        <attr name="layout_background_selectedTrue" format="reference|color" />
+        <attr name="layout_background_selectedFalse" format="reference|color" />
 
 
-		<attr name="layout_border_color" format="reference|color" />
-		<attr name="layout_border_width" format="reference|dimension" />
+        <attr name="layout_textColor_enableTrue" format="reference|color" />
+        <attr name="layout_textColor_enableFalse" format="reference|color" />
 
-		<attr name="layout_dash_width" format="reference|dimension" />
-		<attr name="layout_dash_height" format="reference|dimension" />
-		<attr name="layout_dash_gap" format="reference|dimension" />
+        <attr name="layout_textColor_pressedTrue" format="reference|color" />
+        <attr name="layout_textColor_pressedFalse" format="reference|color" />
 
-		<attr name="layout_cover_children" format="boolean"/>
-	</declare-styleable>
+        <attr name="layout_textColor_selectedTrue" format="reference|color" />
+        <attr name="layout_textColor_selectedFalse" format="reference|color" />
+
+        <attr name="layout_canScroll" format="reference|boolean" />
 
 
+        <attr name="layout_border_color" format="reference|color" />
+        <attr name="layout_border_width" format="reference|dimension" />
 
-	<!-- Base application theme. -->
-	<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-		<!-- Customize your theme here. -->
-		<item name="colorPrimary">#327FC2</item>
-		<item name="colorAccent">#FF5449</item>
-	</style>
+        <attr name="layout_dash_width" format="reference|dimension" />
+        <attr name="layout_dash_height" format="reference|dimension" />
+        <attr name="layout_dash_gap" format="reference|dimension" />
 
-	<style name="StyleTitleText">
-		<item name="android:paddingTop">4dp</item>
-		<item name="android:paddingBottom">2dp</item>
-		<item name="android:textColor">#444444</item>
-		<item name="android:textSize">16sp</item>
-	</style>
+        <attr name="layout_cover_children" format="boolean" />
+    </declare-styleable>
 
-	<style name="SwitchButtonStyle">
-		<item name="android:paddingLeft">10dp</item>
-		<item name="android:paddingRight">10dp</item>
-		<item name="android:paddingTop">4dp</item>
-		<item name="android:paddingBottom">4dp</item>
-	</style>
 
-	<style name="SwitchButtonStyleMD" >
-		<item name="android:paddingLeft">10dp</item>
-		<item name="android:paddingRight">10dp</item>
-		<item name="android:paddingTop">4dp</item>
-		<item name="android:paddingBottom">4dp</item>
-	</style>
-	<style name="myDialogStyle" parent="Theme.AppCompat.Light.Dialog">
-		<item name="android:windowNoTitle">true</item>
-		<item name="android:windowBackground">@android:color/transparent</item>
-		<item name="android:colorBackgroundCacheHint">@null</item>
-		<item name="android:windowSoftInputMode">adjustPan</item>
-		<item name="android:windowIsFloating">true</item>
-		<item name="android:windowContentOverlay">@null</item>
-	</style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#327FC2</item>
+        <item name="colorAccent">#FF5449</item>
+    </style>
 
-	<style name="myDialogStyle_BottomAnimation" parent="android:Animation">
-		<item name="android:windowEnterAnimation">@anim/bottom_enter_anim</item>
-		<item name="android:windowExitAnimation">@anim/bottom_exit_anim</item>
-	</style>
+    <style name="StyleTitleText">
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:textColor">#444444</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 
-	<style name="myDialogStyle_TopAnimation" parent="android:Animation">
-		<item name="android:windowEnterAnimation">@anim/top_enter_anim</item>
-		<item name="android:windowExitAnimation">@anim/top_exit_anim</item>
-	</style>
+    <style name="SwitchButtonStyle">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="SwitchButtonStyleMD">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="myDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="zxDialogStyle_TopAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/top_enter_anim_dialog</item>
+        <item name="android:windowExitAnimation">@anim/top_exit_anim_dialog</item>
+    </style>
+
+    <style name="zxDialogStyle_BottomAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/bottom_enter_anim_dialog</item>
+        <item name="android:windowExitAnimation">@anim/bottom_exit_anim_dialog</item>
+    </style>
+
+    <style name="zxDialogStyle_leftAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/left_enter_anim_dialog</item>
+        <item name="android:windowExitAnimation">@anim/left_exit_anim_dialog</item>
+    </style>
+
+    <style name="zxDialogStyle_rightAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/right_enter_anim_dialog</item>
+        <item name="android:windowExitAnimation">@anim/right_exit_anim_dialog</item>
+    </style>
 </resources>

@@ -1,6 +1,4 @@
-/*
- * Copyright (c) 2019.8 - Present by KewenC.
- */
+
 package com.zee.dialog
 
 import android.os.Bundle
@@ -126,10 +124,10 @@ class MyDialogK : DialogFragment(), IDismissListener {
             }
             when (gravity) {
                 Gravity.TOP -> if (animStyle == 0) {
-                    animStyle = R.style.myDialogStyle_TopAnimation
+                    animStyle = R.style.zxDialogStyle_TopAnimation
                 }
                 Gravity.BOTTOM -> if (animStyle == 0) {
-                    animStyle = R.style.myDialogStyle_BottomAnimation
+                    animStyle = R.style.zxDialogStyle_BottomAnimation
                 }
                 else -> {
                 }
