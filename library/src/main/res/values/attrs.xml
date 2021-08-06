@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+
+    <attr name="zv_interval_time" format="integer|reference" />
+
     <!--描边的宽度-->
     <attr name="zv_borderWidth" format="dimension" />
     <attr name="zv_borderColor" format="color" />
@@ -132,6 +135,26 @@
     <attr name="zv_gap" format="dimension" />
     <!--标题显示，以“|”分割-->
     <attr name="zv_title_text" format="string" />
+
+    <declare-styleable name="ZxMarqueeView">
+        <attr name="zv_interval_time"  />
+        <attr name="zv_animDuration" format="integer|reference" />
+        <attr name="zv_textSize"/>
+        <attr name="zv_textColor"/>
+        <attr name="zv_singleLine" format="boolean" />
+        <attr name="zv_font" format="reference" />
+        <attr name="zv_gravity">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+        <attr name="zv_direction">
+            <enum name="bottom_to_top" value="0" />
+            <enum name="top_to_bottom" value="1" />
+            <enum name="right_to_left" value="2" />
+            <enum name="left_to_right" value="3" />
+        </attr>
+    </declare-styleable>
 
     <declare-styleable name="TwoTextView">
         <attr name="zv_textColor"/>
@@ -279,7 +302,7 @@
 
 
     <declare-styleable name="ZxBannerView" tools:ignore="MissingDefaultResource">
-        <attr name="zv_interval_time" format="integer" />
+        <attr name="zv_interval_time" />
         <attr name="zv_indicator_visible" format="boolean" />
         <attr name="zv_indicator_color_select" format="color" />
         <attr name="zv_indicator_color" />

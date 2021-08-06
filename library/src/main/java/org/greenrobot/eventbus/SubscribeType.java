@@ -41,9 +41,10 @@ public class SubscribeType {
         StringBuilder builder = new StringBuilder();
         builder.append("SubscribeType{");
         if (!TextUtils.isEmpty(mMethodTag)) {
-            builder.append(", MethodTag='");
+            builder.append("MethodTag='");
             builder.append(mMethodTag);
             builder.append('\'');
+            builder.append(",");
         }
         builder.append("EventObject=" + mEventObject);
         if (!TextUtils.isEmpty(mSubscriberTag)) {

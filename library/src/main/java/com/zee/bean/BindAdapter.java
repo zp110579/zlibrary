@@ -176,7 +176,7 @@ public abstract class BindAdapter {
     }
 
     public final void startActivity(@IdRes int id, final Class<?> cls) {
-        findViewByIdK(id).setOnClickListener(new OnNoDoubleClickListener() {
+        findViewById(id).setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             public void onNoDoubleClick(View v) {
                 UIUtils.startActivity(cls);
@@ -185,7 +185,7 @@ public abstract class BindAdapter {
     }
 
     public void setOnClickListener(@IdRes int id, View.OnClickListener onClickListener) {
-        findViewByIdK(id).setOnClickListener(onClickListener);
+        viewById(id).setOnClickListener(onClickListener);
     }
 
     public final void startActivity(Intent paIntent) {

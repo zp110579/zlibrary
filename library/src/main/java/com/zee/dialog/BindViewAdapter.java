@@ -45,7 +45,7 @@ public abstract class BindViewAdapter extends BindAdapter implements Parcelable 
     }
 
     public final void startActivityAndDismiss(@IdRes int id, final Class<?> cls) {
-        findViewByIdK(id).setOnClickListener(new OnNoDoubleClickListener() {
+        findViewById(id).setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             public void onNoDoubleClick(View v) {
                 UIUtils.startActivity(cls);
@@ -61,7 +61,7 @@ public abstract class BindViewAdapter extends BindAdapter implements Parcelable 
      * @param onClickListener
      */
     public void setOnClickListenerAndDismiss(@IdRes int id, final View.OnClickListener onClickListener) {
-        findViewByIdK(id).setOnClickListener(new OnNoDoubleClickListener() {
+        findViewById(id).setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             public void onNoDoubleClick(View v) {
                 onClickListener.onClick(v);
@@ -77,7 +77,7 @@ public abstract class BindViewAdapter extends BindAdapter implements Parcelable 
      * @param id
      */
     public void setOnClickListenerAndDismiss(@IdRes int id) {
-        findViewByIdK(id).setOnClickListener(new OnNoDoubleClickListener() {
+        findViewById(id).setOnClickListener(new OnNoDoubleClickListener() {
             @Override
             public void onNoDoubleClick(View v) {
                 dismiss();

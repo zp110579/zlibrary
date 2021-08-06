@@ -14,6 +14,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        tv_marquee.setOnClickListener {
+            startActivityEx(MarqueeActivity::class.java)
+        }
+
         tv_dialog.setOnClickListener {
             startActivityEx(DialogManagerActivity::class.java)
         }

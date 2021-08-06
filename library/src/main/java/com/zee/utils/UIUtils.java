@@ -181,6 +181,11 @@ public final class UIUtils {
         return (int) (spValue * fontScale + 0.5f);
     }
 
+    public static int pxToSp(float pxValue) {
+        final float fontScale = getContext().getResources().getDisplayMetrics().scaledDensity;
+        return (int) (pxValue / fontScale + 0.5f);
+    }
+
     public static Resources getResources() {
         return getCurActivity().getResources();
     }

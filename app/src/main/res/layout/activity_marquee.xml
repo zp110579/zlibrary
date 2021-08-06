@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <com.zee.view.ZxMarqueeView
+        android:id="@+id/marqueeView"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        app:zv_animDuration="1000"
+
+        app:zv_direction="bottom_to_top"
+        app:zv_interval_time="3000"
+        app:zv_singleLine="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity=""
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/iv_speaker1"
+            android:layout_width="20dp"
+
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher" />
+
+        <com.zee.view.ZxMarqueeView
+            android:id="@+id/marqueeView1"
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/iv_speaker1"
+            app:zv_direction="top_to_bottom"
+            app:zv_font="@font/huawenxinwei" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/iv_speaker2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher_round" />
+
+        <com.zee.view.ZxMarqueeView
+            android:id="@+id/marqueeView2"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/iv_speaker2"
+            app:zv_textSize="14sp" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="5dp">
+
+        <com.zee.view.ZxMarqueeView
+            android:id="@+id/marqueeView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:zv_direction="right_to_left"
+            app:zv_gravity="left"
+            app:zv_textColor="#f00" />
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="5dp">
+
+        <com.zee.view.ZxMarqueeView
+            android:id="@+id/marqueeView4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp" />
+    </android.support.v7.widget.CardView>
+</LinearLayout>
+

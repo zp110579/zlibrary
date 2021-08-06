@@ -9,10 +9,15 @@
     tools:context="com.zee.libs.example.ui.activitys.MainActivity">
 
     <com.zee.view.ZxTextView
+        android:id="@+id/tv_marquee"
+        style="@style/base_btn_style_gone"
+        android:text="跑马灯"
+        android:visibility="visible" />
+
+    <com.zee.view.ZxTextView
         android:id="@+id/tv_dialog"
         style="@style/base_btn_style_gone"
-        android:text="Dialog"
-        android:visibility="visible" />
+        android:text="Dialog" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_two_textView"

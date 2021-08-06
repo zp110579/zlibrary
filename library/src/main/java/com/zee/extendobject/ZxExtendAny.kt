@@ -3,6 +3,7 @@ package com.zee.extendobject
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
+import android.support.annotation.ColorRes
 import android.support.annotation.StringRes
 import com.zee.listener.OnActivityResultListener
 import com.zee.route.ZRouter
@@ -12,6 +13,9 @@ import com.zee.utils.ZStatusBarUtils
 import java.lang.Exception
 import java.math.BigDecimal
 
+fun getColor(@ColorRes color: Int): Int {
+    return UIUtils.getColor(color)
+}
 
 fun getString(@StringRes resId: Int): String {
     return UIUtils.getString(resId)

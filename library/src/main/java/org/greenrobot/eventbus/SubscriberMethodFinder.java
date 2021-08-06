@@ -67,7 +67,7 @@ class SubscriberMethodFinder {
     }
 
     SubscriberMessage findSubscriberMethods(Class<?> subscriberClass) {
-        SubscriberMessage subscriberMethods = METHOD_CACHE.get(subscriberClass);//获得该类的所有方法
+        SubscriberMessage subscriberMethods = METHOD_CACHE.get(subscriberClass);//缓存中获得该类的所有方法
         if (subscriberMethods != null) {
             return subscriberMethods;
         }
@@ -207,9 +207,9 @@ class SubscriberMethodFinder {
                 Subscribe subscribeAnnotation = method.getAnnotation(Subscribe.class);
                 SubscribeMainThread mainSubscribeAnnotation = method.getAnnotation(SubscribeMainThread.class);
                 SubscribeRunOnlyTop runOnlyTop = method.getAnnotation(SubscribeRunOnlyTop.class);
-                SubscribeSimple simpleAnnotation =method.getAnnotation(SubscribeSimple.class);
+                SubscribeSimple simpleAnnotation = method.getAnnotation(SubscribeSimple.class);
 
-                boolean isTrue = (subscribeAnnotation == null) && (mainSubscribeAnnotation != null || runOnlyTop != null|| simpleAnnotation !=null);
+                boolean isTrue = (subscribeAnnotation == null) && (mainSubscribeAnnotation != null || runOnlyTop != null || simpleAnnotation != null);
                 //只有mainThread,runOnlyTop注解永许没有参数
                 if (parameterTypes.length == 0 && isTrue) {
                     findCustomPrarmMethod(method, findState, EmptyEventBusType.class);
@@ -228,8 +228,8 @@ class SubscriberMethodFinder {
                         findMainThreadParamMethod(findState, method, parameterTypes[0], mainSubscribeAnnotation);
                     } else if (runOnlyTop != null) {
                         findSubscribeRunOnlyTopMethod(findState, method, parameterTypes[0], runOnlyTop);
-                    }else  if(simpleAnnotation!=null){
-                        findHitParamMethod(findState,method,parameterTypes[0],simpleAnnotation);
+                    } else if (simpleAnnotation != null) {
+                        findHitParamMethod(findState, method, parameterTypes[0], simpleAnnotation);
                     }
                 } else if (strictMethodVerification && method.isAnnotationPresent(Subscribe.class)) {
                     String methodName = method.getDeclaringClass().getName() + "." + method.getName();
@@ -250,8 +250,8 @@ class SubscriberMethodFinder {
             findMainThreadParamMethod(findState, method, parameterType, mainSubscribeAnnotation);
         } else if (runOnlyTop != null) {
             findSubscribeRunOnlyTopMethod(findState, method, parameterType, runOnlyTop);
-        }else if(subscribeSimple !=null){
-            findHitParamMethod(findState,method,parameterType, subscribeSimple);
+        } else if (subscribeSimple != null) {
+            findHitParamMethod(findState, method, parameterType, subscribeSimple);
         }
     }
 
