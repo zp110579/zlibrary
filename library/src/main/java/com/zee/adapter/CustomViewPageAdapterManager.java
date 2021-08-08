@@ -11,24 +11,25 @@ import java.util.ArrayList;
 /**
  * created by zee on 2020/9/11
  */
-public class CustomViewPageAdapter {
+public class CustomViewPageAdapterManager {
     private FragmentManager mSupportFragmentManager;
     private ArrayList<Fragment> mFragmentArrayList = new ArrayList<>();
 
-    public void ZxViewPageAdapter(FragmentActivity fragmentActivity) {
+    public CustomViewPageAdapterManager(FragmentActivity fragmentActivity) {
         mSupportFragmentManager = fragmentActivity.getSupportFragmentManager();
     }
 
-    public void ZxViewPageAdapter(Fragment fragment) {
+    public CustomViewPageAdapterManager(Fragment fragment) {
         mSupportFragmentManager = fragment.getChildFragmentManager();
     }
 
-    public void ZxViewPageAdapter(FragmentManager fragmentManager) {
+    public CustomViewPageAdapterManager(FragmentManager fragmentManager) {
         mSupportFragmentManager = fragmentManager;
     }
 
-    public void addFragment(Fragment fragment) {
+    public CustomViewPageAdapterManager addFragment(Fragment fragment) {
         mFragmentArrayList.add(fragment);
+        return this;
     }
 
     public FragmentStatePagerAdapter getFragmentStatePagerAdapter() {
