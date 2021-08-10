@@ -15,18 +15,21 @@
         android:textSize="20dp" />
 
     <com.zee.view.TwoTextView
-        app:zv_borderWidth="1dp"
-        app:zv_borderColor="@color/color_60"
         android:id="@+id/tv_custom"
-        app:zv_radius="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        app:zv_textSize="20dp"
+        app:zv_borderColor="@color/color_60"
+        app:zv_borderWidth="2dp"
         app:zv_gap="12dp"
+
+        app:zv_radius="5dp"
+        app:zv_rightTextColor="@color/color_60"
         app:zv_rightText="右边"
         app:zv_text="左边"
-        >
+        app:zv_textStyle="bold"
+        app:zv_rightTextStyle="italic"
+        app:zv_textSize="20dp">
 
 
     </com.zee.view.TwoTextView>

@@ -15,6 +15,7 @@
         android:visibility="visible" />
 
     <com.zee.view.ZxTextView
+        android:textStyle=""
         android:id="@+id/tv_dialog"
         style="@style/base_btn_style_gone"
         android:text="Dialog" />

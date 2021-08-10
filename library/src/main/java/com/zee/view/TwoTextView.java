@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
 import android.util.AttributeSet;
@@ -22,6 +23,7 @@ import java.util.List;
 
 public class TwoTextView extends LinearLayout {
     private TextView mTextView;
+
     private TextView mRightTextView;
 
 
@@ -47,6 +49,18 @@ public class TwoTextView extends LinearLayout {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.TwoTextView);
         int gap = ta.getDimensionPixelSize(R.styleable.TwoTextView_zv_gap, 0);
         String text = ta.getString(R.styleable.TwoTextView_zv_text);
+
+        int textStyle = ta.getInt(R.styleable.TwoTextView_zv_textStyle, 0);
+        if (textStyle > 0) {
+            if (textStyle == 1) {
+                mTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            } else if (textStyle == 2) {
+                mTextView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
+            } else {
+                mTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));
+            }
+        }
+
         int textColor = ta.getColor(R.styleable.TwoTextView_zv_textColor, 0);
         float textSize = ta.getDimension(R.styleable.TwoTextView_zv_textSize, 0);
         mTextView.setText(text);
@@ -64,6 +78,18 @@ public class TwoTextView extends LinearLayout {
         }
         int rightTextColor = ta.getColor(R.styleable.TwoTextView_zv_rightTextColor, textColor);
         mRightTextView.setText(rightText);
+
+        int rightTextStyle = ta.getInt(R.styleable.TwoTextView_zv_rightTextStyle, 0);
+
+        if (rightTextStyle > 0) {
+            if (rightTextStyle == 1) {
+                mRightTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+            } else if (textStyle == 2) {
+                mRightTextView.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
+            } else {
+                mRightTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD_ITALIC));
+            }
+        }
 
         if (rightTextSize > 0) {
             mRightTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightTextSize);

@@ -2,8 +2,10 @@ package com.zee.libs.example.ui.activitys
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.KeyEvent
 import com.zee.extendobject.*
 import com.zee.libs.example.R
+import com.zee.utils.UIUtils
 import com.zee.utils.ZEventBusUtils
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -46,5 +48,24 @@ class MainActivity : AppCompatActivity() {
             startActivityEx(BubbleSeekBarActivity::class.java)
         }
 
+    }
+
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exitBy2Click()
+        }
+        return false
+    }
+
+    private var isExit = false
+    private fun exitBy2Click() {
+        if (!isExit) {
+            isExit = true
+            showToastShort("再按一次退出程序")
+            postDelayed(2000) { isExit = false }
+        } else {
+            onBackPressed()
+        }
     }
 }

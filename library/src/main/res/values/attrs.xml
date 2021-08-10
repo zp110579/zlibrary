@@ -2,6 +2,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <attr name="zv_interval_time" format="integer|reference" />
+    <attr name="zv_textStyle" format="dimension">
+        <flag name="normal" value="0" />
+        <flag name="bold" value="1" />
+        <flag name="italic" value="2" />
+    </attr>
 
     <!--描边的宽度-->
     <attr name="zv_borderWidth" format="dimension" />
@@ -137,10 +142,10 @@
     <attr name="zv_title_text" format="string" />
 
     <declare-styleable name="ZxMarqueeView">
-        <attr name="zv_interval_time"  />
+        <attr name="zv_interval_time" />
         <attr name="zv_animDuration" format="integer|reference" />
-        <attr name="zv_textSize"/>
-        <attr name="zv_textColor"/>
+        <attr name="zv_textSize" />
+        <attr name="zv_textColor" />
         <attr name="zv_singleLine" format="boolean" />
         <attr name="zv_font" format="reference" />
         <attr name="zv_gravity">
@@ -157,10 +162,16 @@
     </declare-styleable>
 
     <declare-styleable name="TwoTextView">
-        <attr name="zv_textColor"/>
+        <attr name="zv_textColor" />
         <attr name="zv_text" format="string" />
         <attr name="zv_textSize" />
-        <attr name="zv_gap"/>
+        <attr name="zv_textStyle" />
+        <attr name="zv_rightTextStyle" format="dimension">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+        <attr name="zv_gap" />
         <attr name="zv_rightText" format="string" />
         <attr name="zv_rightTextSize" format="dimension" />
         <attr name="zv_rightTextColor" format="color" />

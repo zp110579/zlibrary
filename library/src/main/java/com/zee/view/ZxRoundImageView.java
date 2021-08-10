@@ -101,7 +101,7 @@ public class ZxRoundImageView extends AppCompatImageView {
         rightTopRadius = array.getDimension(R.styleable.ZxRoundImageView_zv_rightTopRadius, 0);
         rightBottomRadius = array.getDimension(R.styleable.ZxRoundImageView_zv_rightBottomRadius, 0);
         leftBottomRadius = array.getDimension(R.styleable.ZxRoundImageView_zv_leftBottomRadius, 0);
-        mCornerRadius = array.getDimensionPixelSize(R.styleable.ZxRoundImageView_zv_radius, 0);
+        mCornerRadius = array.getDimensionPixelSize(R.styleable.ZxRoundImageView_zv_radius, -1);
 
         int rateWidth = array.getDimensionPixelSize(R.styleable.ZxRoundImageView_zv_rate_width, 0);
         int rateHeight = array.getDimensionPixelSize(R.styleable.ZxRoundImageView_zv_rate_height, 0);
