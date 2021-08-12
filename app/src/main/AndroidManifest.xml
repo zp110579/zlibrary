@@ -27,6 +27,7 @@
         <activity android:name=".ui.activitys.TwoTextViewActivity" />
         <activity android:name=".ui.activitys.DialogManagerActivity" />
         <activity android:name=".ui.activitys.MarqueeActivity" />
+        <activity android:name=".ui.activitys.PictureActivity" />
     </application>
 
 </manifest>

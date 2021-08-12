@@ -3,8 +3,10 @@ package com.zee.libs.example.ui.activitys
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.KeyEvent
+import com.lzy.imagepicker.ImagePickerManager
 import com.zee.extendobject.*
 import com.zee.libs.example.R
+import com.zee.utils.ImageCompressUtils
 import com.zee.utils.UIUtils
 import com.zee.utils.ZEventBusUtils
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,6 +18,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        tv_picture.setOnClickListener {
+            startActivityEx(PictureActivity::class.java)
+        }
         tv_marquee.setOnClickListener {
             startActivityEx(MarqueeActivity::class.java)
         }
@@ -68,4 +73,5 @@ class MainActivity : AppCompatActivity() {
             onBackPressed()
         }
     }
+
 }

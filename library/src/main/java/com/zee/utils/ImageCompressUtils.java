@@ -1,11 +1,17 @@
 package com.zee.utils;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
 
+import com.zee.log.ZLog;
+
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -73,15 +79,27 @@ public class ImageCompressUtils {
         newOpts.inSampleSize = be;//设置缩放比例
         //重新读入图片，注意此时已经把options.inJustDecodeBounds 设回false了
         bitmap = BitmapFactory.decodeFile(srcPath, newOpts);
-        return compressJPGImage(bitmap, srcPath);//压缩好比例大小后再进行质量压缩
+        return compressJPGImage(bitmap, srcPath, 1000);//压缩好比例大小后再进行质量压缩
     }
 
-    private static File compressJPGImage(Bitmap image, String path) {
+    /**
+     * 获得文件的最大大小
+     *
+     * @param path
+     * @param fileSize kb
+     * @return
+     */
+    public static File compressImageBigSize(String path, int fileSize) {
+        Bitmap bitmap = BitmapFactory.decodeFile(path);
+        return compressJPGImage(bitmap, path, fileSize);
+    }
+
+    private static File compressJPGImage(Bitmap image, String path, int fileSize) {
         File oldFile = new File(path);
-        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + oldFile.getName() + ".temp.jpg");
+        File newFile = new File(oldFile.getParent() + "/" + "temp.jpg");
         try {
-            if (!file.exists()) {
-                file.createNewFile();
+            if (!newFile.exists()) {
+                newFile.createNewFile();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -89,13 +107,15 @@ public class ImageCompressUtils {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
         int options = 100;
-        while (baos.toByteArray().length / 1024 > 2048) {  //循环判断如果压缩后图片是否大于500kb,大于继续压缩
+
+
+        while (baos.toByteArray().length / 1024 > fileSize) {  //循环判断如果压缩后图片是否大于500kb,大于继续压缩
             baos.reset();//重置baos即清空baos
             image.compress(Bitmap.CompressFormat.JPEG, options, baos);//这里压缩options%，把压缩后的数据存放到baos中
             options -= 5;//每次都减少10
         }
         try {
-            OutputStream out = new FileOutputStream(file);
+            OutputStream out = new FileOutputStream(newFile);
             out.write(baos.toByteArray());
             out.close();
             baos.close();
@@ -103,6 +123,19 @@ public class ImageCompressUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return file;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\n文件压缩信息:");
+        stringBuilder.append("\n");
+        stringBuilder.append("原文件地址:" + oldFile.getAbsolutePath());
+        stringBuilder.append("(" + oldFile.length() / 1024 + "KB)");
+        stringBuilder.append("\n");
+        stringBuilder.append("新文件地址:" + newFile.getAbsoluteFile());
+        stringBuilder.append("(" + newFile.length() / 1024 + "KB)");
+        ZLog.i(stringBuilder.toString());
+        return newFile;
+    }
+
+    public void init(String path) {
+
     }
 }
