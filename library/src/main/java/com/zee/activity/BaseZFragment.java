@@ -52,7 +52,7 @@ public abstract class BaseZFragment extends Fragment implements IBase {
     }
 
 
-    public void onShowToUser(Boolean isVisibleToUser) {
+    public void onShowToUser(boolean isVisibleToUser) {
     }
 
     @Override

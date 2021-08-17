@@ -80,13 +80,15 @@ fun startActivityForResultEx(paClass: Class<*>?, listener: OnActivityResultListe
  * 打开Activity 并关闭当前Activity
  */
 fun startActivityAndFinishCurActivity(paClass: Class<*>?) {
+    val tempActivity = UIUtils.getCurActivity()
     UIUtils.startActivity(paClass)
-    UIUtils.getCurActivity().finish()
+    tempActivity.finish()
 }
 
 fun startActivityAndFinishCurActivity(intent: Intent) {
+    val tempActivity = UIUtils.getCurActivity()
     UIUtils.startActivity(intent)
-    UIUtils.getCurActivity().finish()
+    tempActivity.finish()
 }
 
 fun startActivityEx(intent: Intent) {

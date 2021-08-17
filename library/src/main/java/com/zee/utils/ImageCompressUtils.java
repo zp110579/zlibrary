@@ -86,12 +86,12 @@ public class ImageCompressUtils {
      * 获得文件的最大大小
      *
      * @param path
-     * @param fileSize kb
+     * @param fixFileSize kb 压缩后的文件不能大于fileSize
      * @return
      */
-    public static File compressImageBigSize(String path, int fileSize) {
+    public static File compressImageBigSize(String path, int fixFileSize) {
         Bitmap bitmap = BitmapFactory.decodeFile(path);
-        return compressJPGImage(bitmap, path, fileSize);
+        return compressJPGImage(bitmap, path, fixFileSize);
     }
 
     private static File compressJPGImage(Bitmap image, String path, int fileSize) {
