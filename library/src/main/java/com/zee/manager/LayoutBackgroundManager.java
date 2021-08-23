@@ -50,11 +50,11 @@ public class LayoutBackgroundManager {
     /**
      * 下划线的高度
      */
-    private float unline_height = 0;
+    private float underline_height = 0;
     /**
      * 下划线颜色
      */
-    private int unline_color = 0;
+    private int underline_color = 0;
 
     /**
      * 下划线距离左边的距离
@@ -66,7 +66,7 @@ public class LayoutBackgroundManager {
     private float unline_marginRight = 0;
     Paint unLinePaint = new Paint();
 
-    
+
     public LayoutBackgroundManager(Context context, AttributeSet attrs, View view) {
         this.view = view;
         if (view instanceof ZxLinearLayout) {
@@ -89,14 +89,14 @@ public class LayoutBackgroundManager {
             childSelect = ta.getBoolean(R.styleable.ZxLinearLayout_zv_child_select_state_with_me, false);
 
             //下划线
-            unline_height = ta.getDimension(R.styleable.ZxLinearLayout_zv_underlinedHeight, 0);
-            if (unline_height != 0) {
-                unline_color = ta.getColor(R.styleable.ZxLinearLayout_zv_underlinedColor, 0);
+            underline_color = ta.getColor(R.styleable.ZxLinearLayout_zv_underlinedColor, 0);
+            if (underline_color != 0) {
+                underline_height = ta.getDimension(R.styleable.ZxLinearLayout_zv_underlinedHeight, 1);
                 unline_marginLeft = ta.getDimension(R.styleable.ZxLinearLayout_zv_underlined_marginLeft, 0);
                 unline_marginRight = ta.getDimension(R.styleable.ZxLinearLayout_zv_underlined_marginRight, 0);
-                view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(), (int) (view.getPaddingBottom() + unline_height));
-                unLinePaint.setColor(unline_color);
-                unLinePaint.setStrokeWidth(unline_height);
+                view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(), (int) (view.getPaddingBottom() + underline_height));
+                unLinePaint.setColor(underline_color);
+                unLinePaint.setStrokeWidth(underline_height);
             }
             ta.recycle();
         } else if (view instanceof ZxRelativeLayout) {
@@ -118,14 +118,14 @@ public class LayoutBackgroundManager {
             backgroundSelectColor = ta.getColor(R.styleable.ZxRelativeLayout_zv_backgroundSelectColor, Integer.MAX_VALUE);
             childSelect = ta.getBoolean(R.styleable.ZxRelativeLayout_zv_child_select_state_with_me, false);
             //下划线
-            unline_height = ta.getDimension(R.styleable.ZxRelativeLayout_zv_underlinedHeight, 0);
-            if (unline_height != 0) {
-                unline_color = ta.getColor(R.styleable.ZxRelativeLayout_zv_underlinedColor, 0);
+            underline_color = ta.getColor(R.styleable.ZxRelativeLayout_zv_underlinedColor, 0);
+            if (underline_color != 0) {
+                underline_height = ta.getDimension(R.styleable.ZxRelativeLayout_zv_underlinedHeight, 1);
                 unline_marginLeft = ta.getDimension(R.styleable.ZxRelativeLayout_zv_underlined_marginLeft, 0);
                 unline_marginRight = ta.getDimension(R.styleable.ZxRelativeLayout_zv_underlined_marginRight, 0);
-                view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(), (int) (view.getPaddingBottom() + unline_height));
-                unLinePaint.setColor(unline_color);
-                unLinePaint.setStrokeWidth(unline_height);
+                view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(), (int) (view.getPaddingBottom() + underline_height));
+                unLinePaint.setColor(underline_color);
+                unLinePaint.setStrokeWidth(underline_height);
             }
             ta.recycle();
         } else if (view instanceof ZxConstraintLayout) {
@@ -179,7 +179,6 @@ public class LayoutBackgroundManager {
             }
         }
     }
-
 
 
     public void setSelected(boolean selected) {
@@ -251,12 +250,13 @@ public class LayoutBackgroundManager {
 
         gd.setStroke(borderWidth, strokeColor);
     }
-    public float getUnline_height() {
-        return unline_height;
+
+    public float getUnderline_height() {
+        return underline_height;
     }
 
-    public int getUnline_color() {
-        return unline_color;
+    public int getUnderline_color() {
+        return underline_color;
     }
 
     public float getUnline_marginLeft() {

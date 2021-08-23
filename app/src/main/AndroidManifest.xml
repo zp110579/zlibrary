@@ -28,6 +28,8 @@
         <activity android:name=".ui.activitys.DialogManagerActivity" />
         <activity android:name=".ui.activitys.MarqueeActivity" />
         <activity android:name=".ui.activitys.PictureActivity" />
+        <activity android:name=".ui.activitys.ZxPassWordViewActivity" />
+        <activity android:name=".ui.activitys.LRViewActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
+
+    <TextView
+        android:id="@+id/tv_systom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="正好"
+        android:textSize="20dp" />
+
+    <com.zee.view.LRTextView
+        android:id="@+id/tv_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        app:zv_borderColor="@color/color_60"
+        app:zv_borderWidth="2dp"
+        app:zv_gap="12dp"
+        app:zv_radius="5dp"
+        app:zv_rightText="右边"
+        app:zv_rightTextColor="@color/color_60"
+        app:zv_rightTextStyle="italic"
+        app:zv_text="左边"
+        app:zv_textSize="20dp"
+        app:zv_textStyle="bold">
+
+    </com.zee.view.LRTextView>
+
+</LinearLayout>

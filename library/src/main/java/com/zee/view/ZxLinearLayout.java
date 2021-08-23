@@ -40,9 +40,9 @@ public class ZxLinearLayout extends LinearLayout {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (mBackgroundManager.getUnline_height() > 0) {
+        if (mBackgroundManager.getUnderline_height() > 0) {
             float startX = mBackgroundManager.getUnline_marginLeft();
-            float startY = getHeight() - mBackgroundManager.getUnline_height() / 2;
+            float startY = getHeight() - mBackgroundManager.getUnderline_height() / 2;
             float startEndX = getWidth() - mBackgroundManager.getUnline_marginRight();
             canvas.drawLine(startX, startY, startEndX, startY, mBackgroundManager.getUnLinePaint());
         }

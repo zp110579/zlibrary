@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-
+    <attr name="zv_text" format="string" />
     <attr name="zv_interval_time" format="integer|reference" />
     <attr name="zv_textStyle" format="dimension">
         <flag name="normal" value="0" />
@@ -140,6 +140,14 @@
     <attr name="zv_gap" format="dimension" />
     <!--标题显示，以“|”分割-->
     <attr name="zv_title_text" format="string" />
+    <attr name="zv_rightTextStyle" format="dimension">
+        <flag name="normal" value="0" />
+        <flag name="bold" value="1" />
+        <flag name="italic" value="2" />
+    </attr>
+    <attr name="zv_rightText" format="string" />
+    <attr name="zv_rightTextSize" format="dimension" />
+    <attr name="zv_rightTextColor" format="color" />
 
     <declare-styleable name="ZxMarqueeView">
         <attr name="zv_interval_time" />
@@ -161,20 +169,29 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="LRTextView">
+        <attr name="zv_text" />
+        <attr name="zv_textSize" />
+        <attr name="zv_textColor" />
+        <attr name="zv_textStyle" />
+
+        <attr name="zv_rightText" />
+        <attr name="zv_rightTextSize" />
+        <attr name="zv_rightTextColor" />
+        <attr name="zv_rightTextStyle" />
+
+    </declare-styleable>
+
     <declare-styleable name="TwoTextView">
         <attr name="zv_textColor" />
-        <attr name="zv_text" format="string" />
+        <attr name="zv_text" />
         <attr name="zv_textSize" />
         <attr name="zv_textStyle" />
-        <attr name="zv_rightTextStyle" format="dimension">
-            <flag name="normal" value="0" />
-            <flag name="bold" value="1" />
-            <flag name="italic" value="2" />
-        </attr>
+        <attr name="zv_rightTextStyle" />
         <attr name="zv_gap" />
-        <attr name="zv_rightText" format="string" />
-        <attr name="zv_rightTextSize" format="dimension" />
-        <attr name="zv_rightTextColor" format="color" />
+        <attr name="zv_rightText" />
+        <attr name="zv_rightTextSize" />
+        <attr name="zv_rightTextColor" />
 
     </declare-styleable>
 

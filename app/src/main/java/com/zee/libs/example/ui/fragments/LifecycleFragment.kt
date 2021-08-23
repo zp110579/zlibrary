@@ -46,8 +46,5 @@ class LifecycleFragment : BaseZFragment() {
         ZEventBusUtils.registerBindFragment(this, objects)
     }
 
-    override fun onShowToUser(isVisibleToUser: Boolean?) {
-        super.onShowToUser(isVisibleToUser)
-        ZLog.i("$mIndex-->${this}--->>onShowToUser($isVisibleToUser)")
-    }
+
 }
