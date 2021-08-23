@@ -1,17 +1,38 @@
 package com.zee.extendobject
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.support.annotation.ColorRes
 import android.support.annotation.StringRes
-import com.zee.listener.OnActivityResultListener
+import com.zee.libs.R
+import com.zee.listener.OnOpenActivityResultListener
 import com.zee.route.ZRouter
+import com.zee.scan.zxing.android.CaptureActivity
+import com.zee.utils.SuperZPerMissionUtils
 import com.zee.utils.UIUtils
-import com.zee.utils.ZScreenUtils
 import com.zee.utils.ZStatusBarUtils
 import java.lang.Exception
 import java.math.BigDecimal
+
+/**
+ * 相机扫描
+ */
+fun cameraScan(result: (txt: String) -> Unit) {
+    SuperZPerMissionUtils.getInstance().add(Manifest.permission.CAMERA).requestPermissions { deniedPermissions, permissionExplain ->
+        if (deniedPermissions.isEmpty()) {
+            startActivityForResultEx(CaptureActivity::class.java, OnOpenActivityResultListener { data ->
+                data?.apply {
+                    val codedContent = getStringExtra("codedContent") //获得扫描内容
+                    result.invoke(codedContent)
+                }
+            })
+        } else {
+            showToastShort(R.string.zee_str_no_permission)
+        }
+    }
+}
 
 fun getColor(@ColorRes color: Int): Int {
     return UIUtils.getColor(color)
@@ -72,8 +93,8 @@ fun curActivityEx(): Activity {
     return UIUtils.getCurActivity()
 }
 
-fun startActivityForResultEx(paClass: Class<*>?, listener: OnActivityResultListener) {
-    ZRouter.getInstance().startActivity(paClass).requestCodeCallBack(listener).letsGo()
+fun startActivityForResultEx(paClass: Class<*>?, listenerOpen: OnOpenActivityResultListener) {
+    ZRouter.getInstance().startActivity(paClass).requestCodeCallBack(listenerOpen).letsGo()
 }
 
 /**

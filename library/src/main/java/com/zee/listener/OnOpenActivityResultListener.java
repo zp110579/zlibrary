@@ -2,7 +2,7 @@ package com.zee.listener;
 
 import android.content.Intent;
 
-public interface OnActivityResultListener {
+public interface OnOpenActivityResultListener {
     /**
      * Activity返回的值
      *

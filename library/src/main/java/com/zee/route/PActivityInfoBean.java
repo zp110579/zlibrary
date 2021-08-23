@@ -1,12 +1,12 @@
 package com.zee.route;
 
 import com.zee.listener.LetsGoListener;
-import com.zee.listener.OnActivityResultListener;
+import com.zee.listener.OnOpenActivityResultListener;
 import com.zee.utils.UIUtils;
 
 public class PActivityInfoBean extends BaseInfoBean<PActivityInfoBean> {
     private Integer mRequestCode;
-    OnActivityResultListener mOnActivityResultListener;
+    OnOpenActivityResultListener mOnOpenActivityResultListener;
 
     public PActivityInfoBean(String name, String module) {
         super(name, module, 1);
@@ -38,9 +38,9 @@ public class PActivityInfoBean extends BaseInfoBean<PActivityInfoBean> {
         return this;
     }
 
-    public PActivityInfoBean requestCodeCallBack(OnActivityResultListener listener) {
+    public PActivityInfoBean requestCodeCallBack(OnOpenActivityResultListener listener) {
         mRequestCode = 10;
-        mOnActivityResultListener = listener;
+        mOnOpenActivityResultListener = listener;
         return this;
     }
 
@@ -48,8 +48,8 @@ public class PActivityInfoBean extends BaseInfoBean<PActivityInfoBean> {
         return mRequestCode;
     }
 
-    protected OnActivityResultListener getOnActivityResultListener() {
-        return mOnActivityResultListener;
+    protected OnOpenActivityResultListener getOnOpenActivityResultListener() {
+        return mOnOpenActivityResultListener;
     }
 
     private void openActivity(LetsGoListener letsGoListener) {

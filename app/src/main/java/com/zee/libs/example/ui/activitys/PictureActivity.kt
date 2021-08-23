@@ -2,11 +2,8 @@ package com.zee.libs.example.ui.activitys
 
 import com.lzy.imagepicker.ImagePickerManager
 import com.zee.activity.BaseZActivity
-import com.zee.dialog.BindViewAdapter
-import com.zee.dialog.MyDialogK
 import com.zee.libs.example.R
 import com.zee.utils.ImageCompressUtils
-import kotlinx.android.synthetic.main.activity_bubble.*
 import kotlinx.android.synthetic.main.activity_picture.*
 
 /**
@@ -25,7 +22,7 @@ class PictureActivity : BaseZActivity() {
     }
 
     fun openDialg() {
-        ImagePickerManager.with(this).singleSelectImage().letsGo { imageItemArrayList ->
+        ImagePickerManager.singleSelectImage().letsGo { imageItemArrayList ->
             if (imageItemArrayList.isNotEmpty()) {
                 ImageCompressUtils.compressImageBigSize(imageItemArrayList[0].path, 600)
             }

@@ -54,10 +54,10 @@ public class PActivityManagerP extends PRouterManager {
                     if (activityInfo.getRequestCode() != null) {
                         //说明有返回值
                         try {
-                            if (activityInfo.getOnActivityResultListener() != null) {
+                            if (activityInfo.getOnOpenActivityResultListener() != null) {
                                 //如果有监听，那就走监听方法，如果没有
                                 CallBackFragment callBackFragment = CallBackFragment.newInstant(activityInfo.getRequestCode(), tempClass);
-                                callBackFragment.prepareCallBack(activityInfo.mOnActivityResultListener);
+                                callBackFragment.prepareCallBack(activityInfo.mOnOpenActivityResultListener);
                             } else {
                                 activity.startActivityForResult(intent, activityInfo.getRequestCode());
                             }

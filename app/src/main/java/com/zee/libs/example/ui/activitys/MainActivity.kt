@@ -1,16 +1,16 @@
 package com.zee.libs.example.ui.activitys
 
+import android.Manifest
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.KeyEvent
-import com.lzy.imagepicker.ImagePickerManager
 import com.zee.extendobject.*
 import com.zee.libs.example.R
-import com.zee.utils.ImageCompressUtils
-import com.zee.utils.UIUtils
+import com.zee.listener.OnOpenActivityResultListener
+import com.zee.scan.zxing.android.CaptureActivity
+import com.zee.utils.SuperZPerMissionUtils
 import com.zee.utils.ZEventBusUtils
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +18,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        tv_scan.setOnClickListener {
+            cameraScan {
+                showToastShort(it)
+            }
+        }
         tv_picture.setOnClickListener {
             startActivityEx(PictureActivity::class.java)
         }
@@ -72,6 +77,10 @@ class MainActivity : AppCompatActivity() {
         } else {
             onBackPressed()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
 }

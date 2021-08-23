@@ -95,4 +95,18 @@
         <item name="android:windowEnterAnimation">@anim/right_enter_anim_dialog</item>
         <item name="android:windowExitAnimation">@anim/right_exit_anim_dialog</item>
     </style>
+
+    <style name="ImagePickerTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="ImagePickerThemeFullScreen" parent="ImagePickerTheme">
+        <item name="android:fitsSystemWindows">false</item>
+    </style>
+
+    <!--SuperCheckbox的样式-->
+    <style name="SuperCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/selector_item_checked</item>
+    </style>
+
 </resources>

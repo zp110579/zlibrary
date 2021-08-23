@@ -1,19 +1,18 @@
 package com.zee.fragment;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.zee.listener.OnActivityResultListener;
+import com.zee.listener.OnOpenActivityResultListener;
 import com.zee.utils.ZLibrary;
 
 public final class CallBackFragment extends Fragment {
 
     private static final String PERMISSIONS = "requestCode";//请求的权限
     private static final String CLASSNAME = "className";//请求的权限
-    private OnActivityResultListener mOnPermissionListener;
+    private OnOpenActivityResultListener mOnPermissionListener;
 
     public static CallBackFragment newInstant(int requestCode, Class<?> className) {
         CallBackFragment fragment = new CallBackFragment();
@@ -27,7 +26,7 @@ public final class CallBackFragment extends Fragment {
     /**
      * 准备请求
      */
-    public void prepareCallBack(OnActivityResultListener listener) {
+    public void prepareCallBack(OnOpenActivityResultListener listener) {
         //将当前的请求码和对象添加到集合中
         this.mOnPermissionListener = listener;
         FragmentActivity activity = (FragmentActivity) ZLibrary.getInstance().getCurrentActivity();

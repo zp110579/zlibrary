@@ -580,4 +580,16 @@
         <attr name="zv_input_length" format="integer" />//密码长度 只考虑4 6 8
 
     </declare-styleable>
+
+    <declare-styleable name="CropImageView">
+        <attr name="cropMaskColor" format="color"/>
+        <attr name="cropBorderColor" format="color"/>
+        <attr name="cropBorderWidth" format="dimension"/>
+        <attr name="cropFocusWidth" format="dimension"/>
+        <attr name="cropFocusHeight" format="dimension"/>
+        <attr name="cropStyle" format="enum">
+            <enum name="rectangle" value="0"/>
+            <enum name="circle" value="1"/>
+        </attr>
+    </declare-styleable>
 </resources>

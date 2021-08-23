@@ -9,10 +9,15 @@
     tools:context="com.zee.libs.example.ui.activitys.MainActivity">
 
     <com.zee.view.ZxTextView
+        android:id="@+id/tv_scan"
+        style="@style/base_btn_style_gone"
+        android:text="扫描二维码"
+        android:visibility="visible" />
+
+    <com.zee.view.ZxTextView
         android:id="@+id/tv_picture"
         style="@style/base_btn_style_gone"
-        android:text="图片处理"
-        android:visibility="visible" />
+        android:text="图片处理" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_marquee"
@@ -20,10 +25,10 @@
         android:text="跑马灯" />
 
     <com.zee.view.ZxTextView
-        android:textStyle=""
         android:id="@+id/tv_dialog"
         style="@style/base_btn_style_gone"
-        android:text="Dialog" />
+        android:text="Dialog"
+        android:textStyle="" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_two_textView"
@@ -63,8 +68,7 @@
     <com.zee.view.ZxTextView
         android:id="@+id/tv_bubble"
         style="@style/base_btn_style_gone"
-        android:text="BubbleSeekBar组件"
-        android:visibility="visible" />
+        android:text="BubbleSeekBar组件" />
 
 
 </LinearLayout>

@@ -1,4 +1,5 @@
 <resources>
+    <string name="zee_str_no_permission">没有相机权限</string>
     <string name="ZBannerView_viewPage">zv_viewPage</string>
     <string name="ZBannerView_indicator">zv_indicator</string>
     <string name="zv_recyclerview_refreshing_hint_pull_down">下拉刷新</string>
@@ -23,4 +24,23 @@
     <string name="permission_name_sensors">身体传感器</string>
     <string name="permission_name_sms">短信</string>
     <string name="permission_name_storage">存储空间</string>
+
+
+    <string name="ip_all_images">所有图片</string>
+    <string name="ip_folder_image_count">共%1$d张</string>
+    <string name="ip_preview_image_count">%1$d/%2$d</string>
+    <string name="ip_select_limit">最多选择%1$d张图片</string>
+    <string name="ip_complete">完成</string>
+    <string name="ip_select_complete">完成(%1$d/%2$d)</string>
+    <string name="ip_preview">预览</string>
+    <string name="ip_preview_count">预览(%1$d)</string>
+    <string name="ip_photo_crop">图片裁剪</string>
+    <string name="ip_origin">原图</string>
+    <string name="ip_origin_size">原图(%1$s)</string>
+
+
+    <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+    <string name="viewfinderview_status_text1">将二维码放入框内</string>
+    <string name="viewfinderview_status_text2">即可自动扫描</string>
+    <string name="button_ok">OK</string>
 </resources>

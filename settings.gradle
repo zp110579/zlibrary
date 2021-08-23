@@ -1,2 +1,4 @@
+//include ':imgSelect:imagepicker'
+//include ':imgSelect:imageSelect'
 include ':library'
 include ':app'

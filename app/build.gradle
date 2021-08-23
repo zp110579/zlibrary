@@ -19,14 +19,22 @@ android {
 
         }
     }
+
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(path: ':library')
-    api 'com.zee:imagePicker:0.0.5'
+//    api 'com.zee:imagePicker:0.0.5'
 
 }
 repositories {
     mavenCentral()
+}
+allprojects {
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
 }
