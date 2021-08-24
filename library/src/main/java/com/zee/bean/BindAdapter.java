@@ -14,7 +14,9 @@ import android.widget.TextView;
 
 import com.zee.base.OnNoDoubleClickListener;
 import com.zee.utils.UIUtils;
+import com.zee.view.LRTextView;
 import com.zee.view.TwoTextView;
+import com.zee.view.ZxPassWordLayout;
 import com.zee.view.ZxRecyclerView;
 import com.zee.widget.BubbleSeekBar;
 
@@ -73,6 +75,13 @@ public abstract class BindAdapter {
     }
 
     public final TwoTextView twoTextViewById(@IdRes int id) {
+        return mView.findViewById(id);
+    }
+
+    public final LRTextView lrTextView(@IdRes int id) {
+        return mView.findViewById(id);
+    }
+    public final ZxPassWordLayout passWordLayout(@IdRes int id) {
         return mView.findViewById(id);
     }
 

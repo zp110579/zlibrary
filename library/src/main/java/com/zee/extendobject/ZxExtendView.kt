@@ -20,6 +20,33 @@ import org.jetbrains.annotations.Nullable
 /**
  * 防止快速点击运行2次
  */
+fun View.setOnClick(unit: () -> Unit) {
+    setOnNoDoubleClickListener(unit)
+}
+
+fun setVisible(vararg views: View) {
+    for (view in views) {
+        view.setVisible()
+    }
+}
+
+
+fun setInVisible(vararg views: View) {
+    for (view in views) {
+        view.setInVisible()
+    }
+}
+
+fun setGone(vararg views: View) {
+    for (view in views) {
+        view.setGone()
+    }
+}
+
+
+/**
+ * 防止快速点击运行2次
+ */
 fun View.setOnNoDoubleClickListener(unit: () -> Unit): View {
     setOnClickListener(object : OnNoDoubleClickListener(2000) {
         override fun onNoDoubleClick(v: View) {

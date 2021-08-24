@@ -4,21 +4,15 @@ import android.app.Dialog;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
-import com.bigkoo.pickerview.builder.TimePickerBuilder;
-import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
-import com.bigkoo.pickerview.view.TimePickerView;
 import com.zee.interf.IOptionItem;
 import com.zee.listener.OnMyOptionSelectListener;
-import com.zee.listener.OnMyTimeSelectListener;
 import com.zee.utils.UIUtils;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**

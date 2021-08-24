@@ -2,10 +2,13 @@ package com.zee.extendobject
 
 import android.Manifest
 import android.app.Activity
+import android.content.ClipboardManager
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.support.annotation.ColorRes
 import android.support.annotation.StringRes
+import android.view.View
 import com.zee.libs.R
 import com.zee.listener.OnOpenActivityResultListener
 import com.zee.route.ZRouter
@@ -15,6 +18,41 @@ import com.zee.utils.UIUtils
 import com.zee.utils.ZStatusBarUtils
 import java.lang.Exception
 import java.math.BigDecimal
+
+
+fun openActivity(intent: Intent) {
+    UIUtils.startActivity(intent)
+}
+
+fun openActivity(paClass: Class<*>?) {
+    UIUtils.startActivity(paClass)
+}
+
+fun openActivityAndFinishCurActivity(paClass: Class<*>?) {
+    val tempActivity = UIUtils.getCurActivity()
+    UIUtils.startActivity(paClass)
+    tempActivity.finish()
+}
+
+fun openActivityAndFinishCurActivity(intent: Intent) {
+    val tempActivity = UIUtils.getCurActivity()
+    UIUtils.startActivity(intent)
+    tempActivity.finish()
+}
+
+fun openActivityForResult(paClass: Class<*>?, listenerOpen: OnOpenActivityResultListener) {
+    ZRouter.getInstance().startActivity(paClass).requestCodeCallBack(listenerOpen).letsGo()
+}
+
+
+/**
+ * 将内容拷贝到粘贴板里
+ */
+fun copyTxtToClipboard(content: String): Boolean {
+    val cmb = UIUtils.getCurActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    cmb.text = content.trim()
+    return true
+}
 
 /**
  * 相机扫描

@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.zee.bean.RecyclerViewHolder;
 import com.zee.recyclerview.XRecyclerView;
 import com.zee.utils.ZListUtils;
+import com.zee.view.LRTextView;
 import com.zee.view.TwoTextView;
 import com.zee.view.ZxRecyclerView;
 import com.zee.widget.BubbleSeekBar;
@@ -119,7 +120,7 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
     public void setList(List<BT> list, boolean isCheckNoData) {
         if (list != null) {
             mList = list;
-        }else {
+        } else {
             mList.clear();
         }
         if (isCheckNoData) {
@@ -197,6 +198,10 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
     }
 
     public final TwoTextView twoTextViewById(@IdRes int id) {
+        return findViewById(id);
+    }
+
+    public final LRTextView lrTextView(@IdRes int id) {
         return findViewById(id);
     }
 

@@ -9,7 +9,6 @@ import com.zee.libs.example.R
  */
 class ZxPassWordViewActivity : BaseZActivity() {
 
-
     override fun getLayoutID(): Int {
         return R.layout.activity_password
     }

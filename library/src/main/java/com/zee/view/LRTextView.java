@@ -101,6 +101,13 @@ public class LRTextView extends ZxRelativeLayout {
         return mTextView;
     }
 
+    public TextView getTextView() {
+        return mTextView;
+    }
+
+    public TextView getRightTextView() {
+        return mRightTextView;
+    }
 
     public float getTextSize() {
         return mTextView.getTextSize();

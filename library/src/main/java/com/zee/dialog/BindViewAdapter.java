@@ -32,6 +32,10 @@ public abstract class BindViewAdapter extends BindAdapter implements Parcelable 
         mMyDialog = paMyDialog;
     }
 
+    public IDismissListener getMyDialog() {
+        return mMyDialog;
+    }
+
     public int getLayoutID() {
         return mLayoutID;
     }

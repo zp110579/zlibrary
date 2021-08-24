@@ -30,6 +30,7 @@
         <activity android:name=".ui.activitys.PictureActivity" />
         <activity android:name=".ui.activitys.ZxPassWordViewActivity" />
         <activity android:name=".ui.activitys.LRViewActivity" />
+        <activity android:name=".ui.activitys.TimeSelectActivity" />
     </application>
 
 </manifest>

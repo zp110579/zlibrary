@@ -176,37 +176,37 @@ public class MyTimeDialog {
     }
 
     public void show() {
-        TimePickerBuilder pvTime = new TimePickerBuilder(UIUtils.getCurActivity(), mOnTimeSelectListener).setRangDate(mStartCalendar, mEndCalendar);
+        TimePickerBuilder tempTimePickerBuiler = new TimePickerBuilder(UIUtils.getCurActivity(), mOnTimeSelectListener).setRangDate(mStartCalendar, mEndCalendar);
         if (mShowNumber > 1) {
-            pvTime.setItemVisibleCount(mShowNumber);
+            tempTimePickerBuiler.setItemVisibleCount(mShowNumber);
         }
         //设置默认选择的时间
         if (selectCalendar != null) {
-            pvTime.setDate(selectCalendar);
+            tempTimePickerBuiler.setDate(selectCalendar);
         } else {
-            pvTime.setDate(Calendar.getInstance());
+            tempTimePickerBuiler.setDate(Calendar.getInstance());
         }
-        pvTime.isAlphaGradient(true).isDialog(true);
-        pvTime.setType(mShowType).setTitleText(mTitle);
+        tempTimePickerBuiler.isAlphaGradient(true).isDialog(true);
+        tempTimePickerBuiler.setType(mShowType).setTitleText(mTitle);
         if (mLeftText != null) {
-            pvTime.setCancelText(mLeftText);
+            tempTimePickerBuiler.setCancelText(mLeftText);
         }
         if (mRightText != null) {
-            pvTime.setSubmitText(mRightText);
+            tempTimePickerBuiler.setSubmitText(mRightText);
         }
         if (mLeftTextColor != -1) {
-            pvTime.setCancelColor(mLeftTextColor);
+            tempTimePickerBuiler.setCancelColor(mLeftTextColor);
         }
 
         if (mRightTextColor != -1) {
-            pvTime.setSubmitColor(mRightTextColor);
+            tempTimePickerBuiler.setSubmitColor(mRightTextColor);
         }
 
         if (mFontSize != 0) {
-            pvTime.setContentTextSize(mFontSize);
+            tempTimePickerBuiler.setContentTextSize(mFontSize);
         }
-        pvTime.setLineSpacingMultiplier((float) mLineSpacingMultiplier);//当前的高度的多少倍
-        TimePickerView timePickerView = pvTime.build();
+        tempTimePickerBuiler.setLineSpacingMultiplier((float) mLineSpacingMultiplier);//当前的高度的多少倍
+        TimePickerView timePickerView = tempTimePickerBuiler.build();
 
         Dialog mDialog = timePickerView.getDialog();
         if (mDialog != null) {

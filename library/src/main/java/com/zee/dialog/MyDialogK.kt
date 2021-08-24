@@ -50,6 +50,7 @@ class MyDialogK : DialogFragment(), IDismissListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        childFragmentManager
         setStyle(STYLE_NO_TITLE, mTheme)
         val arguments = arguments
         if (arguments != null) {
@@ -309,6 +310,8 @@ class MyDialogK : DialogFragment(), IDismissListener {
             val myDialog = newInstance(0, layoutID)
             myDialog.setAdapter(dialogAdapter)
             dialogAdapter.setBindView(myDialog)
+
+
             return myDialog
         }
 
