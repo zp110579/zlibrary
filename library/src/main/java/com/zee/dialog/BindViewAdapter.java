@@ -17,7 +17,7 @@ import com.zee.log.ZLog;
 import com.zee.utils.UIUtils;
 
 public abstract class BindViewAdapter extends BindAdapter implements Parcelable {
-    private transient IDismissListener mMyDialog;
+    private transient IDismissListener iDismissListener;
     private @LayoutRes
     int mLayoutID;
 
@@ -29,11 +29,11 @@ public abstract class BindViewAdapter extends BindAdapter implements Parcelable 
     }
 
     public void setBindView(IDismissListener paMyDialog) {
-        mMyDialog = paMyDialog;
+        iDismissListener = paMyDialog;
     }
 
-    public IDismissListener getMyDialog() {
-        return mMyDialog;
+    public IDismissListener getDismissListener() {
+        return iDismissListener;
     }
 
     public int getLayoutID() {
@@ -42,7 +42,7 @@ public abstract class BindViewAdapter extends BindAdapter implements Parcelable 
 
     public void dismiss() {
         try {
-            mMyDialog.dismiss();
+            iDismissListener.dismiss();
         } catch (Exception e) {
             ZLog.e(e, true);
         }

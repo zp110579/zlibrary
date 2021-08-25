@@ -20,21 +20,21 @@ import java.lang.Exception
 import java.math.BigDecimal
 
 
-fun openActivity(intent: Intent) {
+fun openActivityEx(intent: Intent) {
     UIUtils.startActivity(intent)
 }
 
-fun openActivity(paClass: Class<*>?) {
+fun openActivityEx(paClass: Class<*>?) {
     UIUtils.startActivity(paClass)
 }
 
-fun openActivityAndFinishCurActivity(paClass: Class<*>?) {
+fun openActivityAndFinishCurActivityEx(paClass: Class<*>?) {
     val tempActivity = UIUtils.getCurActivity()
     UIUtils.startActivity(paClass)
     tempActivity.finish()
 }
 
-fun openActivityAndFinishCurActivity(intent: Intent) {
+fun openActivityAndFinishCurActivityEx(intent: Intent) {
     val tempActivity = UIUtils.getCurActivity()
     UIUtils.startActivity(intent)
     tempActivity.finish()

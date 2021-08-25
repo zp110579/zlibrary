@@ -1,4 +1,3 @@
-
 package com.zee.dialog
 
 import android.os.Bundle
@@ -310,8 +309,6 @@ class MyDialogK : DialogFragment(), IDismissListener {
             val myDialog = newInstance(0, layoutID)
             myDialog.setAdapter(dialogAdapter)
             dialogAdapter.setBindView(myDialog)
-
-
             return myDialog
         }
 

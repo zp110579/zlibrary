@@ -2,6 +2,7 @@ package com.zee.extendobject
 
 import MarginBean
 import PaddingBean
+import android.content.Intent
 import android.graphics.Color
 import android.support.annotation.ColorRes
 import android.view.View
@@ -13,9 +14,18 @@ import com.zee.utils.UIUtils
 import com.zee.utils.ViewSaveImageUtils
 import org.jetbrains.annotations.Nullable
 
-/**
- * 将View保存成本地图片，并刷新图库
- */
+
+fun View.setOnClickAndOpenActivityEx(intent: Intent) {
+    setOnClick {
+        openActivityEx(intent)
+    }
+}
+
+fun View.setOnClickAndOpenActivityEx(paClass: Class<*>) {
+    setOnClick {
+        openActivityEx(paClass)
+    }
+}
 
 /**
  * 防止快速点击运行2次
@@ -43,7 +53,6 @@ fun setGone(vararg views: View) {
     }
 }
 
-
 /**
  * 防止快速点击运行2次
  */
@@ -56,6 +65,9 @@ fun View.setOnNoDoubleClickListener(unit: () -> Unit): View {
     return this
 }
 
+/**
+ * 将View保存成本地图片，并刷新图库
+ */
 fun View.saveImage(fileName: String, result: (code: Int) -> Unit = {}): View {
     ViewSaveImageUtils.saveImg(this, fileName, result)
     return this

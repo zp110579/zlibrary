@@ -8,6 +8,13 @@ import android.support.annotation.StringRes
 import android.widget.TextView
 import com.zee.utils.UIUtils
 
+/**
+ * 清空Text
+ */
+fun TextView.clearText(any: Any?) {
+    text = ""
+}
+
 fun TextView.setTextEx(any: Any?) {
     text = any.toString()
 }
