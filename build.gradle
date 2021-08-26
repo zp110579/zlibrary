@@ -5,7 +5,7 @@ buildscript {
 
 
     ext {
-        ext.kotlin_version = '1.4.30'
+//        ext.kotlin_version = '1.4.30'
         android_support = '28.0.0'
     }
 

@@ -19,12 +19,23 @@ android {
 
         }
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation project(path: ':library')
+//    implementation 'com.qianwen:update-app:3.5.2'
+//    implementation 'com.qianwen:update-app-kotlin:1.1.0'
+    api 'com.github.zp110579:zxOk:2.0.6'
+//    implementation 'com.qianwen:okhttp-utils:3.8.0'
+
 //    api 'com.zee:imagePicker:0.0.5'
 
 }

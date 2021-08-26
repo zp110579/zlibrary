@@ -13,6 +13,7 @@ class BaseApplication : Application() {
         super.onCreate()
         ZLibrary.init(this, true)
         initSelectPic()
+
     }
 
 

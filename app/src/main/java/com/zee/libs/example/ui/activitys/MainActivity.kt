@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.KeyEvent
 import com.zee.extendobject.*
+import com.zee.http.utils.MyOkHandlerUtils
 import com.zee.libs.example.R
 
 import com.zee.utils.ZEventBusUtils
@@ -15,8 +16,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        MyOkHandlerUtils.setApplication(application)
+        tv_app_upDate.setOnClickAndOpenActivityEx(AppUpdateActivity::class.java)
         tv_time.setOnClick {
-            openActivity(TimeSelectActivity::class.java)
+            openActivityEx(TimeSelectActivity::class.java)
         }
         tv_scan.setOnClickListener {
             cameraScan {

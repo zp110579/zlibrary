@@ -1,4 +1,6 @@
 <resources>
+    <string name="zee_str_update">升级</string>
+    <string name="zee_str_ignore_version">Ignore this version</string>
     <string name="zee_str_no_permission">No camera permission</string>
 
     <string name="ZBannerView_viewPage">zv_viewPage</string>
