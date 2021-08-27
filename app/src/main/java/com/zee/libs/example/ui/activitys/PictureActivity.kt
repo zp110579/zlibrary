@@ -22,7 +22,7 @@ class PictureActivity : BaseZActivity() {
     }
 
     fun openDialg() {
-        ImagePickerManager.singleSelectImage().letsGo { imageItemArrayList ->
+        ImagePickerManager.cameraImage().letsGo { imageItemArrayList ->
             if (imageItemArrayList.isNotEmpty()) {
                 ImageCompressUtils.compressImageBigSize(imageItemArrayList[0].path, 600)
             }

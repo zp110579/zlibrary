@@ -117,6 +117,12 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
 
     //和Fragment关联
     FragmentManagerAdapter mFragmentManagerAdapter;
+    private ViewIsCanClickListener mViewIsCanClickListener = new ViewIsCanClickListener() {
+        @Override
+        public boolean isCanClick(int index,View view) {
+            return true;
+        }
+    };
 
     public ZxTabLayout(Context context) {
         this(context, null, 0);
@@ -201,6 +207,10 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
         }
 
         ta.recycle();
+    }
+
+    public void setViewIsCanClickListener(ViewIsCanClickListener listener) {
+        mViewIsCanClickListener = listener;
     }
 
     public void setFragmentManagerAdapter(FragmentManagerAdapter fragmentManagerAdapter) {
@@ -335,37 +345,39 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
             @Override
             public void onClick(View v) {
                 int position = mTabsContainer.indexOfChild(v);
-                if (position != -1) {
-                    if (mCurrentTab != position) {
-                        if (mViewPager != null) {
-                            if (mSnapOnTabClick) {
-                                mViewPager.setCurrentItem(position, false);
-                            } else {
-                                mViewPager.setCurrentItem(position);
+                if (mViewIsCanClickListener.isCanClick(position,v)) {
+                    if (position != -1) {
+                        if (mCurrentTab != position) {
+                            if (mViewPager != null) {
+                                if (mSnapOnTabClick) {
+                                    mViewPager.setCurrentItem(position, false);
+                                } else {
+                                    mViewPager.setCurrentItem(position);
+                                }
+                            }
+                            if (mListener != null) {
+                                mListener.onTabSelect(position);
+                            }
+                        } else {
+                            if (mListener != null) {
+                                mListener.onTabReselect(position);
                             }
                         }
-                        if (mListener != null) {
-                            mListener.onTabSelect(position);
-                        }
-                    } else {
-                        if (mListener != null) {
-                            mListener.onTabReselect(position);
+                    }
+                    if (mViewPager == null) {
+                        updateTabSelection(position);
+                    }
+                    if (mFragmentManagerAdapter != null) {
+                        try {
+                            mFragmentManagerAdapter.selectIndex(position);
+                            mFragmentManagerAdapter.onClick(position, v);
+                        } catch (Exception e) {
+                            ZLog.e(e);
                         }
                     }
+                    mCurrentTab = position;
+                    invalidate();
                 }
-                if (mViewPager == null) {
-                    updateTabSelection(position);
-                }
-                if (mFragmentManagerAdapter != null) {
-                    try {
-                        mFragmentManagerAdapter.selectIndex(position);
-                        mFragmentManagerAdapter.onClick(position, v);
-                    } catch (Exception e) {
-                        ZLog.e(e);
-                    }
-                }
-                mCurrentTab = position;
-                invalidate();
             }
         });
 
@@ -383,6 +395,7 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
 
         mTabsContainer.addView(tabView, position, lp_tab);
     }
+
 
     private void updateTabStyles() {
         for (int i = 0; i < mTabCount; i++) {
@@ -984,6 +997,8 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
         }
     }
 
+
+
     @Override
     protected Parcelable onSaveInstanceState() {
         Bundle bundle = new Bundle();
@@ -1016,3 +1031,4 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
         return (int) (sp * scale + 0.5f);
     }
 }
+

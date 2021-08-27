@@ -252,9 +252,9 @@ public class ImagePicker {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         takePictureIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         if (takePictureIntent.resolveActivity(activity.getPackageManager()) != null) {
-            if (Utils.existSDCard())
+            if (Utils.existSDCard()) {
                 takeImageFile = new File(Environment.getExternalStorageDirectory(), "/DCIM/camera/");
-            else takeImageFile = Environment.getDataDirectory();
+            } else takeImageFile = Environment.getDataDirectory();
             takeImageFile = createFile(takeImageFile, "IMG_", ".jpg");
             if (takeImageFile != null) {
                 // 默认情况下，即不需要指定intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);

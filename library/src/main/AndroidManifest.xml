@@ -62,6 +62,7 @@
                 android:resource="@xml/image_picker_provider_paths" />
         </provider>
 
+
     </application>
 
 

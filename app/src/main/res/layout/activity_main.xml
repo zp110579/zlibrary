@@ -9,16 +9,20 @@
     tools:context="com.zee.libs.example.ui.activitys.MainActivity">
 
     <com.zee.view.ZxTextView
+        android:id="@+id/tv_fragment"
+        style="@style/base_btn_style_gone"
+        android:text="Fragment相关"
+        android:visibility="visible" />
+
+    <com.zee.view.ZxTextView
         android:id="@+id/tv_app_upDate"
         style="@style/base_btn_style_gone"
-        android:text="APP升级"
-        android:visibility="visible" />
+        android:text="APP升级" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_time"
         style="@style/base_btn_style_gone"
-        android:text="时间选择器"
-        android:visibility="visible" />
+        android:text="时间选择器" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_scan"
@@ -28,6 +32,7 @@
     <com.zee.view.ZxTextView
         android:id="@+id/tv_picture"
         style="@style/base_btn_style_gone"
+        android:visibility="visible"
         android:text="图片处理" />
 
     <com.zee.view.ZxTextView

@@ -16,7 +16,8 @@ import com.zee.utils.ZEventBusUtils;
 
 public abstract class BaseZFragment extends Fragment implements IBase {
     private Boolean mIsVisibleToUser = false;
-
+    private static long mDefaultSleepTime = 1000l;
+    private long lastClickTime = 0;
 
     @Nullable
     @Override
@@ -38,7 +39,7 @@ public abstract class BaseZFragment extends Fragment implements IBase {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         mIsVisibleToUser = !hidden;
-        onShowToUser(!hidden);
+        onToUser(!hidden);
     }
 
     @Override
@@ -47,10 +48,9 @@ public abstract class BaseZFragment extends Fragment implements IBase {
 
         if (mIsVisibleToUser != isVisibleToUser) {
             mIsVisibleToUser = isVisibleToUser;
-            onShowToUser(isVisibleToUser);
+            onToUser(isVisibleToUser);
         }
     }
-
 
     public void onShowToUser(boolean isVisibleToUser) {
     }
@@ -59,7 +59,7 @@ public abstract class BaseZFragment extends Fragment implements IBase {
     public void onResume() {
         super.onResume();
         if (mIsVisibleToUser) {
-            onShowToUser(true);
+            onToUser(true);
         }
     }
 
@@ -67,17 +67,16 @@ public abstract class BaseZFragment extends Fragment implements IBase {
     public void onPause() {
         super.onPause();
         if (mIsVisibleToUser) {
-            onShowToUser(false);
+            onToUser(false);
         }
     }
 
-    public void startActivity(Class<?> paClass) {
-        Intent loIntent = new Intent(getActivity(), paClass);
-        startActivity(loIntent);
-    }
-
-    public void startActivity(Intent paIntent) {
-        startActivity(paIntent);
+    private void onToUser(boolean isVisibleToUser) {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastClickTime > mDefaultSleepTime) {
+            onShowToUser(isVisibleToUser);
+            lastClickTime = currentTime;
+        }
     }
 
     @Override

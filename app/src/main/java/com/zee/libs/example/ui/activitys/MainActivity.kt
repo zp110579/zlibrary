@@ -16,7 +16,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        MyOkHandlerUtils.setApplication(application)
+
+        tv_fragment.setOnClickAndOpenActivityEx(FragmentActivity::class.java)
         tv_app_upDate.setOnClickAndOpenActivityEx(AppUpdateActivity::class.java)
         tv_time.setOnClick {
             openActivityEx(TimeSelectActivity::class.java)
@@ -60,9 +61,7 @@ class MainActivity : AppCompatActivity() {
         tv_bubble.setOnClickListener {
             startActivityEx(BubbleSeekBarActivity::class.java)
         }
-
     }
-
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
