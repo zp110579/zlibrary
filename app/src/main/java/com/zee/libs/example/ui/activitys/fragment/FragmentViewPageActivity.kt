@@ -1,5 +1,6 @@
 package com.zee.libs.example.ui.activitys.fragment
 
+import android.view.View
 import com.zee.activity.BaseZActivity
 import com.zee.adapter.CustomViewPageAdapterManager
 import com.zee.extendobject.showToastShort
@@ -18,13 +19,15 @@ class FragmentViewPageActivity : BaseZActivity() {
         viewPage.adapter = CustomViewPageAdapterManager(this).addFragment(FragmentA(), FragmentB()).fragmentStatePagerAdapter
         tab_title.setViewPager(viewPage)
         tab_title.setViewIsCanClickListener(object : ViewIsCanClickListener {
-            override fun isCanClick(index: Int): Boolean {
+            override fun isCanClick(index: Int, view: View?): Boolean {
+
                 if (index == 1) {
                     showToastShort("不能点击")
                     return false
                 }
                 return true
             }
+
         })
     }
 }

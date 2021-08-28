@@ -11,7 +11,7 @@ import com.zee.utils.UIUtils
 /**
  * 清空Text
  */
-fun TextView.clearText(any: Any?) {
+fun TextView.clearText() {
     text = ""
 }
 
