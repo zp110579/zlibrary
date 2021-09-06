@@ -46,6 +46,8 @@
         <activity android:name=".ui.activitys.recyclerview.FlexBoxRecyclerViewActivity" />
         <activity android:name=".ui.activitys.ZxRecyclerViewActivity" />
         <activity android:name=".ui.activitys.ZxTabLayoutActivity" />
+        <activity android:name=".ui.activitys.ZxSolidTabLayoutActivity" />
+        <activity android:name=".ui.activitys.ZxSolidItemTagLayoutActivity" />
 
     </application>
 

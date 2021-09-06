@@ -489,7 +489,7 @@
         <attr name="zv_indicator_margin_top" />
         <attr name="zv_indicator_margin_right" />
         <attr name="zv_indicator_margin_bottom" />
-        <attr name="zv_radius" />
+        <attr name="zv_indicator_corner_radius" />
         <attr name="zv_indicator_animal" />
         <attr name="zv_indicator_anim_duration" />
         <attr name="zv_indicator_bounce_enable" />
@@ -504,7 +504,7 @@
         <attr name="zv_borderColor" />
         <attr name="zv_borderWidth" />
         <attr name="zv_title_text" />
-
+        <attr name="zv_gap" />
     </declare-styleable>
 
     <declare-styleable name="ZxStrokeTextView">

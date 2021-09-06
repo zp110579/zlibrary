@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zee.view.ZxLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.zee.view.ZxSolidItemTabLayout
+        android:id="@+id/id_fragment_zxSolidItem_layout"
+        style="@style/zxSolidLayoutStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        app:zv_radius="20dp"
+        app:zv_tab_padding="20dp"
+        app:zv_title_text="身高|体重体重体重|头围|臂章" />
+
+
+    <com.zee.view.ZxSolidItemTabLayout
+        android:id="@+id/tabLayoutB"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        app:zv_gap="20dp"
+        app:zv_indicator_color="#ff0000"
+        app:zv_indicator_corner_radius="2dp"
+        app:zv_indicator_height="40dp"
+        app:zv_radius="25dp"
+
+        app:zv_textColor="#ff0000"
+        app:zv_textSelectColor="#00ff00"
+        app:zv_textSize="20dp"
+        app:zv_title_text="身高|体重体重体重|头围|臂章" />
+
+    <com.zee.view.ZxSolidItemTabLayout
+        android:id="@+id/id_zxSolidItem_b"
+        style="@style/zxSolidLayoutStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="@color/color_333"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        app:zv_gap="50dp"
+        app:zv_indicator_height="40dp"
+        app:zv_indicator_margin_top="5dp"
+        app:zv_radiusHalfHeight="true"
+        app:zv_tab_width="100dp"
+
+        app:zv_title_text="第一|体重体重体重" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/id_Solid_viewPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</com.zee.view.ZxLinearLayout>

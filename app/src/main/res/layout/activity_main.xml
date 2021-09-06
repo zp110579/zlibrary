@@ -4,21 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="vertical">
 
-    tools:context="com.zee.libs.example.ui.activitys.MainActivity">
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_ZxSolidItemTabLayout"
+        style="@style/base_btn_style_gone"
+        android:text="ZxSolidItemTabLayout"
+        android:visibility="visible" />
+
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_zxSolidTabLayout"
+        style="@style/base_btn_style_gone"
+        android:text="ZxSolidTabLayout"
+        android:visibility="visible" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_zxTabLayout"
         style="@style/base_btn_style_gone"
-        android:text="ZxTabLayout"
-        android:visibility="visible" />
+        android:text="ZxTabLayout" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_recyclerView"
         style="@style/base_btn_style_gone"
-        android:text="RecyclerView相关"
-        android:visibility="visible" />
+        android:text="RecyclerView相关" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_fragment"

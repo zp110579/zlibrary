@@ -6,18 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.zee.view.ZxTabLayout
+    <com.zee.view.ZxSolidTabLayout
         android:id="@+id/tabLayoutB"
         android:layout_width="match_parent"
         android:layout_height="51dp"
-        android:visibility="gone"
         app:zv_gap="20dp"
+        app:zv_radius="25dp"
+
         app:zv_indicator_color="#ff0000"
         app:zv_indicator_corner_radius="2dp"
-        app:zv_indicator_height="6dp"
         app:zv_textBold="SELECT"
         app:zv_textColor="#6D7278"
-        app:zv_textSelectColor="#f00f00"
+
+        app:zv_textSelectColor="@color/white"
         app:zv_textSize="20dp"
         app:zv_title_text="身高|体重|头围|臂章" />
 
@@ -92,9 +93,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:zv_gap="38dp"
-        app:zv_textSelectSize="20dp"
         app:zv_textColor="#000"
         app:zv_textSelectColor="#0f0"
+        app:zv_textSelectSize="20dp"
         app:zv_textSize="14dp" />
 
     <android.support.v4.view.ViewPager

@@ -48,6 +48,10 @@ public class ZxLinearLayout extends LinearLayout {
         }
     }
 
+    public LayoutBackgroundManager getBackgroundManager() {
+        return mBackgroundManager;
+    }
+
     @Override
     public void setSelected(boolean selected) {
         super.setSelected(selected);

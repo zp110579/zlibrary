@@ -36,10 +36,10 @@ import java.util.ArrayList;
 /**
  * @author Administrator
  */
-public class ZxSolidItemTabLayout extends LinearLayout implements ValueAnimator.AnimatorUpdateListener, ViewPager.OnPageChangeListener {
+public class ZxSolidItemTabLayout extends ZxLinearLayout implements ValueAnimator.AnimatorUpdateListener, ViewPager.OnPageChangeListener {
     private Context mContext;
     private String[] mTitles;
-    //    private LinearLayout mTabsContainer;
+    //private LinearLayout mTabsContainer;
     private int mCurrentTab;
     private int mLastTab;
     private int mTabCount;
@@ -97,6 +97,7 @@ public class ZxSolidItemTabLayout extends LinearLayout implements ValueAnimator.
 
     private int mHeight;
     private ViewPager mViewPager;
+    private int mGap = 0;
     /**
      * anim
      */
@@ -119,6 +120,7 @@ public class ZxSolidItemTabLayout extends LinearLayout implements ValueAnimator.
         setWillNotDraw(false);//重写onDraw方法,需要调用这个方法来清除flag
         setClipChildren(false);
         setClipToPadding(false);
+//        setFillViewport(true);//设置滚动视图是否可以伸缩其内容以填充视口
 
         this.mContext = context;
         obtainAttributes(context, attrs);
@@ -145,7 +147,7 @@ public class ZxSolidItemTabLayout extends LinearLayout implements ValueAnimator.
 
         mIndicatorColor = ta.getColor(R.styleable.ZxSolidItemTabLayout_zv_indicator_color, Color.parseColor("#222831"));
         mIndicatorHeight = ta.getDimension(R.styleable.ZxSolidItemTabLayout_zv_indicator_height, -1);
-        mIndicatorCornerRadius = ta.getDimension(R.styleable.ZxSolidItemTabLayout_zv_radius, -1);
+        mIndicatorCornerRadius = ta.getDimension(R.styleable.ZxSolidItemTabLayout_zv_indicator_corner_radius, -1);
         mIndicatorMargin = ta.getDimension(R.styleable.ZxSolidItemTabLayout_zv_indicator_margin, dp2px(0));
         mIndicatorMarginLeft = ta.getDimension(R.styleable.ZxSolidItemTabLayout_zv_indicator_margin_left, dp2px(0) + mIndicatorMargin);
         mIndicatorMarginTop = ta.getDimension(R.styleable.ZxSolidItemTabLayout_zv_indicator_margin_top, mIndicatorMargin);
@@ -173,6 +175,7 @@ public class ZxSolidItemTabLayout extends LinearLayout implements ValueAnimator.
         mBorderColor = ta.getColor(R.styleable.ZxSolidItemTabLayout_zv_borderColor, mIndicatorColor);
         mBorderWidth = ta.getDimension(R.styleable.ZxSolidItemTabLayout_zv_borderWidth, dp2px(1));
         String title = ta.getString(R.styleable.ZxSolidItemTabLayout_zv_title_text);
+        mGap = (int) ta.getDimension(R.styleable.ZxSolidItemTabLayout_zv_gap, 0);
         if (!TextUtils.isEmpty(title)) {
             mTitles = title.split("\\|");
 //            postDelayed(new Runnable() {
@@ -257,6 +260,11 @@ public class ZxSolidItemTabLayout extends LinearLayout implements ValueAnimator.
                 new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         if (mTabWidth > 0) {
             lp_tab = new LayoutParams((int) mTabWidth, LayoutParams.MATCH_PARENT);
+        }
+        if (mGap > 0) {
+            if (position < mTabCount - 1) {
+                lp_tab.setMargins(0, 0, mGap, 0);
+            }
         }
         addView(tabView, position, lp_tab);
     }

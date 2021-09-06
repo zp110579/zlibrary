@@ -270,5 +270,9 @@ public class LayoutBackgroundManager {
     public Paint getUnLinePaint() {
         return unLinePaint;
     }
+
+    public float getRadius() {
+        return radius;
+    }
 }
 

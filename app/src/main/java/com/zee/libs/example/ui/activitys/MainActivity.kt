@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        tv_ZxSolidItemTabLayout.setOnClickAndOpenActivityEx(ZxSolidItemTagLayoutActivity::class.java)
+        tv_zxSolidTabLayout.setOnClickAndOpenActivityEx(ZxSolidTabLayoutActivity::class.java)
         tv_zxTabLayout.setOnClickAndOpenActivityEx(ZxTabLayoutActivity::class.java)
         tv_recyclerView.setOnClickAndOpenActivityEx(ZxRecyclerViewActivity::class.java)
         tv_fragment.setOnClickAndOpenActivityEx(FragmentActivity::class.java)
