@@ -27,7 +27,6 @@ import java.io.File
  * APP升级
  */
 class AppUpdateActivity : BaseZActivity() {
-    val mUpdateUrl = "https://raw.githubusercontent.com/WVector/AppUpdateDemo/master/json/json.txt"
     override fun getLayoutID(): Int {
         return R.layout.activity_app_update
     }

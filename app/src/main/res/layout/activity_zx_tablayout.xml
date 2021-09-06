@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zee.view.ZxLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.zee.view.ZxTabLayout
+        android:id="@+id/tabLayoutB"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        app:zv_gap="20dp"
+        app:zv_indicator_color="#ff0000"
+        app:zv_indicator_corner_radius="2dp"
+        app:zv_indicator_height="6dp"
+        app:zv_textBold="SELECT"
+        app:zv_textColor="#6D7278"
+        app:zv_textSelectColor="#f00f00"
+        app:zv_textSize="20dp"
+        app:zv_title_text="身高|体重|头围|臂章" />
+
+    <com.zee.view.ZxTabLayout
+        android:id="@+id/tabLayoutC"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:layout_marginTop="20dp"
+        app:zv_gap="20dp"
+
+        app:zv_indicator_color="#ff0000"
+        app:zv_indicator_corner_radius="2dp"
+        app:zv_indicator_height="6dp"
+        app:zv_textColor="#6D7278"
+        app:zv_textSelectColor="#f00f00"
+        app:zv_textSize="20dp"
+        app:zv_title_text="身高|体重|头围|臂章" />
+
+
+        <com.zee.view.ZxTabLayout
+            android:id="@+id/zv_tab_Layout_a"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:zv_textColor="#f00"
+            app:zv_textSelectColor="#0ff"
+            app:zv_textSize="20dp" />
+
+        <com.zee.view.ZxTabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:visibility="gone"
+            app:zv_indicator_color="#05C2CB"
+            app:zv_indicator_corner_radius="2dp"
+            app:zv_indicator_height="6dp"
+            app:zv_indicator_margin_bottom="14dp"
+            app:zv_indicator_margin_left="24dp"
+            app:zv_indicator_margin_right="24dp"
+            app:zv_tab_width="86dp"
+            app:zv_textColor="#6D7278"
+            app:zv_textSelectColor="@color/color_333"
+            app:zv_textSize="16dp"
+            app:zv_title_text="身高|体重|头围|喂养|辅食|排便|用药" />
+
+        <com.zee.view.ZxTabLayout
+            android:id="@+id/zv_tab_Layout_b"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:zv_textColor="#000"
+            app:zv_textSelectColor="#0f0"
+            app:zv_textSize="20dp"
+            app:zv_title_text="电视剧A|电视剧B|电视剧C|电视剧D" />
+
+        <com.zee.view.ZxTabLayout
+            android:id="@+id/zv_tab_Layout_c"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:zv_textColor="#000"
+            app:zv_textSelectColor="#0f0"
+            app:zv_textSize="20dp"
+            app:zv_title_text="FragmentA|FragmentB|FragmentC|FragmentD|FragmentE" />
+
+        <FrameLayout
+            android:id="@+id/fl_content_view"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <com.zee.view.ZxTabLayout
+            android:id="@+id/zv_tab_Layout_d"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:zv_textColor="#000"
+            app:zv_textSelectColor="#0f0"
+            app:zv_textSize="20dp" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPage_a"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+</com.zee.view.ZxLinearLayout>

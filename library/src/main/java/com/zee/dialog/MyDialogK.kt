@@ -13,6 +13,7 @@ import com.zee.libs.R
 import com.zee.utils.UIUtils
 import com.zee.utils.ZEventBusUtils
 import com.zee.utils.ZScreenUtils
+import java.util.*
 
 class MyDialogK : DialogFragment(), IDismissListener {
     private var mLeftAndRightMargin = 0//左右边距
@@ -26,6 +27,8 @@ class MyDialogK : DialogFragment(), IDismissListener {
 
     private var mTheme = R.style.myDialogStyle // dialog主题
     private var isFullScreen = false
+    private val sHashMap = HashMap<Any, MyDialogK>()
+    private var mShowOnlyTag: Any? = null //该tag只显示一个
 
     //只有显示在上，下2面才会有效果
     @StyleRes
@@ -202,13 +205,37 @@ class MyDialogK : DialogFragment(), IDismissListener {
         return this
     }
 
-    fun show(manager: FragmentManager) {
-        val ft = manager.beginTransaction()
-        if (this.isAdded) {
-            ft.remove(this).commit()
+    /**
+     * 该Tag的Dialog只显示一个
+     *
+     * @param onlyTag
+     * @return
+     */
+    fun showOnlyOneTag(onlyTag: Any): MyDialogK {
+        mShowOnlyTag = onlyTag
+        return this
+    }
+
+    private fun checkMyDialogTag(): Boolean {
+        mShowOnlyTag?.apply {
+            if (sHashMap.containsKey(this)) {
+                return false
+            }
+            sHashMap[this] = this@MyDialogK
         }
-        ft.add(this, System.currentTimeMillis().toString())
-        ft.commitAllowingStateLoss()
+
+        return true
+    }
+
+    fun show(manager: FragmentManager) {
+        if (checkMyDialogTag()) {
+            val ft = manager.beginTransaction()
+            if (this.isAdded) {
+                ft.remove(this).commit()
+            }
+            ft.add(this, System.currentTimeMillis().toString())
+            ft.commitAllowingStateLoss()
+        }
     }
 
     /**
@@ -218,7 +245,9 @@ class MyDialogK : DialogFragment(), IDismissListener {
      */
     @Deprecated("")
     fun showCurActivity(): MyDialogK {
-        UIUtils.showDialog(this)
+        if (checkMyDialogTag()) {
+            UIUtils.showDialog(this)
+        }
         return this
     }
 
@@ -228,7 +257,9 @@ class MyDialogK : DialogFragment(), IDismissListener {
      * @return
      */
     fun show(): MyDialogK {
-        UIUtils.showDialog(this)
+        if (checkMyDialogTag()) {
+            UIUtils.showDialog(this)
+        }
         return this
     }
 
@@ -247,6 +278,10 @@ class MyDialogK : DialogFragment(), IDismissListener {
     }
 
     override fun onDestroy() {
+        mShowOnlyTag?.apply {
+            sHashMap.remove(this)
+        }
+
         ZEventBusUtils.unregister(this)
         super.onDestroy()
         mBindViewAdapter?.onDestroy()

@@ -43,6 +43,9 @@
         <activity android:name=".ui.activitys.AppUpdateActivity" />
         <activity android:name=".ui.activitys.fragment.FragmentViewPageActivity" />
         <activity android:name=".ui.activitys.FragmentActivity" />
+        <activity android:name=".ui.activitys.recyclerview.FlexBoxRecyclerViewActivity" />
+        <activity android:name=".ui.activitys.ZxRecyclerViewActivity" />
+        <activity android:name=".ui.activitys.ZxTabLayoutActivity" />
 
     </application>
 

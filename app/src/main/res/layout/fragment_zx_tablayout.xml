@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/id_activity_zx_textView_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="ZxTabLayout和Fragment联动" />
+
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_tabLayout_title"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="ZxText"
+        android:textColor="#de6851"
+        android:textSize="20dp"
+        app:zv_backgroundPressColor="@color/colorPrimary"
+        app:zv_backgroundSelectColor="@color/colorAccent"
+        app:zv_borderColor="@color/colorAccent"
+        app:zv_borderPressColor="@color/colorPrimary"
+        app:zv_borderSelectColor="#ff0000"
+        app:zv_borderWidth="1dp"
+        app:zv_radius="10dp"
+        app:zv_textPressColor="#ffffff"
+        app:zv_textSelectColor="#000" />
+</LinearLayout>

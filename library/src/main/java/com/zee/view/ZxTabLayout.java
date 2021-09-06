@@ -105,7 +105,7 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
     private static final int TEXT_BOLD_NONE = 0;
     private static final int TEXT_BOLD_WHEN_SELECT = 1;
     private static final int TEXT_BOLD_BOTH = 2;
-    private float mTextsize;
+    private float mTextSize, mTextSelectSize;
     private int mTextSelectColor;
     private int mTextUnselectColor;
     private int mTextBold;
@@ -119,7 +119,7 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
     FragmentManagerAdapter mFragmentManagerAdapter;
     private ViewIsCanClickListener mViewIsCanClickListener = new ViewIsCanClickListener() {
         @Override
-        public boolean isCanClick(int index,View view) {
+        public boolean isCanClick(int index, View view) {
             return true;
         }
     };
@@ -180,7 +180,12 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
         mDividerWidth = ta.getDimension(R.styleable.ZxTabLayout_zv_divider_width, dp2px(0));
         mDividerPadding = ta.getDimension(R.styleable.ZxTabLayout_zv_divider_padding, dp2px(12));
 
-        mTextsize = ta.getDimension(R.styleable.ZxTabLayout_zv_textSize, sp2px(14));
+        mTextSize = ta.getDimension(R.styleable.ZxTabLayout_zv_textSize, sp2px(14));
+        if (ta.hasValue(R.styleable.ZxTabLayout_zv_textSelectSize)) {
+            mTextSelectSize = ta.getDimension(R.styleable.ZxTabLayout_zv_textSelectSize, sp2px(14));
+        } else {
+            mTextSelectSize = mTextSize;
+        }
         mTextSelectColor = ta.getColor(R.styleable.ZxTabLayout_zv_textSelectColor, Color.parseColor("#1E5FFE"));
         mIndicatorColor = ta.getColor(R.styleable.ZxTabLayout_zv_indicator_color, mIndicatorStyle == STYLE_BLOCK ? Color.parseColor("#4B6A87") : mTextSelectColor);
 
@@ -345,7 +350,7 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
             @Override
             public void onClick(View v) {
                 int position = mTabsContainer.indexOfChild(v);
-                if (mViewIsCanClickListener.isCanClick(position,v)) {
+                if (mViewIsCanClickListener.isCanClick(position, v)) {
                     if (position != -1) {
                         if (mCurrentTab != position) {
                             if (mViewPager != null) {
@@ -404,12 +409,15 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
             TextView tv_tab_title = (TextView) v.findViewById(R.id.tv_tab_title);
             if (tv_tab_title != null) {
                 tv_tab_title.setTextColor(i == mCurrentTab ? mTextSelectColor : mTextUnselectColor);
-                tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, mTextsize);
+                tv_tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, i == mCurrentTab ? mTextSelectSize : mTextSize);
                 tv_tab_title.setPadding((int) mTabPadding, 0, (int) mTabPadding, 0);
                 if (mTextAllCaps) {
                     tv_tab_title.setText(tv_tab_title.getText().toString().toUpperCase());
                 }
 
+                if (i == mCurrentTab && mTextBold == TEXT_BOLD_WHEN_SELECT) {
+                    tv_tab_title.getPaint().setFakeBoldText(true);
+                }
                 if (mTextBold == TEXT_BOLD_BOTH) {
                     tv_tab_title.getPaint().setFakeBoldText(true);
                 } else if (mTextBold == TEXT_BOLD_NONE) {
@@ -477,6 +485,8 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
 
             if (tab_title != null) {
                 tab_title.setTextColor(isSelect ? mTextSelectColor : mTextUnselectColor);
+                tab_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, isSelect ? mTextSelectSize : mTextSize);
+
                 if (mTextBold == TEXT_BOLD_WHEN_SELECT) {
                     tab_title.getPaint().setFakeBoldText(isSelect);
                 }
@@ -498,7 +508,7 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
         //for mIndicatorWidthEqualTitle
         if (mIndicatorStyle == STYLE_NO_PADDING) {
             TextView tab_title = (TextView) currentTabView.findViewById(R.id.tv_tab_title);
-            mTextPaint.setTextSize(mTextsize);
+            mTextPaint.setTextSize(mTextSize);
             float textWidth = mTextPaint.measureText(tab_title.getText().toString());
             margin = (right - left - textWidth) / 2;
         }
@@ -514,7 +524,7 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
             //for mIndicatorWidthEqualTitle
             if (mIndicatorStyle == STYLE_NO_PADDING) {
                 TextView next_tab_title = (TextView) nextTabView.findViewById(R.id.tv_tab_title);
-                mTextPaint.setTextSize(mTextsize);
+                mTextPaint.setTextSize(mTextSize);
                 float nextTextWidth = mTextPaint.measureText(next_tab_title.getText().toString());
                 float nextMargin = (nextTabRight - nextTabLeft - nextTextWidth) / 2;
                 margin = margin + mCurrentPositionOffset * (nextMargin - margin);
@@ -732,7 +742,7 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
     }
 
     public void setTextSize(float textsize) {
-        this.mTextsize = sp2px(textsize);
+        this.mTextSize = sp2px(textsize);
         updateTabStyles();
     }
 
@@ -838,7 +848,7 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
     }
 
     public float getTextsize() {
-        return mTextsize;
+        return mTextSize;
     }
 
     public int getTextSelectColor() {
@@ -932,7 +942,7 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
         ZxTextView tipView = tabView.findViewById(R.id.rtv_msg_tip);
         if (tipView != null) {
             TextView tv_tab_title = tabView.findViewById(R.id.tv_tab_title);
-            mTextPaint.setTextSize(mTextsize);
+            mTextPaint.setTextSize(mTextSize);
             float textWidth = mTextPaint.measureText(tv_tab_title.getText().toString());
             float textHeight = mTextPaint.descent() - mTextPaint.ascent();
             MarginLayoutParams lp = (MarginLayoutParams) tipView.getLayoutParams();
@@ -996,7 +1006,6 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
             return PagerAdapter.POSITION_NONE;
         }
     }
-
 
 
     @Override

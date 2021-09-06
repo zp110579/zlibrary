@@ -24,6 +24,8 @@ import com.zee.utils.ZScreenUtils;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+
 public class MyDialog extends DialogFragment implements IDismissListener {
     private static final String LEFTRIGHTMARGIN = "leftRightMargin";
     private static final String TOPBOTTOMMARGIN = "topBottomMargin";
@@ -53,9 +55,11 @@ public class MyDialog extends DialogFragment implements IDismissListener {
     private int animStyle;
     @LayoutRes
     protected int layoutId;
+    private Object mShowOnlyTag;//该tag只显示一个
 
     private BindViewAdapter mBindViewAdapter;
 
+    private static HashMap<Object, MyDialog> sHashMap = new HashMap<Object, MyDialog>();
 
     public static MyDialog init(BindViewAdapter bindViewAdapter) {
         return init(bindViewAdapter.getLayoutID(), bindViewAdapter);
@@ -255,6 +259,17 @@ public class MyDialog extends DialogFragment implements IDismissListener {
         return this;
     }
 
+    /**
+     * 该Tag的Dialog只显示一个
+     *
+     * @param onlyTag
+     * @return
+     */
+    public MyDialog showOnlyOneTag(Object onlyTag) {
+        mShowOnlyTag = onlyTag;
+        return this;
+    }
+
     public MyDialog setDimAmount(float dimAmount) {
         this.dimAmount = dimAmount;
         return this;
@@ -271,12 +286,14 @@ public class MyDialog extends DialogFragment implements IDismissListener {
     }
 
     public void show(@NotNull FragmentManager manager) {
-        FragmentTransaction ft = manager.beginTransaction();
-        if (this.isAdded()) {
-            ft.remove(this).commit();
+        if (checkMyDialogTag()) {
+            FragmentTransaction ft = manager.beginTransaction();
+            if (this.isAdded()) {
+                ft.remove(this).commit();
+            }
+            ft.add(this, String.valueOf(System.currentTimeMillis()));
+            ft.commitAllowingStateLoss();
         }
-        ft.add(this, String.valueOf(System.currentTimeMillis()));
-        ft.commitAllowingStateLoss();
     }
 
     /**
@@ -286,7 +303,9 @@ public class MyDialog extends DialogFragment implements IDismissListener {
      */
     @Deprecated
     public MyDialog showCurActivity() {
-        UIUtils.showDialog(this);
+        if (checkMyDialogTag()) {
+            UIUtils.showDialog(this);
+        }
         return this;
     }
 
@@ -296,8 +315,20 @@ public class MyDialog extends DialogFragment implements IDismissListener {
      * @return
      */
     public MyDialog show() {
-        UIUtils.showDialog(this);
+        if (checkMyDialogTag()) {
+            UIUtils.showDialog(this);
+        }
         return this;
+    }
+
+    private boolean checkMyDialogTag() {
+        if (mShowOnlyTag!=null) {
+            if (sHashMap.containsKey(mShowOnlyTag)) {
+                return false;
+            }
+            sHashMap.put(mShowOnlyTag, this);
+        }
+        return true;
     }
 
     private void check() {
@@ -312,12 +343,14 @@ public class MyDialog extends DialogFragment implements IDismissListener {
         try {
             super.dismiss();
         } catch (Exception e) {
-
         }
     }
 
     @Override
     public void onDestroy() {
+        if (mShowOnlyTag!=null) {
+            sHashMap.remove(mShowOnlyTag);
+        }
         ZEventBusUtils.unregister(this);
         super.onDestroy();
         if (mBindViewAdapter != null) {

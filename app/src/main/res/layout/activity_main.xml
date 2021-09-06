@@ -9,10 +9,21 @@
     tools:context="com.zee.libs.example.ui.activitys.MainActivity">
 
     <com.zee.view.ZxTextView
+        android:id="@+id/tv_zxTabLayout"
+        style="@style/base_btn_style_gone"
+        android:text="ZxTabLayout"
+        android:visibility="visible" />
+
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_recyclerView"
+        style="@style/base_btn_style_gone"
+        android:text="RecyclerView相关"
+        android:visibility="visible" />
+
+    <com.zee.view.ZxTextView
         android:id="@+id/tv_fragment"
         style="@style/base_btn_style_gone"
-        android:text="Fragment相关"
-        android:visibility="visible" />
+        android:text="Fragment相关" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_app_upDate"
@@ -32,7 +43,6 @@
     <com.zee.view.ZxTextView
         android:id="@+id/tv_picture"
         style="@style/base_btn_style_gone"
-        android:visibility="visible"
         android:text="图片处理" />
 
     <com.zee.view.ZxTextView

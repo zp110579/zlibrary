@@ -1,6 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="button_no_shadow_style" parent="@style/Widget.AppCompat.Button.Borderless"></style>
+    <style name="button_no_shadow_style" parent="@style/Widget.AppCompat.Button.Borderless">
+
+    </style>
 
     <declare-styleable name="decorate_view" tools:ignore="ResourceName">
         <attr name="layout_radius" format="reference|dimension" />
@@ -108,6 +110,7 @@
     <style name="SuperCheckboxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/selector_item_checked</item>
     </style>
+
     <style name="UpdateAppNumberProgressBar_Red">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">match_parent</item>

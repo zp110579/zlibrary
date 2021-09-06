@@ -16,20 +16,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        tv_zxTabLayout.setOnClickAndOpenActivityEx(ZxTabLayoutActivity::class.java)
+        tv_recyclerView.setOnClickAndOpenActivityEx(ZxRecyclerViewActivity::class.java)
         tv_fragment.setOnClickAndOpenActivityEx(FragmentActivity::class.java)
         tv_app_upDate.setOnClickAndOpenActivityEx(AppUpdateActivity::class.java)
-        tv_time.setOnClick {
-            openActivityEx(TimeSelectActivity::class.java)
-        }
+
+        tv_time.setOnClickAndOpenActivityEx(TimeSelectActivity::class.java)
+
         tv_scan.setOnClickListener {
             cameraScan {
                 showToastShort(it)
             }
         }
-        tv_picture.setOnClickListener {
-            startActivityEx(PictureActivity::class.java)
-        }
+        tv_picture.setOnClickAndOpenActivityEx(PictureActivity::class.java)
         tv_marquee.setOnClickListener {
             startActivityEx(MarqueeActivity::class.java)
         }
