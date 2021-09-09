@@ -29,6 +29,7 @@ import android.widget.TextView;
 
 import com.zee.adapter.FragmentManagerAdapter;
 import com.zee.adapter.ViewPageFragmentAdapter;
+import com.zee.bean.ITitle;
 import com.zee.libs.R;
 import com.zee.listener.OnTabSelectListener;
 import com.zee.log.ZLog;
@@ -37,6 +38,7 @@ import com.zee.utils.ZListUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPageChangeListener {
     private Context mContext;
@@ -242,54 +244,26 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
         notifyDataSetChanged();
     }
 
-
-    /**
-     * 关联ViewPager,用于不想在ViewPager适配器中设置titles数据的情况
-     */
-    public void setViewPager(ViewPager vp, String[] titles) {
-        if (vp == null || vp.getAdapter() == null) {
-            throw new IllegalArgumentException("ViewPager or ViewPager adapter can not be NULL !");
-        }
-
-        if (titles == null || titles.length == 0) {
-            throw new IllegalArgumentException("Titles can not be EMPTY !");
-        }
-
-        if (titles.length != vp.getAdapter().getCount()) {
-            throw new IllegalStateException("Titles length must be the same as the page count !");
-        }
-        mTitles.clear();
-        this.mViewPager = vp;
-        Collections.addAll(mTitles, titles);
-
-        this.mViewPager.removeOnPageChangeListener(this);
-        this.mViewPager.addOnPageChangeListener(this);
-        notifyDataSetChanged();
-    }
-
-    /**
-     * 关联ViewPager,用于连适配器都不想自己实例化的情况
-     */
-    public void setViewPager(ViewPager vp, String[] titles, FragmentActivity fa, ArrayList<Fragment> fragments) {
-        if (vp == null) {
-            throw new IllegalArgumentException("ViewPager can not be NULL !");
-        }
-
-        if (titles == null || titles.length == 0) {
-            throw new IllegalArgumentException("Titles can not be EMPTY !");
-        }
-        mTitles.clear();
-        this.mViewPager = vp;
-        this.mViewPager.setAdapter(new InnerPagerAdapter(fa.getSupportFragmentManager(), fragments, titles));
-
-        this.mViewPager.removeOnPageChangeListener(this);
-        this.mViewPager.addOnPageChangeListener(this);
-        notifyDataSetChanged();
+    public void setViewPager(ViewPager vp, List<ITitle> titles) {
+        setViewPager(vp);
+        setTitles(titles);
     }
 
     public void setTitles(String[] titles, OnTabSelectListener listener) {
         Collections.addAll(mTitles, titles);
         this.mListener = listener;
+        notifyDataSetChanged();
+    }
+
+    public void setTitles(List<? extends ITitle> titles) {
+        if (titles == null || titles.size() == 0) {
+            throw new IllegalArgumentException("Titles can not be EMPTY !");
+        }
+
+        mTitles.clear();
+        for (ITitle iTitle : titles) {
+            mTitles.add(iTitle.getTitle());
+        }
         notifyDataSetChanged();
     }
 

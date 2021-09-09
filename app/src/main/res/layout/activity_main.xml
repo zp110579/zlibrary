@@ -9,14 +9,12 @@
     <com.zee.view.ZxTextView
         android:id="@+id/tv_ZxSolidItemTabLayout"
         style="@style/base_btn_style_gone"
-        android:text="ZxSolidItemTabLayout"
-        android:visibility="visible" />
+        android:text="ZxSolidItemTabLayout" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_zxSolidTabLayout"
         style="@style/base_btn_style_gone"
-        android:text="ZxSolidTabLayout"
-        android:visibility="visible" />
+        android:text="ZxSolidTabLayout" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_zxTabLayout"
@@ -51,6 +49,7 @@
     <com.zee.view.ZxTextView
         android:id="@+id/tv_picture"
         style="@style/base_btn_style_gone"
+        android:visibility="visible"
         android:text="图片处理" />
 
     <com.zee.view.ZxTextView

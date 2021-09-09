@@ -120,6 +120,7 @@ public class XRecyclerView extends RecyclerView implements IRecyclerView {
      * 包括刷新结束，加载更多结束
      */
     public void loadFinish() {
+
         mRefreshAndLoadMoreManager.loadFinish();
         noDataShowNoDataView();//检测是不是没有数据。
     }

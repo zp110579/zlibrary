@@ -8,9 +8,9 @@ import android.content.Intent
 import android.graphics.Color
 import android.support.annotation.ColorRes
 import android.support.annotation.StringRes
-import android.view.View
 import com.zee.libs.R
 import com.zee.listener.OnOpenActivityResultListener
+import com.zee.listener.OnPermissionListener
 import com.zee.route.ZRouter
 import com.zee.scan.zxing.android.CaptureActivity
 import com.zee.utils.SuperZPerMissionUtils
@@ -19,6 +19,18 @@ import com.zee.utils.ZStatusBarUtils
 import java.lang.Exception
 import java.math.BigDecimal
 
+
+fun requestPermissions(permission: String, result: OnPermissionListener) {
+    SuperZPerMissionUtils.getInstance().add(Manifest.permission.CAMERA).requestPermissions(result)
+}
+
+fun requestPermissions(permission: String, result: () -> Unit) {
+    SuperZPerMissionUtils.getInstance().add(Manifest.permission.CAMERA).requestPermissions { deniedPermissions, _ ->
+        if (deniedPermissions.isEmpty()) {
+            result.invoke()
+        }
+    }
+}
 
 fun openActivityEx(intent: Intent) {
     UIUtils.startActivity(intent)
@@ -78,6 +90,10 @@ fun getColor(@ColorRes color: Int): Int {
 
 fun getString(@StringRes resId: Int): String {
     return UIUtils.getString(resId)
+}
+
+fun getString(@StringRes resId: Int, vararg formatArgs: Any): String {
+    return UIUtils.getString(resId, formatArgs)
 }
 
 fun setLightMode() {

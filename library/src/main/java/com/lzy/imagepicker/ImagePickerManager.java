@@ -1,9 +1,15 @@
 package com.lzy.imagepicker;
 
+import android.Manifest;
+
 import com.lzy.imagepicker.bean.CameraPickerImageSelectManager;
 import com.lzy.imagepicker.bean.ManyImageSelectManager;
 import com.lzy.imagepicker.bean.SingleImageSelectManager;
 import com.lzy.imagepicker.loader.ImageLoader;
+import com.zee.listener.OnPermissionListener;
+import com.zee.utils.SuperZPerMissionUtils;
+
+import java.util.List;
 
 public class ImagePickerManager {
 
@@ -33,7 +39,6 @@ public class ImagePickerManager {
     public static CameraPickerImageSelectManager cameraImage() {
         return new CameraPickerImageSelectManager();
     }
-
 
     public static void setImageLoader(ImageLoader imageLoader) {
         ImagePicker imagePicker = ImagePicker.getInstance();

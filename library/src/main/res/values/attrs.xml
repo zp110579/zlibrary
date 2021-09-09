@@ -209,7 +209,10 @@
         <attr name="zv_textSize" />
         <attr name="zv_textColor" />
         <attr name="zv_textStyle" />
-
+        <attr name="android:drawableLeft" />
+        <attr name="zv_drawablePadding_left" format="dimension" />
+        <attr name="zv_drawablePadding_right" format="dimension" />
+        <attr name="android:drawableRight" />
         <attr name="zv_rightText" />
         <attr name="zv_rightTextSize" />
         <attr name="zv_rightTextColor" />

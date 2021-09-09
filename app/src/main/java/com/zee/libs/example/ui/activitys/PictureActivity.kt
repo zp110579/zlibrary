@@ -1,9 +1,16 @@
 package com.zee.libs.example.ui.activitys
 
+import android.Manifest
+import com.bumptech.glide.Glide
 import com.lzy.imagepicker.ImagePickerManager
 import com.zee.activity.BaseZActivity
+import com.zee.extendobject.cameraScan
+import com.zee.extendobject.requestPermissions
 import com.zee.libs.example.R
+import com.zee.listener.OnPermissionListener
 import com.zee.utils.ImageCompressUtils
+import com.zee.utils.SuperZPerMissionUtils
+import com.zee.utils.ZScreenUtils
 import kotlinx.android.synthetic.main.activity_picture.*
 
 /**
@@ -22,9 +29,14 @@ class PictureActivity : BaseZActivity() {
     }
 
     fun openDialg() {
-        ImagePickerManager.cameraImage().letsGo { imageItemArrayList ->
-            if (imageItemArrayList.isNotEmpty()) {
-                ImageCompressUtils.compressImageBigSize(imageItemArrayList[0].path, 600)
+
+        SuperZPerMissionUtils.getInstance().add(Manifest.permission.CAMERA).requestPermissions { deniedPermissions, permissionExplain ->
+
+            ImagePickerManager.singleSelectImage().setRectangleEditSize(ZScreenUtils.getScreenWidth(), ZScreenUtils.getScreenWidth()).letsGo { imageItemArrayList ->
+                if (imageItemArrayList.isNotEmpty()) {
+                    Glide.with(imageView).load(imageItemArrayList[0].path).into(imageView)
+                    ImageCompressUtils.compressImageBigSize(imageItemArrayList[0].path, 600)
+                }
             }
         }
     }

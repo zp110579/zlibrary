@@ -22,9 +22,9 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.zee.bean.ITitle;
 import com.zee.libs.R;
 import com.zee.listener.OnTabSelectListener;
 import com.zee.manager.FragmentChangeManager;
@@ -178,12 +178,6 @@ public class ZxSolidItemTabLayout extends ZxLinearLayout implements ValueAnimato
         mGap = (int) ta.getDimension(R.styleable.ZxSolidItemTabLayout_zv_gap, 0);
         if (!TextUtils.isEmpty(title)) {
             mTitles = title.split("\\|");
-//            postDelayed(new Runnable() {
-//                @Override
-//                public void run() {
-//                    notifyDataSetChanged();
-//                }
-//            }, 200);
         }
 
         ta.recycle();
@@ -198,6 +192,21 @@ public class ZxSolidItemTabLayout extends ZxLinearLayout implements ValueAnimato
 
         notifyDataSetChanged();
     }
+
+    public void setTitles(ArrayList<? extends ITitle> titles) {
+        if (titles != null && titles.size() != 0) {
+            mTitles = new String[titles.size()];
+            for (int i = 0; i < titles.size(); i++) {
+                mTitles[i] = titles.get(i).getTitle();
+            }
+
+            notifyDataSetChanged();
+        } else {
+            throw new IllegalArgumentException("Titles can not be NULL or EMPTY !");
+        }
+
+    }
+
 
     /**
      * 关联数据支持同时切换fragments

@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                 showToastShort(it)
             }
         }
-        tv_picture.setOnClickAndOpenActivityEx(PictureActivity::class.java)
+        tv_picture.setOnClickAndOpenActivityEx(PictureActivity::class.java) //选择图片
         tv_marquee.setOnClickListener {
             startActivityEx(MarqueeActivity::class.java)
         }

@@ -3,6 +3,7 @@ package com.zee.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.StringRes;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -12,6 +13,9 @@ import android.widget.TextView;
 import com.zee.libs.R;
 
 public class LRTextView extends ZxRelativeLayout {
+    private Drawable mLeftDrawable;
+    private Drawable mRightDrawable;
+
     private TextView mTextView;
 
     private TextView mRightTextView;
@@ -36,6 +40,11 @@ public class LRTextView extends ZxRelativeLayout {
         String text = ta.getString(R.styleable.LRTextView_zv_text);
 
         int textStyle = ta.getInt(R.styleable.LRTextView_zv_textStyle, 0);
+        mLeftDrawable = ta.getDrawable(R.styleable.LRTextView_android_drawableLeft);
+        mRightDrawable = ta.getDrawable(R.styleable.LRTextView_android_drawableRight);
+        int leftDrawablePadding = ta.getDimensionPixelSize(R.styleable.LRTextView_zv_drawablePadding_left, 0);
+        int rightDrawablePadding = ta.getDimensionPixelSize(R.styleable.LRTextView_zv_drawablePadding_right, 0);
+
         if (textStyle > 0) {
             if (textStyle == 1) {
                 mTextView.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
@@ -87,8 +96,17 @@ public class LRTextView extends ZxRelativeLayout {
         mTextView.setLayoutParams(textParams);
         rightTextParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         mRightTextView.setLayoutParams(rightTextParams);
+        if (mLeftDrawable != null) {
+            mTextView.setCompoundDrawablesWithIntrinsicBounds(mLeftDrawable, null, null, null);
+        }
+        if (mRightDrawable != null) {
+            mRightTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, mRightDrawable, null);
+        }
+        mTextView.setCompoundDrawablePadding(leftDrawablePadding);
+        mRightTextView.setCompoundDrawablePadding(rightDrawablePadding);
         addView(mTextView);
         addView(mRightTextView);
+        ta.recycle();
     }
 
     public TextView setText(String text) {

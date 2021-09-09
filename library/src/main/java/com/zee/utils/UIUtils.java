@@ -46,6 +46,10 @@ public final class UIUtils {
         return getCurActivity().getString(stringId);
     }
 
+    public static String getString(@StringRes int stringId,Object... formatArgs) {
+        return getCurActivity().getString(stringId,formatArgs);
+    }
+
     public static int getDimens(@DimenRes int dimensId) {
         return getResources().getDimensionPixelSize(dimensId);
     }

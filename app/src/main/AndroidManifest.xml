@@ -49,6 +49,16 @@
         <activity android:name=".ui.activitys.ZxSolidTabLayoutActivity" />
         <activity android:name=".ui.activitys.ZxSolidItemTagLayoutActivity" />
 
+        <provider
+            android:name="com.lzy.imagepicker.ImagePickerProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/image_picker_provider_paths" />
+        </provider>
+
     </application>
 
 </manifest>

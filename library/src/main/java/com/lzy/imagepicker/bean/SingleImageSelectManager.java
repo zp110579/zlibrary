@@ -3,6 +3,8 @@ package com.lzy.imagepicker.bean;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.ui.ImagePickerFragment;
 import com.lzy.imagepicker.view.CropImageView;
+import com.zee.utils.UIUtils;
+import com.zee.utils.ZScreenUtils;
 
 /**
  * 单个图片的选择
@@ -36,6 +38,18 @@ public class SingleImageSelectManager {
      *
      * @return
      */
+    public SingleImageSelectManager setSquareEdit() {
+        imagePicker.setFocusSize(ZScreenUtils.getScreenWidth(), ZScreenUtils.getScreenWidth());   //裁剪框的宽度。单位像素（圆形自动取宽高最小值）
+        imagePicker.setCrop(true);//设置选择后可以编辑
+        imagePicker.setSaveRectangle(true); //是否按矩形区域保存
+        return this;
+    }
+
+    /**
+     * 设置矩形编辑
+     *
+     * @return
+     */
     public SingleImageSelectManager setRectangleEditSize(int width, int height) {
         imagePicker.setFocusSize(width, height);   //裁剪框的宽度。单位像素（圆形自动取宽高最小值）
         imagePicker.setCrop(true);//设置选择后可以编辑
@@ -59,6 +73,6 @@ public class SingleImageSelectManager {
 
     public void letsGo(OnImagePickerListener onImagePickerListener) {
         ImagePickerFragment imagePickerFragment = ImagePickerFragment.newInstant(false);
-        imagePickerFragment.prepareRequest( onImagePickerListener);
+        imagePickerFragment.prepareRequest(onImagePickerListener);
     }
 }

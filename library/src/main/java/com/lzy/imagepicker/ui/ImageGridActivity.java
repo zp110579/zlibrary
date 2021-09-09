@@ -23,6 +23,7 @@ import com.lzy.imagepicker.ImageDataSource;
 import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.adapter.ImageRecyclerAdapter;
 import com.lzy.imagepicker.bean.ImageFolder;
+import com.lzy.imagepicker.util.ImageDialogManager;
 import com.zee.libs.R;
 import com.lzy.imagepicker.adapter.ImageFolderAdapter;
 import com.lzy.imagepicker.bean.ImageItem;
@@ -69,6 +70,7 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
     private boolean directPhoto = false; // 默认不是直接调取相机
     private RecyclerView mRecyclerView;
     private ImageRecyclerAdapter mRecyclerAdapter;
+    private int lastSelected=0;//当前选择相册的位置
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -184,6 +186,8 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
             if (mFolderPopupWindow.isShowing()) {
                 mFolderPopupWindow.dismiss();
             } else {
+//                new ImageDialogManager().showDial0g(lastSelected,mImageFolders);
+
                 mFolderPopupWindow.showAtLocation(mFooterBar, Gravity.NO_GRAVITY, 0, 0);
                 //默认选择当前选择的上一个，当目录很多时，直接定位到已选中的条目
                 int index = mImageFolderAdapter.getSelectIndex();
@@ -321,6 +325,8 @@ public class ImageGridActivity extends ImageBaseActivity implements ImageDataSou
                 } else {
                     //说明是从裁剪页面过来的数据，直接返回就可以
                     setResult(ImagePicker.RESULT_CODE_ITEMS, data);
+                    ZEventBusUtils.post(imagePicker.getSelectedImages(), "imageSelect_picker_list");
+
                 }
                 finish();
             }

@@ -17,21 +17,14 @@
 
     <com.zee.view.LRTextView
         android:id="@+id/tv_custom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:gravity="center"
-        app:zv_borderColor="@color/color_60"
-        app:zv_borderWidth="2dp"
-        app:zv_gap="12dp"
-        app:zv_radius="5dp"
         app:zv_rightText="右边"
         app:zv_rightTextColor="@color/color_60"
-        app:zv_rightTextStyle="italic"
-        app:zv_text="左边"
-        app:zv_textSize="20dp"
-        app:zv_textStyle="bold">
+        app:zv_text="左边">
 
     </com.zee.view.LRTextView>
 

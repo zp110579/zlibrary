@@ -42,6 +42,10 @@ public abstract class BaseRVAdapter<BT> extends RecyclerView.Adapter<RecyclerVie
     public void setSelectItem(int selectItemIndex) {
         this.mSelectItemIndex = selectItemIndex;
     }
+    public void setSelectItemAndNotifyDataSetChanged(int selectItemIndex) {
+        this.mSelectItemIndex = selectItemIndex;
+        notifyDataSetChanged();
+    }
 
     public int getSelectItemIndex() {
         return mSelectItemIndex;
