@@ -2,7 +2,6 @@ package com.zee.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -90,8 +89,8 @@ public class ZxBannerView extends RelativeLayout {
 
         View view = LayoutInflater.from(getContext()).inflate(layoutRes, this, true);
         if (layoutRes != R.layout.zv_003layout_cusmton_banner_view) {
-            mViewPager = (ViewPager) view.findViewWithTag(getResources().getString(R.string.ZBannerView_viewPage));
-            mIndicatorsLayout = view.findViewWithTag(getResources().getString(R.string.ZBannerView_indicator));
+            mViewPager = (ViewPager) view.findViewWithTag(getResources().getString(R.string.zee_str_viewPage));
+            mIndicatorsLayout = view.findViewWithTag(getResources().getString(R.string.zee_str_bannerView_indicator));
         } else {
             mViewPager = (ViewPager) view.findViewById(R.id.banner_viewPage);
             mIndicatorsLayout = view.findViewById(R.id.banner_dot);

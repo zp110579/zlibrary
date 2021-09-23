@@ -9,12 +9,19 @@
     tools:ignore="MissingDefaultResource">
 
     <com.zee.view.ZxTextView
+        android:id="@+id/tv_single"
+        style="@style/base_btn_style_gone"
+        android:text="单图选择"
+        android:visibility="visible" />
+
+    <com.zee.view.ZxTextView
         android:id="@+id/tv_zip"
         style="@style/base_btn_style_gone"
-        android:text="压缩"
+        android:text="多图选择"
         android:visibility="visible" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 </LinearLayout>

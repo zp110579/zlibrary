@@ -48,6 +48,9 @@
         <activity android:name=".ui.activitys.ZxTabLayoutActivity" />
         <activity android:name=".ui.activitys.ZxSolidTabLayoutActivity" />
         <activity android:name=".ui.activitys.ZxSolidItemTagLayoutActivity" />
+        <activity android:name=".ui.activitys.MyDateViewActivity" />
+        <activity android:name=".ui.activitys.ZxFoldTextViewActivity" />
+        <activity android:name=".ui.activitys.SpanUtilsActivity" />
 
         <provider
             android:name="com.lzy.imagepicker.ImagePickerProvider"

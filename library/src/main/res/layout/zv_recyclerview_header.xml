@@ -22,6 +22,6 @@
         android:layout_height="50dp"
         android:gravity="center|left"
         android:minWidth="70dip"
-        android:text="@string/zv_recyclerview_refreshing_hint_pull_down" />
+        android:text="@string/zee_str_recyclerview_refreshing_hint_pull_down" />
 
 </LinearLayout>

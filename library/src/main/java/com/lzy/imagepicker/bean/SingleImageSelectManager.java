@@ -38,7 +38,7 @@ public class SingleImageSelectManager {
      *
      * @return
      */
-    public SingleImageSelectManager setSquareEdit() {
+    public SingleImageSelectManager setRectangleEdit() {
         imagePicker.setFocusSize(ZScreenUtils.getScreenWidth(), ZScreenUtils.getScreenWidth());   //裁剪框的宽度。单位像素（圆形自动取宽高最小值）
         imagePicker.setCrop(true);//设置选择后可以编辑
         imagePicker.setSaveRectangle(true); //是否按矩形区域保存

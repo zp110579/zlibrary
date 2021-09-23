@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
+import com.lzy.imagepicker.ImagePicker;
 import com.lzy.imagepicker.bean.ImageItem;
 import com.lzy.imagepicker.bean.OnImagePickerListener;
 import com.zee.utils.UIUtils;
@@ -54,8 +55,9 @@ public class ImagePickerFragment extends Fragment {
 
 
     @SubscribeMainThread(tag = "imageSelect_picker_list")
-    public void onActivityResult(ArrayList<ImageItem> imageItemArrayList) {
+    public void onActivityResult(int type) {
         if (mOnImagePickerListener != null) {
+            ArrayList<ImageItem> imageItemArrayList=ImagePicker.getInstance().getSelectedImages();
             if (ZListUtils.isNoEmpty(imageItemArrayList)) {
                 mOnImagePickerListener.onImagePickerResult(imageItemArrayList);
             } else {

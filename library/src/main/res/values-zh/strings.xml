@@ -1,18 +1,18 @@
 <resources>
     <string name="zee_str_update">升级</string>
     <string name="zee_str_ignore_version">忽略此版本</string>
-    <string name="zee_str_no_permission">没有相机权限</string>
-    <string name="ZBannerView_viewPage">zv_viewPage</string>
-    <string name="ZBannerView_indicator">zv_indicator</string>
-    <string name="zv_recyclerview_refreshing_hint_pull_down">下拉刷新</string>
-    <string name="zv_recyclerview_hint_release_hand">释放立即刷新</string>
-    <string name="zv_recycelrview_loading_more">正在加载...</string>
-    <string name="nomore_loading">没有了</string>
-    <string name="zv_recyclerview_refreshing_start">正在刷新...</string>
-    <string name="zv_recycelrview_refresh_end">刷新完成</string>
-    <string name="zv_recyclerview_loading_end">加载完成</string>
-    <string name="listview_header_last_time">上次更新时间：</string>
-    <string name="zx_recyclerview_loading">加载中...</string>
+    <string name="zee_str_permission_no_camera">没有相机权限</string>
+    <string name="zee_str_viewPage">zv_viewPage</string>
+    <string name="zee_str_bannerView_indicator">zv_indicator</string>
+    <string name="zee_str_recyclerview_refreshing_hint_pull_down">下拉刷新</string>
+    <string name="zee_str_recyclerview_hint_release_hand">释放立即刷新</string>
+    <string name="zee_str_recyclerView_loading_more">正在加载...</string>
+    <string name="zee_str_noMore_loading">没有了</string>
+    <string name="zee_str_recyclerview_refreshing_start">正在刷新...</string>
+    <string name="zee_str_recyclerView_refresh_end">刷新完成</string>
+    <string name="zee_str_recyclerView_loading_end">加载完成</string>
+    <string name="zee_str_listView_header_last_time">上次更新时间：</string>
+    <string name="zee_str_recyclerview_loading">加载中...</string>
     <string name="zx_recyclerView_no_more">没有数据了</string>
     <string name="zx_recyclerview_no_data">暂无数据</string>
 

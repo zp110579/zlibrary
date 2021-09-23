@@ -20,6 +20,7 @@ import com.lzy.imagepicker.loader.ImageLoader;
 import com.lzy.imagepicker.util.ProviderUtil;
 import com.lzy.imagepicker.util.Utils;
 import com.lzy.imagepicker.view.CropImageView;
+import com.zee.utils.UIUtils;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -248,7 +249,8 @@ public class ImagePicker {
     /**
      * 拍照的方法
      */
-    public void takePicture(Activity activity, int requestCode) {
+    public void takePicture( int requestCode) {
+        Activity activity=UIUtils.getCurActivity();
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         takePictureIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         if (takePictureIntent.resolveActivity(activity.getPackageManager()) != null) {
@@ -300,7 +302,8 @@ public class ImagePicker {
     /**
      * 扫描图片
      */
-    public static void galleryAddPic(Context context, File file) {
+    public static void galleryAddPic( File file) {
+        Context context=UIUtils.getCurActivity();
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         Uri contentUri = Uri.fromFile(file);
         mediaScanIntent.setData(contentUri);

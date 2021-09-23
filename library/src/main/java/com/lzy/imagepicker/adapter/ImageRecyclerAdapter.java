@@ -205,7 +205,7 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
                     if (!((ImageBaseActivity) mActivity).checkPermission(Manifest.permission.CAMERA)) {
                         ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.CAMERA}, ImageGridActivity.REQUEST_PERMISSION_CAMERA);
                     } else {
-                        imagePicker.takePicture(mActivity, ImagePicker.REQUEST_CODE_TAKE);
+                        imagePicker.takePicture(ImagePicker.REQUEST_CODE_TAKE);
                     }
                 }
             });

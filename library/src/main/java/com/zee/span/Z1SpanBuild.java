@@ -291,15 +291,7 @@ public class Z1SpanBuild {
             otherLineMargin = 0;
         }
         if (isClickable) {
-            builder.setSpan(new MyClickSpan(textColor, underLine) {
-                @Override
-                public void onClick(@NonNull View widget) {
-                    super.onClick(widget);
-                    if (clickListener != null) {
-                        clickListener.onClick(widget);
-                    }
-                }
-            }, start, end, flag);
+            builder.setSpan(new MyClickSpan(textColor, underLine, clickListener), start, end, flag);
             isClickable = false;
         }
         if (spanList != null) {

@@ -8,6 +8,8 @@ import android.content.Intent
 import android.graphics.Color
 import android.support.annotation.ColorRes
 import android.support.annotation.StringRes
+import com.lzy.imagepicker.ImagePickerManager
+import com.lzy.imagepicker.bean.ImageItem
 import com.zee.libs.R
 import com.zee.listener.OnOpenActivityResultListener
 import com.zee.listener.OnPermissionListener
@@ -67,7 +69,22 @@ fun copyTxtToClipboard(content: String): Boolean {
 }
 
 /**
- * 相机扫描
+ * 相机返回一个图片
+ */
+fun cameraPicture(result: (imageItem: ImageItem) -> Unit) {
+    SuperZPerMissionUtils.getInstance().add(Manifest.permission.CAMERA).requestPermissions { deniedPermissions, permissionExplain ->
+        if (deniedPermissions.isEmpty()) {
+            ImagePickerManager.manySelectImages(8).letsGo { imageItemArrayList ->
+                result.invoke(imageItemArrayList[0])
+            }
+        } else {
+            showToastShort(R.string.zee_str_permission_no_camera)
+        }
+    }
+}
+
+/**
+ * 相机扫描二维码
  */
 fun cameraScan(result: (txt: String) -> Unit) {
     SuperZPerMissionUtils.getInstance().add(Manifest.permission.CAMERA).requestPermissions { deniedPermissions, permissionExplain ->
@@ -79,7 +96,7 @@ fun cameraScan(result: (txt: String) -> Unit) {
                 }
             })
         } else {
-            showToastShort(R.string.zee_str_no_permission)
+            showToastShort(R.string.zee_str_permission_no_camera)
         }
     }
 }

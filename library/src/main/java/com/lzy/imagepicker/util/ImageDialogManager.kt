@@ -2,9 +2,13 @@ package com.lzy.imagepicker.util
 
 import com.lzy.imagepicker.adapter.SelectImageAdapter
 import com.lzy.imagepicker.bean.ImageFolder
+import com.zee.adapter.OnItemClickListener
 import com.zee.dialog.MyDialogK
 import com.zee.extendobject.eventBusPost
 import com.zee.libs.R
+import com.zee.utils.UIUtils
+import com.zee.utils.ZScreenUtils
+import com.zee.view.ZxMarqueeView
 
 class ImageDialogManager {
 
@@ -15,11 +19,13 @@ class ImageDialogManager {
             recyclerView.adapter = adapter
             adapter.setList(list)
             adapter.setSelectItemAndNotifyDataSetChanged(index)
-            adapter.setItemClickListener { bean, position ->
-                eventBusPost(bean, "select_item")
-                dismiss()
-            }
-
+            adapter.setItemClickListener(object : OnItemClickListener<ImageFolder> {
+                override fun onItemClick(bean: ImageFolder?, position: Int) {
+                    adapter.notifyItemChanged(position + 1)
+                    eventBusPost(position, "select_item")
+                    dismiss()
+                }
+            })
         }.showOnlyOneTag("ImageDialogManager_showDialog").show()
     }
 }

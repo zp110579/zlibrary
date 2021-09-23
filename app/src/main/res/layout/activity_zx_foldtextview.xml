@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zee.view.ZxRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/id_FoldTextView_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.zee.view.ZxFoldTextView
+        android:id="@+id/zv_foldTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="一直涨涨熬枯受淡看哈发送一直涨涨熬枯受淡看哈发送一直涨涨熬枯受淡看哈发送一直涨涨熬枯受淡看哈发送一直涨涨熬枯受淡看哈发送一直涨涨熬枯受淡看哈发送一直涨涨熬枯受淡看哈发送一直涨涨熬枯受淡看哈发送一直涨涨熬枯受淡看哈发送一直涨涨熬枯受淡看哈发送123"
+        app:zv_showMaxLine="3" />
+
+    <ImageView
+        android:id="@+id/id_FoldTextView_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/zv_foldTextView"
+        android:layout_alignBottom="@+id/zv_foldTextView"
+        android:rotation="90"
+        android:src="@mipmap/base_ic_arrow_down" />
+</com.zee.view.ZxRelativeLayout>

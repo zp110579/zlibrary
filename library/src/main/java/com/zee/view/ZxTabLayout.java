@@ -236,11 +236,11 @@ public class ZxTabLayout extends HorizontalScrollView implements ViewPager.OnPag
         if (vp == null || vp.getAdapter() == null) {
             throw new IllegalArgumentException("ViewPager or ViewPager adapter can not be NULL !");
         }
-
         this.mViewPager = vp;
 
         this.mViewPager.removeOnPageChangeListener(this);
         this.mViewPager.addOnPageChangeListener(this);
+        setCurrentTab(0);
         notifyDataSetChanged();
     }
 

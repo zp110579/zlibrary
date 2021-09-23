@@ -7,6 +7,23 @@
     android:orientation="vertical">
 
     <com.zee.view.ZxTextView
+        android:id="@+id/tv_span"
+        style="@style/base_btn_style_gone"
+        android:visibility="visible"
+        android:text="SpanUtils" />
+
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_zxFoldTextView"
+        style="@style/base_btn_style_gone"
+        android:text="ZxFoldTextView" />
+
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_Date"
+        style="@style/base_btn_style_gone"
+        android:text="时间组件"
+        android:visibility="visible" />
+
+    <com.zee.view.ZxTextView
         android:id="@+id/tv_ZxSolidItemTabLayout"
         style="@style/base_btn_style_gone"
         android:text="ZxSolidItemTabLayout" />
@@ -44,12 +61,12 @@
     <com.zee.view.ZxTextView
         android:id="@+id/tv_scan"
         style="@style/base_btn_style_gone"
-        android:text="扫描二维码" />
+        android:text="扫描二维码"
+        android:visibility="visible" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_picture"
         style="@style/base_btn_style_gone"
-        android:visibility="visible"
         android:text="图片处理" />
 
     <com.zee.view.ZxTextView

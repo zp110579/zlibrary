@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        tv_span.setOnClickAndOpenActivityEx(SpanUtilsActivity::class.java)
+        tv_zxFoldTextView.setOnClickAndOpenActivityEx(ZxFoldTextViewActivity::class.java)
         tv_ZxSolidItemTabLayout.setOnClickAndOpenActivityEx(ZxSolidItemTagLayoutActivity::class.java)
         tv_zxSolidTabLayout.setOnClickAndOpenActivityEx(ZxSolidTabLayoutActivity::class.java)
         tv_zxTabLayout.setOnClickAndOpenActivityEx(ZxTabLayoutActivity::class.java)
@@ -24,11 +26,14 @@ class MainActivity : AppCompatActivity() {
 
         tv_time.setOnClickAndOpenActivityEx(TimeSelectActivity::class.java)
 
+        tv_Date.setOnClickAndOpenActivityEx(MyDateViewActivity::class.java)
+
         tv_scan.setOnClickListener {
             cameraScan {
                 showToastShort(it)
             }
         }
+
         tv_picture.setOnClickAndOpenActivityEx(PictureActivity::class.java) //选择图片
         tv_marquee.setOnClickListener {
             startActivityEx(MarqueeActivity::class.java)

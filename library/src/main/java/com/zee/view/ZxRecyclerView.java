@@ -122,12 +122,12 @@ public class ZxRecyclerView extends XRecyclerView {
         }
     }
 
-    /**
-     * 和刷新和加载绑定的List
-     */
-    public void setListRefreshAndLoadMore(List list) {
-        setRefreshAndLoadMoreList(list, -1);
-    }
+//    /**
+//     * 和刷新和加载绑定的List
+//     */
+//    public void setListRefreshAndLoadMore(List list) {
+//        setRefreshAndLoadMoreList(list, -1);
+//    }
 
     public void setRefreshAndLoadMoreList(List list) {
         setRefreshAndLoadMoreList(list, -1);

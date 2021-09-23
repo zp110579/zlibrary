@@ -6,8 +6,10 @@ import com.lzy.imagepicker.ImagePickerManager
 import com.zee.activity.BaseZActivity
 import com.zee.extendobject.cameraScan
 import com.zee.extendobject.requestPermissions
+import com.zee.extendobject.setOnClick
 import com.zee.libs.example.R
 import com.zee.listener.OnPermissionListener
+import com.zee.log.ZLog
 import com.zee.utils.ImageCompressUtils
 import com.zee.utils.SuperZPerMissionUtils
 import com.zee.utils.ZScreenUtils
@@ -23,6 +25,14 @@ class PictureActivity : BaseZActivity() {
     }
 
     override fun initViews() {
+        tv_single.setOnClick {
+            ImagePickerManager.singleSelectImage().letsGo { imageItemArrayList ->
+                if (imageItemArrayList.isNotEmpty()) {
+                    ZLog.i("数量")
+                }
+            }
+        }
+
         tv_zip.setOnClickListener {
             openDialg()
         }
@@ -32,7 +42,7 @@ class PictureActivity : BaseZActivity() {
 
         SuperZPerMissionUtils.getInstance().add(Manifest.permission.CAMERA).requestPermissions { deniedPermissions, permissionExplain ->
 
-            ImagePickerManager.singleSelectImage().setRectangleEditSize(ZScreenUtils.getScreenWidth(), ZScreenUtils.getScreenWidth()).letsGo { imageItemArrayList ->
+            ImagePickerManager.manySelectImages(8).letsGo { imageItemArrayList ->
                 if (imageItemArrayList.isNotEmpty()) {
                     Glide.with(imageView).load(imageItemArrayList[0].path).into(imageView)
                     ImageCompressUtils.compressImageBigSize(imageItemArrayList[0].path, 600)

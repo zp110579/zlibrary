@@ -56,10 +56,6 @@ public class ImageBaseActivity extends AppCompatActivity {
         return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED;
     }
 
-    public void showToast(String toastText) {
-        Toast.makeText(getApplicationContext(), toastText, Toast.LENGTH_SHORT).show();
-    }
-
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);

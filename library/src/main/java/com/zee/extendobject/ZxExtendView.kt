@@ -15,6 +15,15 @@ import com.zee.utils.ViewSaveImageUtils
 import org.jetbrains.annotations.Nullable
 
 
+/**
+ * 多个View响应一个事件
+ */
+fun setonClick(vararg views: View, unit: () -> Unit) {
+    views.forEach {
+        it.setOnClick(unit)
+    }
+}
+
 fun View.setOnClickAndOpenActivityEx(intent: Intent) {
     setOnClick {
         openActivityEx(intent)

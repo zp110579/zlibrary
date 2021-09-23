@@ -17,6 +17,6 @@
         android:layout_height="50dp"
         android:gravity="center|left"
         android:minWidth="90dip"
-        android:text="@string/zv_recycelrview_loading_more" />
+        android:text="@string/zee_str_recyclerView_loading_more" />
 
 </LinearLayout>

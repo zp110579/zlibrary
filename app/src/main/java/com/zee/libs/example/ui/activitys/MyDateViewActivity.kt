@@ -4,7 +4,7 @@ import com.zee.activity.BaseZActivity
 import com.zee.libs.example.R
 
 /**
- * APP升级
+ * 自定义时间组件
  */
 class MyDateViewActivity : BaseZActivity() {
     override fun getLayoutID(): Int {

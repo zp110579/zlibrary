@@ -22,7 +22,7 @@ class SelectImageAdapter : Z1RecyclerAdapter<ImageFolder>(R.layout.adapter_folde
         bean.apply {
             ImagePicker.getInstance().imageLoader.displayImage(curActivityEx(), cover.path, imageViewById(R.id.iv_cover), width, width)
             setText(R.id.tv_folder_name, name)//文件名字
-            setText(R.id.tv_image_count, getString((R.string.ip_folder_image_count), images.size))//文件里的图片数量
+            setText(R.id.tv_image_count, getString(R.string.ip_folder_image_count, images.size))//文件里的图片数量
             viewById(R.id.iv_folder_check).setVisibleOrGone(selectItemIndex == location)//选中
         }
         parentView.setOnClick {

@@ -153,7 +153,7 @@ public abstract class BindAdapter {
 
     public void setVisibleOrGone(boolean isVisible, @IdRes int... ids) {
         for (int i = 0; i < ids.length; i++) {
-            View view = findViewById(ids.length);
+            View view = findViewById(ids[i]);
             if (isVisible) {
                 view.setVisibility(View.VISIBLE);
             } else {

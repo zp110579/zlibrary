@@ -5,8 +5,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -19,10 +21,12 @@ import android.widget.Toast;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
+import com.lzy.imagepicker.view.SystemBarTintManager;
 import com.zee.libs.R;
 import com.zee.scan.zxing.camera.CameraManager;
 import com.zee.scan.zxing.view.ViewfinderView;
 import com.zee.utils.UIUtils;
+import com.zee.utils.ZStatusBarUtils;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -32,7 +36,7 @@ import java.util.Map;
  * 这个activity打开相机，在后台线程做常规的扫描；它绘制了一个结果view来帮助正确地显示条形码，在扫描的时候显示反馈信息，
  * 然后在扫描成功的时候覆盖扫描结果
  */
-public final class CaptureActivity extends Activity implements SurfaceHolder.Callback {
+public final class CaptureActivity extends FragmentActivity implements SurfaceHolder.Callback {
 
     private static final String TAG = CaptureActivity.class.getSimpleName();
 
@@ -78,7 +82,10 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_capture);
-
+//        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+//        tintManager.setStatusBarTintEnabled(true);
+//        tintManager.setStatusBarTintResource(Color.parseColor("#99000000"));  //设置上方状态栏的颜色
+        ZStatusBarUtils.setColor(this, Color.parseColor("#99000000"));
         hasSurface = false;
 
         inactivityTimer = new InactivityTimer(this);
@@ -86,7 +93,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
 
         imageButton_back = (ImageButton) findViewById(R.id.capture_imageview_back);
         imageButton_back.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 finish();
@@ -164,9 +170,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     }
 
     @Override
-    public void surfaceChanged(SurfaceHolder holder, int format, int width,
-                               int height) {
-
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
     }
 
     /**
@@ -184,7 +188,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
         if (fromLiveScan) {
             beepManager.playBeepSoundAndVibrate();
 
-            UIUtils.showToastShort( "扫描成功", Toast.LENGTH_SHORT);
+            UIUtils.showToastShort("扫描成功", Toast.LENGTH_SHORT);
 
             Intent intent = getIntent();
             intent.putExtra("codedContent", rawResult.getText());

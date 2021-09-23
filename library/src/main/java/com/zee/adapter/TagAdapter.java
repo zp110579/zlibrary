@@ -72,9 +72,13 @@ public abstract class TagAdapter<T> {
 
     public abstract View getView(ZxTagLayout parent, int position, T t);
 
-    public abstract void onSelected(int position, View view);
+    public void onSelected(int position, View view) {
 
-    public abstract void unSelected(int position, View view);
+    }
+
+    public void unSelected(int position, View view) {
+
+    }
 
     public void onSelectItem(Set<Integer> set) {
         ArrayList<T> list = new ArrayList<T>();
@@ -85,7 +89,9 @@ public abstract class TagAdapter<T> {
     }
 
     //获得当前所有的选择
-    public abstract void onResult(ArrayList<T> list);
+    public void onResult(ArrayList<T> list) {
+
+    }
 
     public boolean setSelected(int position, T t) {
         return false;

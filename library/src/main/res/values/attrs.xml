@@ -160,13 +160,12 @@
         <attr name="zv_endYear" format="integer" />
         <attr name="zv_divider_color" />
         <attr name="zv_divider_width" />
-        <attr name="zv_year_show" format="boolean" />
-        <attr name="zv_month_show" format="boolean" />
-        <attr name="zv_day_show" format="boolean" />
-        <attr name="zv_min_show" format="boolean" />
-        <attr name="zv_second_show" format="boolean" />
-
-
+        <attr name="zv_show_year" format="boolean" />
+        <attr name="z_show_month" format="boolean" />
+        <attr name="zv_show_day" format="boolean" />
+        <attr name="zv_show_hour" format="boolean" />
+        <attr name="zv_show_min" format="boolean" />
+        <attr name="zv_show_second" format="boolean" />
     </declare-styleable>
 
 

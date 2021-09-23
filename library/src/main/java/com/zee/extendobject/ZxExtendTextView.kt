@@ -8,6 +8,18 @@ import android.support.annotation.StringRes
 import android.widget.TextView
 import com.zee.utils.UIUtils
 
+
+/**
+ * 隐藏中间显示的内容，用于账号之类，比如手机号只显示前3位和后四位
+ */
+fun TextView.setTextHideMid(txt: String) {
+    val stringBuilder = StringBuilder()
+    stringBuilder.append(txt.substring(0, 3))
+    stringBuilder.append("*****")
+    stringBuilder.append(txt.substring(txt.length - 4))
+    text = stringBuilder.toString()
+}
+
 /**
  * 清空Text
  */
