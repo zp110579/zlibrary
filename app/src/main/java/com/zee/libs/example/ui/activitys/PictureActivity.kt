@@ -3,16 +3,13 @@ package com.zee.libs.example.ui.activitys
 import android.Manifest
 import com.bumptech.glide.Glide
 import com.lzy.imagepicker.ImagePickerManager
+import com.lzy.imagepicker.bean.CameraPickerImageSelectManager
 import com.zee.activity.BaseZActivity
-import com.zee.extendobject.cameraScan
-import com.zee.extendobject.requestPermissions
 import com.zee.extendobject.setOnClick
 import com.zee.libs.example.R
-import com.zee.listener.OnPermissionListener
 import com.zee.log.ZLog
 import com.zee.utils.ImageCompressUtils
 import com.zee.utils.SuperZPerMissionUtils
-import com.zee.utils.ZScreenUtils
 import kotlinx.android.synthetic.main.activity_picture.*
 
 /**
@@ -25,28 +22,39 @@ class PictureActivity : BaseZActivity() {
     }
 
     override fun initViews() {
-        tv_single.setOnClick {
-            ImagePickerManager.singleSelectImage().letsGo { imageItemArrayList ->
+        tv_camer.setOnClick {
+            val cameraPickerImageSelectManager = ImagePickerManager.cameraImage()
+            if (cb_btn.isChecked) {
+                cameraPickerImageSelectManager.setRectangleEdit()
+            }
+            cameraPickerImageSelectManager.letsGo { imageItemArrayList ->
                 if (imageItemArrayList.isNotEmpty()) {
-                    ZLog.i("数量")
+                    Glide.with(imageView).load(imageItemArrayList[0].path).into(imageView)
+                }
+            }
+        }
+        tv_single.setOnClick {
+            val singleImageSelectManager = ImagePickerManager.singleSelectImage()
+            if (cb_btn.isChecked) {
+                singleImageSelectManager.setRectangleEdit()
+            }
+            singleImageSelectManager.letsGo { imageItemArrayList ->
+                if (imageItemArrayList.isNotEmpty()) {
+                    Glide.with(imageView).load(imageItemArrayList[0].path).into(imageView)
                 }
             }
         }
 
-        tv_zip.setOnClickListener {
+        tv_many.setOnClickListener {//多图片选择
             openDialg()
         }
     }
 
     fun openDialg() {
-
-        SuperZPerMissionUtils.getInstance().add(Manifest.permission.CAMERA).requestPermissions { deniedPermissions, permissionExplain ->
-
-            ImagePickerManager.manySelectImages(8).letsGo { imageItemArrayList ->
-                if (imageItemArrayList.isNotEmpty()) {
-                    Glide.with(imageView).load(imageItemArrayList[0].path).into(imageView)
-                    ImageCompressUtils.compressImageBigSize(imageItemArrayList[0].path, 600)
-                }
+        ImagePickerManager.manySelectImages(8).letsGo { imageItemArrayList ->
+            if (imageItemArrayList.isNotEmpty()) {
+                Glide.with(imageView).load(imageItemArrayList[0].path).into(imageView)
+                ImageCompressUtils.compressImageBigSize(imageItemArrayList[0].path, 600)
             }
         }
     }

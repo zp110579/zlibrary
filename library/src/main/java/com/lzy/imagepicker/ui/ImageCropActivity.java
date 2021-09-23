@@ -52,7 +52,7 @@ public class ImageCropActivity extends ImageBaseActivity implements CropImageVie
             }
         });
         Button btn_ok = findViewById(R.id.btn_ok);
-        btn_ok.setText(getString(R.string.ip_complete));
+        btn_ok.setText(getString(R.string.zee_str_ip_complete));
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +61,7 @@ public class ImageCropActivity extends ImageBaseActivity implements CropImageVie
         });
 
         TextView tv_des = findViewById(R.id.tv_des);
-        tv_des.setText(getString(R.string.ip_photo_crop));
+        tv_des.setText(getString(R.string.zee_str_ip_photo_crop));
         mCropImageView = findViewById(R.id.cv_crop_image);
         mCropImageView.setOnBitmapSaveCompleteListener(this);
 

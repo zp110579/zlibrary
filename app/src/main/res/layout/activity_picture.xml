@@ -8,6 +8,18 @@
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
+    <CheckBox
+        android:id="@+id/cb_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="裁剪" />
+
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_camer"
+        style="@style/base_btn_style_gone"
+        android:text="拍照"
+        android:visibility="visible" />
+
     <com.zee.view.ZxTextView
         android:id="@+id/tv_single"
         style="@style/base_btn_style_gone"
@@ -15,7 +27,7 @@
         android:visibility="visible" />
 
     <com.zee.view.ZxTextView
-        android:id="@+id/tv_zip"
+        android:id="@+id/tv_many"
         style="@style/base_btn_style_gone"
         android:text="多图选择"
         android:visibility="visible" />

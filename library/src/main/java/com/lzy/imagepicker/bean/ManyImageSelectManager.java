@@ -14,6 +14,7 @@ public class ManyImageSelectManager {
         imagePicker.setMultiMode(true);
         imagePicker.setCrop(false);//设置选择后可以编辑
         imagePicker.setSaveRectangle(false); //是否按矩形区域保存
+        imagePicker.setShowCamera(false);//不显示照相机
     }
 
     public void letsGo(OnImagePickerListener onImagePickerListener) {

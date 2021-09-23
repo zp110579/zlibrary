@@ -52,10 +52,6 @@ public class ImageBaseActivity extends AppCompatActivity {
         win.setAttributes(winParams);
     }
 
-    public boolean checkPermission(@NonNull String permission) {
-        return ActivityCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED;
-    }
-
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);

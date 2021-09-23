@@ -1,22 +1,26 @@
 package com.zee.scan.zxing.encode
 
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
 import android.text.TextUtils
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.EncodeHintType
-import com.google.zxing.MultiFormatWriter
-import com.google.zxing.WriterException
+import com.google.zxing.*
+import com.google.zxing.common.GlobalHistogramBinarizer
+import com.google.zxing.common.HybridBinarizer
 import com.google.zxing.qrcode.QRCodeWriter
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel
 import com.zee.utils.UIUtils
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
+import java.util.*
+
 
 /**
  * 生成二维码
  */
 object QRCodeUtil {
+
+
     fun getBitmapByRes(resId: Int): Bitmap? {
         return BitmapFactory.decodeResource(UIUtils.getResources(), resId)
     }
@@ -148,4 +152,5 @@ object QRCodeUtil {
         }
         return bitmap
     }
+
 }

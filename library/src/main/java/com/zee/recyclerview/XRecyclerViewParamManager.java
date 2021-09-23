@@ -70,7 +70,7 @@ class XRecyclerViewParamManager {
         if (!TextUtils.isEmpty(zv_loadMore_noMore)) {
             hintText.setLoadMore_noMoreText(zv_loadMore_noMore);
         } else {
-            hintText.setLoadMore_noMoreText(context.getString(R.string.zx_recyclerView_no_more));
+            hintText.setLoadMore_noMoreText(context.getString(R.string.zee_str_recyclerView_no_more));
         }
         //加载更多结束提示
         String zv_loadMore_loadEnd = ta.getString(R.styleable.ZxRecyclerView_zv_loadMore_txt_loadEnd);

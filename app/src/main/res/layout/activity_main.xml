@@ -6,22 +6,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+    <com.zee.view.ZxTextView
+        android:id="@+id/tv_Date"
+        style="@style/base_btn_style_gone"
+        android:text="时间组件" />
+
     <com.zee.view.ZxTextView
         android:id="@+id/tv_span"
         style="@style/base_btn_style_gone"
-        android:visibility="visible"
         android:text="SpanUtils" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_zxFoldTextView"
         style="@style/base_btn_style_gone"
         android:text="ZxFoldTextView" />
-
-    <com.zee.view.ZxTextView
-        android:id="@+id/tv_Date"
-        style="@style/base_btn_style_gone"
-        android:text="时间组件"
-        android:visibility="visible" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_ZxSolidItemTabLayout"
@@ -67,7 +66,8 @@
     <com.zee.view.ZxTextView
         android:id="@+id/tv_picture"
         style="@style/base_btn_style_gone"
-        android:text="图片处理" />
+        android:text="图片处理"
+        android:visibility="visible" />
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_marquee"

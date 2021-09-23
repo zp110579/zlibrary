@@ -54,35 +54,35 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
         mCbCheck = (SuperCheckBox) findViewById(R.id.cb_check);
         mCbOrigin = (SuperCheckBox) findViewById(R.id.cb_origin);
         marginView = findViewById(R.id.margin_bottom);
-        mCbOrigin.setText(getString(R.string.ip_origin));
+        mCbOrigin.setText(getString(R.string.zee_str_ip_origin));
         mCbOrigin.setOnCheckedChangeListener(this);
         mCbOrigin.setChecked(isOrigin);
 
         //初始化当前页面的状态
         onImageSelected(0, null, false);
-        ImageItem item = mImageItems.get(mCurrentPosition);
+        ImageItem item = selectedImages.get(mCurrentPosition);
         boolean isSelected = imagePicker.isSelect(item);
-        mTitleCount.setText(getString(R.string.ip_preview_image_count, mCurrentPosition + 1, mImageItems.size()));
+        mTitleCount.setText(getString(R.string.zee_str_ip_preview_image_count, mCurrentPosition + 1, selectedImages.size()));
         mCbCheck.setChecked(isSelected);
         //滑动ViewPager的时候，根据外界的数据改变当前的选中状态和当前的图片的位置描述文本
         mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 mCurrentPosition = position;
-                ImageItem item = mImageItems.get(mCurrentPosition);
+                ImageItem item = selectedImages.get(mCurrentPosition);
                 boolean isSelected = imagePicker.isSelect(item);
                 mCbCheck.setChecked(isSelected);
-                mTitleCount.setText(getString(R.string.ip_preview_image_count, mCurrentPosition + 1, mImageItems.size()));
+                mTitleCount.setText(getString(R.string.zee_str_ip_preview_image_count, mCurrentPosition + 1, selectedImages.size()));
             }
         });
         //当点击当前选中按钮的时候，需要根据当前的选中状态添加和移除图片
         mCbCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImageItem imageItem = mImageItems.get(mCurrentPosition);
+                ImageItem imageItem = selectedImages.get(mCurrentPosition);
                 int selectLimit = imagePicker.getSelectLimit();
                 if (mCbCheck.isChecked() && selectedImages.size() >= selectLimit) {
-                    Toast.makeText(ImagePreviewActivity.this, getString(R.string.ip_select_limit, selectLimit), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ImagePreviewActivity.this, getString(R.string.zee_str_ip_select_limit, selectLimit), Toast.LENGTH_SHORT).show();
                     mCbCheck.setChecked(false);
                 } else {
                     imagePicker.addSelectedImageItem(mCurrentPosition, imageItem, mCbCheck.isChecked());
@@ -129,9 +129,9 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
     @Override
     public void onImageSelected(int position, ImageItem item, boolean isAdd) {
         if (imagePicker.getSelectImageCount() > 0) {
-            mBtnOk.setText(getString(R.string.ip_select_complete, imagePicker.getSelectImageCount(), imagePicker.getSelectLimit()));
+            mBtnOk.setText(getString(R.string.zee_str_ip_select_complete, imagePicker.getSelectImageCount(), imagePicker.getSelectLimit()));
         } else {
-            mBtnOk.setText(getString(R.string.ip_complete));
+            mBtnOk.setText(getString(R.string.zee_str_ip_complete));
         }
 
         if (mCbOrigin.isChecked()) {
@@ -139,7 +139,7 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
             for (ImageItem imageItem : selectedImages)
                 size += imageItem.size;
             String fileSize = Formatter.formatFileSize(this, size);
-            mCbOrigin.setText(getString(R.string.ip_origin_size, fileSize));
+            mCbOrigin.setText(getString(R.string.zee_str_ip_origin_size, fileSize));
         }
     }
 
@@ -149,7 +149,7 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
         if (id == R.id.btn_ok) {
             if (imagePicker.getSelectedImages().size() == 0) {
                 mCbCheck.setChecked(true);
-                ImageItem imageItem = mImageItems.get(mCurrentPosition);
+                ImageItem imageItem = selectedImages.get(mCurrentPosition);
                 imagePicker.addSelectedImageItem(mCurrentPosition, imageItem, mCbCheck.isChecked());
             }
             Intent intent = new Intent();
@@ -184,10 +184,10 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
                     size += item.size;
                 String fileSize = Formatter.formatFileSize(this, size);
                 isOrigin = true;
-                mCbOrigin.setText(getString(R.string.ip_origin_size, fileSize));
+                mCbOrigin.setText(getString(R.string.zee_str_ip_origin_size, fileSize));
             } else {
                 isOrigin = false;
-                mCbOrigin.setText(getString(R.string.ip_origin));
+                mCbOrigin.setText(getString(R.string.zee_str_ip_origin));
             }
         }
     }

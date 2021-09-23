@@ -1,4 +1,7 @@
 <resources>
+    <string name="zee_str_picture_camera">Shoot</string>
+    <string name="zee_str_picture_select">Select</string>
+    <string name="zee_str_permission_file_requst">Permission is prohibited and local pictures cannot be selected</string>
     <string name="zee_str_update">Upgrade</string>
     <string name="zee_str_ignore_version">Ignore this version</string>
     <string name="zee_str_permission_no_camera">No camera permission</string>
@@ -26,25 +29,25 @@
     <string name="permission_name_sensors">Body Sensors</string>
     <string name="permission_name_sms">SMS</string>
     <string name="permission_name_storage">Storage</string>
-    <string name="zx_recyclerview_no_data">no data</string>
-    <string name="zx_recyclerView_no_more">no data</string>
+    <string name="zee_str_recyclerview_no_data">no data</string>
+    <string name="zee_str_recyclerView_no_more">no data</string>
 
 
-    <string name="ip_all_images">Pictures</string>
-    <string name="ip_folder_image_count">have%1$dPieces</string>
-    <string name="ip_preview_image_count">%1$d/%2$d</string>
-    <string name="ip_select_limit">Can Select%1$dPictures</string>
-    <string name="ip_complete">Finish</string>
-    <string name="ip_select_complete">Finish(%1$d/%2$d)</string>
-    <string name="ip_preview">Preview</string>
-    <string name="ip_preview_count">Preview(%1$d)</string>
-    <string name="ip_photo_crop">Image cropping</string>
-    <string name="ip_origin">Image</string>
-    <string name="ip_origin_size">Image(%1$s)</string>
+    <string name="zee_str_ip_all_images">Pictures</string>
+    <string name="zee_str_ip_folder_image_count">have%1$dPieces</string>
+    <string name="zee_str_ip_preview_image_count">%1$d/%2$d</string>
+    <string name="zee_str_ip_select_limit">Can Select%1$dPictures</string>
+    <string name="zee_str_ip_complete">Finish</string>
+    <string name="zee_str_ip_select_complete">Finish(%1$d/%2$d)</string>
+    <string name="zee_str_ip_preview">Preview</string>
+    <string name="zee_str_ip_preview_count">Preview(%1$d)</string>
+    <string name="zee_str_ip_photo_crop">Image cropping</string>
+    <string name="zee_str_ip_origin">Image</string>
+    <string name="zee_str_ip_origin_size">Image(%1$s)</string>
 
 
-    <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
-    <string name="viewfinderview_status_text1">Put the QR code in the box</string>
-    <string name="viewfinderview_status_text2">It can be scanned automatically</string>
-    <string name="button_ok">OK</string>
+    <string name="zee_str_msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+    <string name="zee_str_viewfinderview_status_text1">Put the QR code in the box</string>
+    <string name="zee_str_viewfinderview_status_text2">It can be scanned automatically</string>
+    <string name="zee_str_button_ok">OK</string>
 </resources>

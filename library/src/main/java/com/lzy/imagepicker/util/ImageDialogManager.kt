@@ -12,7 +12,10 @@ import com.zee.view.ZxMarqueeView
 
 class ImageDialogManager {
 
-    fun showDial0g(index: Int, list: List<ImageFolder>) {
+    /**
+     * 显示图片文件夹的选择
+     */
+    fun showSelectFieldDialog(index: Int, list: List<ImageFolder>) {
         MyDialogK.initBottom(R.layout.lib_dialog_folder) {
             val recyclerView = recyclerViewById(R.id.pictureRV)
             val adapter = SelectImageAdapter()
@@ -26,6 +29,6 @@ class ImageDialogManager {
                     dismiss()
                 }
             })
-        }.showOnlyOneTag("ImageDialogManager_showDialog").show()
+        }.showOnlyOneTag("ImageDialogManager_showDialog").setSize(ZScreenUtils.getScreenWidth(), UIUtils.pxToDp(ZScreenUtils.getScreenHeight() / 2)).show()
     }
 }

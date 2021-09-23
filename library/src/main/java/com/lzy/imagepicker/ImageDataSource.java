@@ -107,10 +107,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
                 allImages.add(imageItem);
                 //根据父路径分类存放图片
                 File imageFile = new File(imagePath);
-                File imageParentFile = imageFile.getParentFile();
-                ImageFolder imageFolder = new ImageFolder();
-                imageFolder.name = imageParentFile.getName();
-                imageFolder.path = imageParentFile.getAbsolutePath();
+                ImageFolder imageFolder = new ImageFolder(imageFile.getParentFile());
 
                 if (!imageFolders.contains(imageFolder)) {
                     ArrayList<ImageItem> images = new ArrayList<>();
@@ -127,7 +124,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
             if (data.getCount() > 0 && allImages.size() > 0) {
                 //构造所有图片的集合
                 ImageFolder allImagesFolder = new ImageFolder();
-                allImagesFolder.name = activity.getResources().getString(R.string.ip_all_images);
+                allImagesFolder.name = activity.getResources().getString(R.string.zee_str_ip_all_images);
                 allImagesFolder.path = "/";
                 allImagesFolder.cover = allImages.get(0);
                 allImagesFolder.images = allImages;

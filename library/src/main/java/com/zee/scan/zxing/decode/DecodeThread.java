@@ -28,9 +28,11 @@ import com.google.zxing.ResultPointCallback;
 import com.zee.scan.zxing.android.CaptureActivity;
 import com.zee.scan.zxing.android.PreferencesActivity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
@@ -40,6 +42,12 @@ import java.util.concurrent.CountDownLatch;
  * @author dswitkin@google.com (Daniel Switkin)
  */
 public final class DecodeThread extends Thread {
+
+  static {
+
+  }
+
+
 
   public static final String BARCODE_BITMAP = "barcode_bitmap";
   public static final String BARCODE_SCALED_FACTOR = "barcode_scaled_factor";

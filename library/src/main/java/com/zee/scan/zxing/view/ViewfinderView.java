@@ -228,9 +228,9 @@ public final class ViewfinderView extends View {
      */
     private void drawStatusText(Canvas canvas, Rect frame, int width) {
 
-        String statusText1 = getResources().getString(R.string.viewfinderview_status_text1);
+        String statusText1 = getResources().getString(R.string.zee_str_viewfinderview_status_text1);
         String statusText2 = getResources().getString(
-                R.string.viewfinderview_status_text2);
+                R.string.zee_str_viewfinderview_status_text2);
         int statusTextSize = 40;
         int statusPaddingTop = -frame.height() - 80;
 

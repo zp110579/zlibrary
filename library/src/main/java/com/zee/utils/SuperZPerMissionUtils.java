@@ -25,6 +25,13 @@ public class SuperZPerMissionUtils {
         return this;
     }
 
+    public SuperZPerMissionUtils add(String... permissions) {
+        for (String permission : permissions) {
+            mPermissions.add(permission);
+        }
+        return this;
+    }
+
     public SuperZPerMissionUtils addAll(List<String> permissions) {
         if (ZListUtils.isNoEmpty(permissions)) {
             mPermissions.addAll(permissions);

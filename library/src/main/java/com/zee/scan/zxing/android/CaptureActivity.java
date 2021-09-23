@@ -1,10 +1,10 @@
 package com.zee.scan.zxing.android;
 
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,14 +21,21 @@ import android.widget.Toast;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
+import com.lzy.imagepicker.ImagePickerManager;
+import com.lzy.imagepicker.bean.ImageItem;
+import com.lzy.imagepicker.bean.OnImagePickerListener;
 import com.lzy.imagepicker.view.SystemBarTintManager;
+import com.zee.base.OnNoDoubleClickListener;
 import com.zee.libs.R;
 import com.zee.scan.zxing.camera.CameraManager;
+import com.zee.scan.zxing.encode.QRCodeParseUtils;
+import com.zee.scan.zxing.encode.QRCodeUtil;
 import com.zee.scan.zxing.view.ViewfinderView;
 import com.zee.utils.UIUtils;
 import com.zee.utils.ZStatusBarUtils;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 
@@ -81,11 +88,11 @@ public final class CaptureActivity extends FragmentActivity implements SurfaceHo
         // 保持Activity处于唤醒状态
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        tintManager.setStatusBarTintEnabled(true);
+        tintManager.setStatusBarTintResource(R.color.ip_color_primary_dark);  //设置上方状态栏的颜色
         setContentView(R.layout.activity_capture);
-//        SystemBarTintManager tintManager = new SystemBarTintManager(this);
-//        tintManager.setStatusBarTintEnabled(true);
-//        tintManager.setStatusBarTintResource(Color.parseColor("#99000000"));  //设置上方状态栏的颜色
-        ZStatusBarUtils.setColor(this, Color.parseColor("#99000000"));
+//        ZStatusBarUtils.setColor(this, Color.parseColor("#99000000"));
         hasSurface = false;
 
         inactivityTimer = new InactivityTimer(this);
@@ -96,6 +103,33 @@ public final class CaptureActivity extends FragmentActivity implements SurfaceHo
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        findViewById(R.id.iv_photo).setOnClickListener(new OnNoDoubleClickListener() {//直接选择图片
+            @Override
+            public void onNoDoubleClick(View v) {
+                ImagePickerManager.singleSelectImage().letsGo(new OnImagePickerListener() {
+                    @Override
+                    public void onImagePickerResult(final ArrayList<ImageItem> imageItemArrayList) {
+//                        handleDecode((Result) message.obj, barcode, scaleFactor);
+                        UIUtils.runOnAsyncThread(new Runnable() {
+                            @Override
+                            public void run() {
+//                                Bitmap bitmap = BitmapFactory.decodeFile(imageItemArrayList.get(0).path);
+                                String result = QRCodeParseUtils.syncDecodeQRCode(imageItemArrayList.get(0).path);
+
+//                                String result = QRCodeUtil.INSTANCE.syncDecodeQRCode(bitmap);
+                                inactivityTimer.onActivity();
+                                beepManager.playBeepSoundAndVibrate();
+                                Intent intent = getIntent();
+                                intent.putExtra("codedContent", result);
+                                setResult(RESULT_OK, intent);
+                                finish();
+                            }
+                        });
+                    }
+                });
             }
         });
     }
@@ -234,8 +268,8 @@ public final class CaptureActivity extends FragmentActivity implements SurfaceHo
     private void displayFrameworkBugMessageAndExit() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Scan");
-        builder.setMessage(getString(R.string.msg_camera_framework_bug));
-        builder.setPositiveButton(R.string.button_ok, new FinishListener(this));
+        builder.setMessage(getString(R.string.zee_str_msg_camera_framework_bug));
+        builder.setPositiveButton(R.string.zee_str_button_ok, new FinishListener(this));
         builder.setOnCancelListener(new FinishListener(this));
         builder.show();
     }

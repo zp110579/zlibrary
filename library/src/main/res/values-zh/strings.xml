@@ -1,4 +1,7 @@
 <resources>
+    <string name="zee_str_picture_camera">拍摄照片</string>
+    <string name="zee_str_picture_select">选择</string>
+    <string name="zee_str_permission_file_requst">权限被禁止，无法选择本地图片</string>
     <string name="zee_str_update">升级</string>
     <string name="zee_str_ignore_version">忽略此版本</string>
     <string name="zee_str_permission_no_camera">没有相机权限</string>
@@ -13,8 +16,8 @@
     <string name="zee_str_recyclerView_loading_end">加载完成</string>
     <string name="zee_str_listView_header_last_time">上次更新时间：</string>
     <string name="zee_str_recyclerview_loading">加载中...</string>
-    <string name="zx_recyclerView_no_more">没有数据了</string>
-    <string name="zx_recyclerview_no_data">暂无数据</string>
+    <string name="zee_str_recyclerView_no_more">没有数据了</string>
+    <string name="zee_str_recyclerview_no_data">暂无数据</string>
 
     <string name="permission_name_calendar">日历</string>
     <string name="permission_name_camera">相机</string>
@@ -28,21 +31,21 @@
     <string name="permission_name_storage">存储空间</string>
 
 
-    <string name="ip_all_images">所有图片</string>
-    <string name="ip_folder_image_count">共%1$d张</string>
-    <string name="ip_preview_image_count">%1$d/%2$d</string>
-    <string name="ip_select_limit">最多选择%1$d张图片</string>
-    <string name="ip_complete">完成</string>
-    <string name="ip_select_complete">完成(%1$d/%2$d)</string>
-    <string name="ip_preview">预览</string>
-    <string name="ip_preview_count">预览(%1$d)</string>
-    <string name="ip_photo_crop">图片裁剪</string>
-    <string name="ip_origin">原图</string>
-    <string name="ip_origin_size">原图(%1$s)</string>
+    <string name="zee_str_ip_all_images">所有图片</string>
+    <string name="zee_str_ip_folder_image_count">共%1$d张</string>
+    <string name="zee_str_ip_preview_image_count">%1$d/%2$d</string>
+    <string name="zee_str_ip_select_limit">最多选择%1$d张图片</string>
+    <string name="zee_str_ip_complete">完成</string>
+    <string name="zee_str_ip_select_complete">完成(%1$d/%2$d)</string>
+    <string name="zee_str_ip_preview">预览</string>
+    <string name="zee_str_ip_preview_count">预览(%1$d)</string>
+    <string name="zee_str_ip_photo_crop">图片裁剪</string>
+    <string name="zee_str_ip_origin">原图</string>
+    <string name="zee_str_ip_origin_size">原图(%1$s)</string>
 
 
-    <string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
-    <string name="viewfinderview_status_text1">将二维码放入框内</string>
-    <string name="viewfinderview_status_text2">即可自动扫描</string>
-    <string name="button_ok">OK</string>
+    <string name="zee_str_msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+    <string name="zee_str_viewfinderview_status_text1">将二维码放入框内</string>
+    <string name="zee_str_viewfinderview_status_text2">即可自动扫描</string>
+    <string name="zee_str_button_ok">OK</string>
 </resources>

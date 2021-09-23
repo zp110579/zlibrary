@@ -21,11 +21,16 @@ import com.zee.utils.ZStatusBarUtils
 import java.lang.Exception
 import java.math.BigDecimal
 
-
+/**
+ * 权限申请
+ */
 fun requestPermissions(permission: String, result: OnPermissionListener) {
     SuperZPerMissionUtils.getInstance().add(Manifest.permission.CAMERA).requestPermissions(result)
 }
 
+/**
+ * 权限申请
+ */
 fun requestPermissions(permission: String, result: () -> Unit) {
     SuperZPerMissionUtils.getInstance().add(Manifest.permission.CAMERA).requestPermissions { deniedPermissions, _ ->
         if (deniedPermissions.isEmpty()) {

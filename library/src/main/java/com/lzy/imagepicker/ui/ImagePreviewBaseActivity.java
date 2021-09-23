@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public abstract class ImagePreviewBaseActivity extends ImageBaseActivity {
 
     protected ImagePicker imagePicker;
-    protected ArrayList<ImageItem> mImageItems;      //跳转进ImagePreviewFragment的图片文件夹
+    //    protected ArrayList<ImageItem> mImageItems;      //跳转进ImagePreviewFragment的图片文件夹
     protected int mCurrentPosition = 0;              //跳转进ImagePreviewFragment时的序号，第几个图片
     protected TextView mTitleCount;                  //显示当前图片的位置  例如  5/31
     protected ArrayList<ImageItem> selectedImages;   //所有已经选中的图片
@@ -45,17 +45,17 @@ public abstract class ImagePreviewBaseActivity extends ImageBaseActivity {
 
         mCurrentPosition = getIntent().getIntExtra(ImagePicker.EXTRA_SELECTED_IMAGE_POSITION, 0);
         isFromItems = getIntent().getBooleanExtra(ImagePicker.EXTRA_FROM_ITEMS, false);
+        imagePicker = ImagePicker.getInstance();
 
         if (isFromItems) {
             // 据说这样会导致大量图片崩溃
-            mImageItems = (ArrayList<ImageItem>) getIntent().getSerializableExtra(ImagePicker.EXTRA_IMAGE_ITEMS);
+//            mImageItems = (ArrayList<ImageItem>) getIntent().getSerializableExtra(ImagePicker.EXTRA_IMAGE_ITEMS);
+            selectedImages = imagePicker.getSelectedImages();
         } else {
             // 下面采用弱引用会导致预览崩溃
-            mImageItems = (ArrayList<ImageItem>) DataHolder.getInstance().retrieve(DataHolder.DH_CURRENT_IMAGE_FOLDER_ITEMS);
+            selectedImages = imagePicker.getCurrentImageFolderItems();
         }
 
-        imagePicker = ImagePicker.getInstance();
-        selectedImages = imagePicker.getSelectedImages();
 
         //初始化控件
         content = findViewById(R.id.content);
@@ -78,7 +78,7 @@ public abstract class ImagePreviewBaseActivity extends ImageBaseActivity {
         mTitleCount = (TextView) findViewById(R.id.tv_des);
 
         mViewPager = (ViewPagerFixed) findViewById(R.id.viewpager);
-        mAdapter = new ImagePageAdapter(this, mImageItems);
+        mAdapter = new ImagePageAdapter(this, selectedImages);
         mAdapter.setPhotoViewClickListener(new ImagePageAdapter.PhotoViewClickListener() {
             @Override
             public void OnPhotoTapListener(View view, float v, float v1) {
@@ -89,10 +89,12 @@ public abstract class ImagePreviewBaseActivity extends ImageBaseActivity {
         mViewPager.setCurrentItem(mCurrentPosition, false);
 
         //初始化当前页面的状态
-        mTitleCount.setText(getString(R.string.ip_preview_image_count, mCurrentPosition + 1, mImageItems.size()));
+        mTitleCount.setText(getString(R.string.zee_str_ip_preview_image_count, mCurrentPosition + 1, selectedImages.size()));
     }
 
-    /** 单击时，隐藏头和尾 */
+    /**
+     * 单击时，隐藏头和尾
+     */
     public abstract void onImageSingleTap();
 
 }

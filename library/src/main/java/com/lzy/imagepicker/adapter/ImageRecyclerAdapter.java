@@ -20,8 +20,11 @@ import com.lzy.imagepicker.ui.ImageBaseActivity;
 import com.lzy.imagepicker.ui.ImageGridActivity;
 import com.lzy.imagepicker.util.Utils;
 import com.lzy.imagepicker.view.SuperCheckBox;
+import com.zee.listener.OnPermissionListener;
+import com.zee.utils.SuperZPerMissionUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 加载相册图片的RecyclerView适配器
@@ -159,7 +162,7 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
                     cbCheck.setChecked(!cbCheck.isChecked());
                     int selectLimit = imagePicker.getSelectLimit();
                     if (cbCheck.isChecked() && mSelectedImages.size() >= selectLimit) {
-                        Toast.makeText(mActivity.getApplicationContext(), mActivity.getString(R.string.ip_select_limit, selectLimit), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mActivity.getApplicationContext(), mActivity.getString(R.string.zee_str_ip_select_limit, selectLimit), Toast.LENGTH_SHORT).show();
                         cbCheck.setChecked(false);
                         mask.setVisibility(View.GONE);
                     } else {
@@ -202,11 +205,15 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<ViewHolder> {
             mItemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (!((ImageBaseActivity) mActivity).checkPermission(Manifest.permission.CAMERA)) {
-                        ActivityCompat.requestPermissions(mActivity, new String[]{Manifest.permission.CAMERA}, ImageGridActivity.REQUEST_PERMISSION_CAMERA);
-                    } else {
-                        imagePicker.takePicture(ImagePicker.REQUEST_CODE_TAKE);
-                    }
+                    SuperZPerMissionUtils.getInstance().add(Manifest.permission.CAMERA).requestPermissions(new OnPermissionListener() {
+
+                        @Override
+                        public void onPerMission(List<String> deniedPermissions, List<String> permissionExplain) {
+                            if (deniedPermissions.isEmpty()) {
+                                imagePicker.takePicture(ImagePicker.REQUEST_CODE_TAKE);
+                            }
+                        }
+                    });
                 }
             });
         }
