@@ -35,13 +35,14 @@ class ZxDateView : LinearLayout {
         val showHour = ta.getBoolean(R.styleable.ZxDateView_zv_show_hour, false)//是否显示时
         val showMin = ta.getBoolean(R.styleable.ZxDateView_zv_show_min, false)//是否显示分
         val showSecond = ta.getBoolean(R.styleable.ZxDateView_zv_show_second, false)//是否显示分
-        val startTime = ta.getInt(R.styleable.ZxDateView_zv_startYear, 1900)
-        val endTime = ta.getInt(R.styleable.ZxDateView_zv_endYear, 1900)
-        var textGravity = 1;
+        val startYear = ta.getInt(R.styleable.ZxDateView_zv_startYear, 1900)
         val startCalendar = Calendar.getInstance()
-        startCalendar.set(startTime, 0, 0, 0, 0, 0)
+        val endYear = ta.getInt(R.styleable.ZxDateView_zv_endYear, startCalendar.get(Calendar.YEAR))
+
+        var textGravity = 1;
+        startCalendar.set(startYear, 0, 0, 0, 0, 0)
         val endCalendar = Calendar.getInstance()
-        endCalendar.set(startTime, 0, 0, 0, 0, 0)
+        endCalendar.set(endYear, 0, 0, 0, 0, 0)
         LayoutInflater.from(context).inflate(R.layout.lib_zx_dateview, this)
         val show = booleanArrayOf(showYear, showMonth, showDay, showHour, showMin, showSecond)//显示类型，默认显示： 年月日
 
@@ -51,6 +52,7 @@ class ZxDateView : LinearLayout {
             setTextColorCenter(textSelectColor)
             setTextColorOut(textColor)
             setRangDate(startCalendar, endCalendar)
+            isLunarMode = ta.getBoolean(R.styleable.ZxDateView_zv_lunarMode, false) //是否阴历模式
         }
         ta.recycle()
     }

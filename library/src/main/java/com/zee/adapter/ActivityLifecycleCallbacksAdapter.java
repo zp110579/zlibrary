@@ -5,12 +5,6 @@ import android.app.Application;
 import android.os.Bundle;
 
 import com.zee.listener.BackOrLeaveAppListener;
-import com.zee.log.ZLog;
-import com.zee.utils.ZEventBusUtils;
-import com.zee.utils.ZListUtils;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ActivityLifecycleCallbacksAdapter implements Application.ActivityLifecycleCallbacks {
     int appCount = 0;

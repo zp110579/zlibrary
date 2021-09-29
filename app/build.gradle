@@ -36,6 +36,7 @@ dependencies {
     api 'com.github.zp110579:zxOk:2.0.6'
 //    implementation 'com.qianwen:okhttp-utils:3.8.0'
     implementation "com.google.android:flexbox:1.1.0"
+    api "com.github.bumptech.glide:glide:4.9.0"
 
 //    api 'com.zee:imagePicker:0.0.5'
 

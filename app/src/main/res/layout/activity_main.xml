@@ -14,6 +14,7 @@
 
     <com.zee.view.ZxTextView
         android:id="@+id/tv_span"
+        android:visibility="visible"
         style="@style/base_btn_style_gone"
         android:text="SpanUtils" />
 

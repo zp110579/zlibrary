@@ -166,6 +166,7 @@
         <attr name="zv_show_hour" format="boolean" />
         <attr name="zv_show_min" format="boolean" />
         <attr name="zv_show_second" format="boolean" />
+        <attr name="zv_lunarMode" format="boolean" />
     </declare-styleable>
 
 
