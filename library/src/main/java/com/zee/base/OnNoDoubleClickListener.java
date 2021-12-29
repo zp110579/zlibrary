@@ -2,6 +2,8 @@ package com.zee.base;
 
 import android.view.View;
 
+import com.zee.log.ZLog;
+
 /**
  * Created by Administrator on 2017/8/11 0011.
  */
@@ -23,6 +25,8 @@ public abstract class OnNoDoubleClickListener implements View.OnClickListener {
         if (currentTime - lastClickTime > mDefaultSleepTime) {
             onNoDoubleClick(v);
             lastClickTime = currentTime;
+        }else{
+            ZLog.i("间隔时间不到"+mDefaultSleepTime+"毫秒");
         }
     }
 

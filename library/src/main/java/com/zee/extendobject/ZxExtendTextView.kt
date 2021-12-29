@@ -31,7 +31,7 @@ fun TextView.setTextEx(any: Any?) {
     text = any.toString()
 }
 
-fun TextView.setTextExA(isRight: Boolean, text1: String, text2: String): TextView {
+fun TextView.setTextEx(isRight: Boolean, text1: String, text2: String): TextView {
     text = if (isRight) {
         text1
     } else {
@@ -40,7 +40,7 @@ fun TextView.setTextExA(isRight: Boolean, text1: String, text2: String): TextVie
     return this
 }
 
-fun TextView.setTextExA(isRight: Boolean, @StringRes text1: Int, @StringRes text2: Int): TextView {
+fun TextView.setTextEx(isRight: Boolean, @StringRes text1: Int, @StringRes text2: Int): TextView {
     setText(if (isRight) {
         text1
     } else {
@@ -50,7 +50,7 @@ fun TextView.setTextExA(isRight: Boolean, @StringRes text1: Int, @StringRes text
     return this
 }
 
-fun TextView.setTextColorExB(isRight: Boolean, @ColorRes color1: Int, @ColorRes color2: Int): TextView {
+fun TextView.setTextColorEx(isRight: Boolean, @ColorRes color1: Int, @ColorRes color2: Int): TextView {
     if (isRight) {
         setTextColorEx(color1)
     } else {
@@ -59,7 +59,7 @@ fun TextView.setTextColorExB(isRight: Boolean, @ColorRes color1: Int, @ColorRes 
     return this
 }
 
-fun TextView.setTextColorExB(index: Int, vararg colors: Int): TextView {
+fun TextView.setTextColorEx(index: Int, vararg colors: Int): TextView {
     if (index < colors.size && index > -1) {
         setTextColorEx(colors[index])
     } else {
@@ -68,7 +68,7 @@ fun TextView.setTextColorExB(index: Int, vararg colors: Int): TextView {
     return this
 }
 
-fun TextView.setTextColorExB(isRight: Boolean, color1: String, color2: String): TextView {
+fun TextView.setTextColorEx(isRight: Boolean, color1: String, color2: String): TextView {
     if (isRight) {
         setTextColorEx(color1)
     } else {
@@ -77,7 +77,7 @@ fun TextView.setTextColorExB(isRight: Boolean, color1: String, color2: String): 
     return this
 }
 
-fun TextView.setTextColorExB(index: Int, vararg colors: String): TextView {
+fun TextView.setTextColorEx(index: Int, vararg colors: String): TextView {
     if (index < colors.size && index > -1) {
         setTextColorEx(colors[index])
     } else {

@@ -20,28 +20,22 @@ import org.jetbrains.annotations.Nullable
  */
 fun setonClick(vararg views: View, unit: () -> Unit) {
     views.forEach {
-        it.setOnClick(unit)
+        it.setOnClickListener { unit.invoke()}
     }
 }
 
 fun View.setOnClickAndOpenActivityEx(intent: Intent) {
-    setOnClick {
+    setOnNoDoubleClickListener {
         openActivityEx(intent)
     }
 }
 
 fun View.setOnClickAndOpenActivityEx(paClass: Class<*>) {
-    setOnClick {
+    setOnNoDoubleClickListener {
         openActivityEx(paClass)
     }
 }
 
-/**
- * 防止快速点击运行2次
- */
-fun View.setOnClick(unit: () -> Unit) {
-    setOnNoDoubleClickListener(unit)
-}
 
 fun setVisible(vararg views: View) {
     for (view in views) {
