@@ -322,6 +322,15 @@ public class ZxTagLayout extends ViewGroup implements TagAdapter.OnDataChangedLi
         mTagAdapter.unSelected(position, view.getTagView());
     }
 
+    //选择
+    public void doSelect(int position){
+        int size=getChildCount();
+        if(position>-1&& position<size){
+           View view= getChildAt(position);
+           doSelect((TagView) view,position);
+        }
+    }
+
     private void doSelect(TagView child, int position) {
         if (!child.isChecked()) {
             //处理max_select=1的情况
