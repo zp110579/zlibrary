@@ -11,7 +11,7 @@ import android.widget.Button
 import com.zee.activity.BaseZActivity
 import com.zee.dialog.MyDialogK
 import com.zee.extendobject.runOnMainThread
-import com.zee.extendobject.setOnClick
+import com.zee.extendobject.setOnNoDoubleClickListener
 import com.zee.extendobject.setVisible
 import com.zee.http.MyOk
 import com.zee.http.request.DownloadFileCallBackListener
@@ -32,7 +32,7 @@ class AppUpdateActivity : BaseZActivity() {
     }
 
     override fun initViews() {
-        tv_app_upDate_a.setOnClick {
+        tv_app_upDate_a.setOnNoDoubleClickListener {
             MyDialogK.init(R.layout.zx_update_app_dialog) {
                 setText(R.id.tv_title, "更新最新版本")
                 setText(R.id.tv_update_info, "本次更新到最新版本提示本次更新到最新版本提示本次更新到最新版本提示本次更新到最新版本提示")

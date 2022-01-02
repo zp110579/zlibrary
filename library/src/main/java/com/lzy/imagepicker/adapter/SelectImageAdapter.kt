@@ -6,7 +6,7 @@ import com.lzy.imagepicker.bean.ImageFolder
 import com.lzy.imagepicker.util.Utils
 import com.zee.base.Z1RecyclerAdapter
 import com.zee.extendobject.curActivityEx
-import com.zee.extendobject.setOnClick
+import com.zee.extendobject.setOnNoDoubleClickListener
 import com.zee.extendobject.setVisibleOrGone
 import com.zee.libs.R
 import com.zee.utils.UIUtils
@@ -26,7 +26,7 @@ class SelectImageAdapter : Z1RecyclerAdapter<ImageFolder>(R.layout.adapter_folde
 
             viewById(R.id.iv_folder_check).setVisibleOrGone(selectItemIndex == location)//选中
         }
-        parentView.setOnClick {
+        parentView.setOnNoDoubleClickListener {
             setSelectItemAndNotifyDataSetChanged(location)
         }
     }

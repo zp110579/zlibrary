@@ -5,7 +5,7 @@ import com.bumptech.glide.Glide
 import com.lzy.imagepicker.ImagePickerManager
 import com.lzy.imagepicker.bean.CameraPickerImageSelectManager
 import com.zee.activity.BaseZActivity
-import com.zee.extendobject.setOnClick
+import com.zee.extendobject.setOnNoDoubleClickListener
 import com.zee.libs.example.R
 import com.zee.log.ZLog
 import com.zee.utils.ImageCompressUtils
@@ -22,7 +22,7 @@ class PictureActivity : BaseZActivity() {
     }
 
     override fun initViews() {
-        tv_camer.setOnClick {
+        tv_camer.setOnNoDoubleClickListener {
             val cameraPickerImageSelectManager = ImagePickerManager.cameraImage()
             if (cb_btn.isChecked) {
                 cameraPickerImageSelectManager.setRectangleEdit()
@@ -33,7 +33,7 @@ class PictureActivity : BaseZActivity() {
                 }
             }
         }
-        tv_single.setOnClick {
+        tv_single.setOnNoDoubleClickListener {
             val singleImageSelectManager = ImagePickerManager.singleSelectImage()
             if (cb_btn.isChecked) {
                 singleImageSelectManager.setRectangleEdit()
